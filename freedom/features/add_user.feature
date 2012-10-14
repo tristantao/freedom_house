@@ -11,5 +11,5 @@ Scenario: add user to the website
   When I go to the add user page
   And I fill in user with "user"
   And I fill in password with "password1"
-  And I press submi
+  And I press submit
   Then I should see "User Added Successfully "
