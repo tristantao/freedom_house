@@ -9,7 +9,7 @@ gem 'sqlite3'
 
 #For User Authentication
 gem 'devise'
-
+gem 'heroku' #do we need this? - Tristan
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
