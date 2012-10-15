@@ -5,8 +5,6 @@ gem 'rails', '3.1.0'
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
-
 #For User Authentication
 gem 'devise'
 
@@ -32,7 +30,7 @@ gem 'jquery-rails'
 gem 'cucumber-rails'
 group :development, :test do
   gem 'turn', :require => false
-#  gem 'sqlite3'
+  gem 'sqlite3'
   #Breaks for Windows
   #gem 'ruby-debug19', :require => 'ruby-debug'
   #gem 'ruby-debug-base19x', '~> 0.11.30.pre3'
