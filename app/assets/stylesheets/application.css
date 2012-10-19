@@ -5,6 +5,7 @@
  *= require_self
  *= require_tree . 
 */
+*= require bootstrap_and_overrides
 
 ul.hmenu {
   list-style: none;	

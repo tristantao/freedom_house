@@ -8,6 +8,7 @@ gem 'rails', '3.1.0'
 #For User Authentication
 gem 'devise'
 gem 'haml'
+gem 'twitter-bootstrap-rails'
 
 group :production do
   gem 'pg'
