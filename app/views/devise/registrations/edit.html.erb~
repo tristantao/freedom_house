@@ -1,5 +1,3 @@
-%h1#Title Freedom Tracker
-
 %div#login_box
   %h2
     Edit #{resource_name.to_s.humanize}

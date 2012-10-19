@@ -13,11 +13,12 @@ ul.hmenu {
 }
 
 ul.hmenu li {
-  display: inline;
-  text-align: right  
+  display: inline; 
 }
 
 div#login_box {
+  background-color: white;
+  padding: 10px;
   margin-left: auto;
   margin-right: auto;
   text-align: center;
@@ -29,12 +30,28 @@ div#login_box {
 
 h1#Title {
   text-align: center;
-  text-shadow: 0px 2px 3px #666;
-  color: #808080;
+  text-shadow: 0px 2px 6px #666;
+  color: grey;
   text-transform:uppercase;
   font-size: 500%
 }
 
 body {
-  background-color: black
+  /* IE10 Consumer Preview */ 
+  background-image: -ms-radial-gradient(center, circle farthest-corner, #FFFFFF 0%, #D1D1D1 100%);
+
+  /* Mozilla Firefox */ 
+  background-image: -moz-radial-gradient(center, circle farthest-corner, #FFFFFF 0%, #D1D1D1 100%);
+
+  /* Opera */ 
+  background-image: -o-radial-gradient(center, circle farthest-corner, #FFFFFF 0%, #D1D1D1 100%);
+
+  /* Webkit (Safari/Chrome 10) */ 
+  background-image: -webkit-gradient(radial, center center, 0, center center, 505, color-stop(0, #FFFFFF), color-stop(1, #D1D1D1));
+
+  /* Webkit (Chrome 11+) */ 
+  background-image: -webkit-radial-gradient(center, circle farthest-corner, #FFFFFF 0%, #D1D1D1 100%);
+
+  /* W3C Markup, IE10 Release Preview */ 
+  background-image: radial-gradient(circle farthest-corner at center, #FFFFFF 0%, #D1D1D1 100%);
 }
