@@ -11,6 +11,7 @@ gem 'haml'
 
 group :production do
   gem 'pg'
+
 end
 
 # Gems used only for assets and not required
@@ -19,7 +20,7 @@ group :assets do
   gem 'sass-rails', "  ~> 3.1.0"
   gem 'coffee-rails', "~> 3.1.0"
   gem 'uglifier'
-  gem 'therubyracer'
+  #gem 'therubyracer'
 end
 
 gem 'jquery-rails'
@@ -31,12 +32,14 @@ gem 'jquery-rails'
 # gem 'capistrano'
 
 # To use debugger
+# gem 'ruby-debug19', :require => 'ruby-debug'
 gem 'cucumber-rails'
 group :development, :test do
   gem 'turn', :require => false
   gem 'sqlite3'
-  gem 'ruby-debug19', :require => 'ruby-debug'
-  gem 'ruby-debug-base19x', '~> 0.11.30.pre3'
+  #Breaks for Windows
+  #gem 'ruby-debug19', :require => 'ruby-debug'
+  #gem 'ruby-debug-base19x', '~> 0.11.30.pre3'
   gem 'cucumber-rails'
   gem 'cucumber-rails-training-wheels'
   gem 'database_cleaner'
