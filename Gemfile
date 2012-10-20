@@ -31,13 +31,10 @@ gem 'jquery-rails'
 # Deploy with Capistrano
 # gem 'capistrano'
 
-# To use debugger
-gem 'cucumber-rails'
 group :development, :test do
-  gem 'turn', :require => false
   gem 'sqlite3'
+  gem 'railroady'
   gem 'ruby-debug19', :require => 'ruby-debug'
-  gem 'ruby-debug-base19x', '~> 0.11.30.pre3'
   gem 'cucumber-rails'
   gem 'cucumber-rails-training-wheels'
   gem 'database_cleaner'
@@ -45,5 +42,4 @@ group :development, :test do
   gem 'launchy'
   gem 'rspec-rails'
   gem 'simplecov'
-  gem 'rspec-rails'
 end
