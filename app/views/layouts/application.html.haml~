@@ -5,7 +5,6 @@
     = csrf_meta_tags
   %body#Background
     %ul.hmenu
-      = render 'devise/menu/registration_items'
       = render 'devise/menu/login_items'
     %ul.hmenu
     #main
