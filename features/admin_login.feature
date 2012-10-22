@@ -5,11 +5,12 @@ Feature: Admin Log-in
   I want to be able to login with authentication
 
   Background:
-    Given I am on the home page
+  	Given the blog is set up with an admin user
+    And I am on the home page
   
 Scenario: add user to the website
-  When I press login
-  And I fill in user with "admin_user_name"
-  And I fill in password with "admin_password1"
-  And I press submit
-  Then I should see "Admin Logged in Successfully!"
+  When I follow "Login"
+  And I fill in "Email" with "hellojustinchan@gmail.com"
+  And I fill in "Password" with "derp1234"
+  And I press "Sign in"
+  Then I should see "Welcome, admin user."
