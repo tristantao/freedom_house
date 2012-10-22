@@ -1,17 +1,17 @@
 Feature: display a list of the articles in the database
  
-  As an administrator
+  As a user
   I want to see a list of articles from the news sources
   So that I can inspect a summary of the title and location and date and opening words.
 
 Background: articles have been put in the database
   
   Given the following articles exist:
-  | title                                              | date        | author     | location   | link    | source_id        |
-  | Officials: Deadly attack hits north Nigeria mosque | 14-Oct-2012 | John Smith | Lagos, NG  | foo.com | Associated Press |
-  | Gunmen kill 20 at mosque in Zaria                  | 15-Oct-2012 | Jim Smith  | Kaduna, NG | foo.com | Nigerian Tribune |
+  | title                                              | date        | author     | location   | link    | source_id |
+  | Officials: Deadly attack hits north Nigeria mosque | 14-Oct-2012 | John Smith | Lagos, NG  | foo.com |     1     |
+  | Gunmen kill 20 at mosque in Zaria                  | 15-Oct-2012 | Jim Smith  | Kaduna, NG | foo.com |     2     |
 
-  And I am on the admin dashboard
+  And I am on the home page
 
 Scenario: display list of movies with title
   When I press "List All Articles"
