@@ -5,6 +5,8 @@
     = csrf_meta_tags
   %body#Background
     %ul.hmenu
+      = render 'devise/menu/login_items'
+    %ul.hmenu
     #main
       - if flash[:notice]
         #notice.message= flash[:notice]

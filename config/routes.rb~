@@ -7,13 +7,13 @@ Freedom::Application.routes.draw do
       post 'signin' => 'devise/sessions#create', :as => :user_session
       delete 'signout' => 'devise/sessions#destroy', :as => :destroy_user_session
       get 'signout' => 'devise/sessions#destroy', :as => :destroy_user_session
+    end
   end
 
   match 'home' => 'tracker#home', :as => :home
   
   
   devise_for :users
-    root :to => "devise/home#index"
     match "admin" => "admin#admin_page", :as => :admin_page
     match "admin/edit/:id" => "admin#edit", :as => :edit_user
     match "admin/update/:id" => "admin#update", :as => :update_user

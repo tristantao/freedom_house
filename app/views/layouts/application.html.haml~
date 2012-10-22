@@ -5,15 +5,13 @@
     = csrf_meta_tags
   %body#Background
     %ul.hmenu
-<<<<<<< HEAD
       = render 'devise/menu/registration_items'
       = render 'devise/menu/login_items'
+    %ul.hmenu
     #main
       - if flash[:notice]
         #notice.message= flash[:notice]
       - elsif flash[:warning]
         #warning.message= flash[:warning]
 
-=======
->>>>>>> tracker_page
       = yield
