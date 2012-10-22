@@ -28,3 +28,8 @@
   %p
     Unhappy? #{link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete}.
   = link_to "Back", :back
+  %h3 Admin status
+  -if current_user.admin
+    %p ACTIVE
+  -else
+    %p NOPE
