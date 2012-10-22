@@ -3,5 +3,5 @@
   %h1#Title Freedom Tracker
   %body
     %h1
-    - if current_user.admin?
+    - if current_user.try(:admin?)
       %h3 Welcome, admin user.
