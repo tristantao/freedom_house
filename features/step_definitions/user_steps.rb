@@ -9,4 +9,4 @@ Then /user should be in the database with these fields$/ do |user_table|
   assert_match(user.is_admin, user["admin"])
   end
 end
-  
+
