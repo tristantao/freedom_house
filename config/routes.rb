@@ -1,8 +1,11 @@
 Freedom::Application.routes.draw do
   devise_for :users
-  
-  root :to => "devise/home#index"
 
+  root :to => "devise/home#index"
+  match "admin" => "admin#admin_page", :as => :admin_page
+  match "admin/edit/:id" => "admin#edit", :as => :edit_user
+  match "admin/update/:id" => "admin#update", :as => :update_user
+  #devise_for :admins, :controllers => { :sessions => "admins/sessions" }
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
