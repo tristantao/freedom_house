@@ -1,0 +1,10 @@
+%h1 Edit Existing User
+
+= form_tag update_user_url(@user.id), :method => :put do
+  = label :user, :email, 'Email'
+  = text_field :user, 'email'
+    
+  = label :user, :admin, 'Admin?'
+  = check_box_tag "user[admin]", true, @user.admin?
+    
+  = submit_tag 'Update User Info'

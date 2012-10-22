@@ -7,4 +7,10 @@
     %ul.hmenu
       = render 'devise/menu/registration_items'
       = render 'devise/menu/login_items'
+    #main
+      - if flash[:notice]
+        #notice.message= flash[:notice]
+      - elsif flash[:warning]
+        #warning.message= flash[:warning]
+
       = yield
