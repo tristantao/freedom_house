@@ -8,8 +8,8 @@ Feature: Admin Log-in
     Given I am on the home page
   
 Scenario: add user to the website
-  When I press login
-  And I fill in user with "admin_user_name"
-  And I fill in password with "admin_password1"
+  When I follow "Login"
+  And I fill in user with "hellojustinchan@gmail.com"
+  And I fill in password with "derp123"
   And I press submit
   Then I should see "Admin Logged in Successfully!"
