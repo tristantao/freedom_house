@@ -1,5 +1,5 @@
 - @page_heading = 'Manage Freedom Tracker'
-%h3 Welcome, #{@email}
+%h3 Welcome, #{@email}.
 
 -#= form_remote_tag :user => {:action => 'index'},
 
@@ -12,5 +12,5 @@
     - @users.each do |user|
       %tr
         %td= user.email
-        %td= link_to 'edit', edit_user_url(user.id)
+        %td= link_to 'edit', edit_user_url(user.id), :id => "edit_user_#{user.id}"
         %td= link_to 'destroy'
