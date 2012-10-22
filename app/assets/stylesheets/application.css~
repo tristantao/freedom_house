@@ -12,7 +12,7 @@ ul.hmenu {
   padding: 0;
 }
 
-ul.hmenu li {
+ul.hmenu  {
   display: inline; 
 }
 
@@ -36,6 +36,6 @@ h1#Title {
   font-size: 500%
 }
 
-body {
+body#Background {
   background-image: url(Space.jpg);
 }
