@@ -5,11 +5,11 @@ Feature: User Log-in
   I want to be able to login with authentication
 
   Background:
-    Given I am on the home page
+  	Given the blog is set up without an admin user
+    And I am on the home page
   
 Scenario: add user to the website
-  When I press login
-  And I fill in user with "user_name"
-  And I fill in password with "password1"
-  And I press submit
-  Then I should see "User Logged in Successfully!"
+  When I fill in "Email" with "hellojustinchan@gmail.com"
+  And I fill in "Password" with "derp1234"
+  And I press "Sign in"
+  Then I should not see "Welcome, admin user."

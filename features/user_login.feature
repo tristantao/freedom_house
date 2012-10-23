@@ -9,8 +9,7 @@ Feature: User Log-in
     And I am on the home page
   
 Scenario: add user to the website
-  When I follow "Login"
-  And I fill in "Email" with "hellojustinchan@gmail.com"
-  And I fill in "Password" with "derp1234"
+  When I fill in "Email" with "hellojustinchan@gmail.com"
+  And I fill in "Password" with "justin"
   And I press "Sign in"
-  Then I should not see "Welcome, admin user."
+  Then I should not see "Dashboard"
