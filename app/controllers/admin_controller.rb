@@ -7,7 +7,7 @@ class AdminController < ApplicationController
   end
 
   def admin_page
-    @email = current_user.email
+    @name = current_user.name
     @users = User.all
   end
 

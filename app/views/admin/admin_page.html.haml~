@@ -1,3 +1,25 @@
-- @page_heading = _('Manage Freedom Tracker')
+- @page_heading = 'Manage Freedom Tracker'
+%h3 Welcome, #{@name}
 
+-#= form_remote_tag :user => {:action => 'index'}
 
+%div.pull-right= button_to 'Create New User', home_path, :class => "button btn"
+
+%table.table.table-striped#user_table
+  %thead
+    %tr
+      %th #
+      %th Name
+      %th Email
+      %th Admin Privileges
+  %tbody
+    - @users.each do |user|
+      %tr
+        %td= user.id
+        %td
+          = user.name
+          %div
+            %small= link_to 'Edit', edit_user_url(user.id), :id => "edit_user_#{user.id}"
+            %small= link_to 'Delete'
+        %td= user.email
+        %td= user.admin_privileges

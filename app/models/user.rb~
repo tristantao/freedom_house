@@ -13,5 +13,4 @@ class User < ActiveRecord::Base
       return "Yes"
     end
     return "No"
-  end
 end

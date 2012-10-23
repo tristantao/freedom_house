@@ -1,16 +1,14 @@
 Freedom::Application.routes.draw do
 
-  devise_for :users, :skip => [:users]
-    as :user do
-      root :to => 'devise/sessions#new'
-      get 'signin' => 'devise/sessions#new', :as => :new_user_session
-      post 'signin' => 'devise/sessions#create', :as => :user_session
-      delete 'signout' => 'devise/sessions#destroy', :as => :destroy_user_session
-      get 'signout' => 'devise/sessions#destroy', :as => :destroy_user_session
-      match "admin" => "admin#admin_page", :as => :admin_page
-      match "admin/edit/:id" => "admin#edit", :as => :edit_user
-      match "admin/update/:id" => "admin#update", :as => :update_user
-    end
+  devise_for :users, :path =>'', :path_names => { :sign_in => 'login', :sign_out => 'logout' }
+  
+  as :user do
+    root :to => 'home#index'
+  end
+
+  match 'admin' => 'admin#admin_page', :as => :admin_page
+  match 'admin/edit/:id' => 'admin#edit', :as => :edit_user
+  match 'admin/update/:id' => 'admin#update', :as => :update_user
 
   match 'home' => 'tracker#home', :as => :home
   
