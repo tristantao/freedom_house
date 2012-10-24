@@ -8,6 +8,7 @@ gem 'rails', '3.1.0'
 #For User Authentication
 gem 'devise'
 gem 'haml'
+gem 'twitter-bootstrap-rails'
 
 group :production do
   gem 'pg'
@@ -16,7 +17,6 @@ end
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'twitter-bootstrap-rails'
   gem 'sass-rails', "  ~> 3.1.0"
   gem 'coffee-rails', "~> 3.1.0"
   gem 'uglifier'

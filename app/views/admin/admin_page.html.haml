@@ -5,7 +5,7 @@
 
 %div.pull-right= button_to 'Create New User', home_path, :class => "button btn"
 
-%table.table.table-striped#user_table
+%table.table.table-striped.table-hover#user_table
   %thead
     %tr
       %th #
@@ -17,9 +17,7 @@
     - @users.each do |user|
       %tr
         %td= user.id
-        %td
-          = user.name
-          
+        %td= user.name
         %td= user.email
         %td= user.admin_privileges
         %td

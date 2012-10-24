@@ -6,9 +6,10 @@ Freedom::Application.routes.draw do
     root :to => 'home#index'
   end
 
-  match 'admin' => 'admin#admin_page', :as => :admin_page
-  match 'admin/edit/:id' => 'admin#edit', :as => :edit_user
-  match 'admin/update/:id' => 'admin#update', :as => :update_user
+  match 'profile' => 'user#profile',           :as => :profile
+  match 'admin' => 'admin#admin_page',         :as => :admin_page
+  match 'admin/edit/:id' => 'admin#edit',      :as => :edit_user
+  match 'admin/update/:id' => 'admin#update',  :as => :update_user
 
   match 'home' => 'tracker#home', :as => :home
   

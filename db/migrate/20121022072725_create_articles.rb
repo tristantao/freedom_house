@@ -6,6 +6,7 @@ class CreateArticles < ActiveRecord::Migration
       t.string :location
       t.string :link
       t.string :author
+      t.string :text
 
       t.timestamps
     end

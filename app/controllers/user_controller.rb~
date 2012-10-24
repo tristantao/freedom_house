@@ -1,7 +1,6 @@
-class ApplicationController < ActionController::Base
-  protect_from_forgery
+class UserController < ApplicationController
 
-  def home
-    
+  def profile
+
   end
 end

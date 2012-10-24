@@ -1,34 +1,31 @@
 %div.row-fluid
-  %h1 #{@user.name}
-  %div.pull-right= button_to 'Delete User', admin_page_path, :class => "btn btn-danger"
-  = form_tag update_user_url(@user.id), :method => :put do
-    %table.table.table-striped#user_table
+  %div.span3
+    %h2 #{@user.name}
+  %div.span6
+    %div.well
+      %legend User Properties
+      = simple_form_for(@user, :url => update_user_path(@user.id), :html => { :method => :put, :class => 'form-horizontal'}) do |f|
+        = f.error_notification
+        .form-inputs
+          = f.input :email, :required => true, :input_html => { :class => "span8" }
+          = f.input :admin, :as => :select, :input_html => { :class => "btn span8" }
+        .form-actions
+          %div.btn-group
+            = f.button :submit, "Update User", :class => "btn-success"
+            = f.button :submit, "Delete User", :class => "btn-danger", :value => "Delete User"
+
+  %div.span3
+%div.row-fluid
+  %h3 Contributed Sources
+  %div.well
+    %table.table.table-striped#source_table
       %thead
         %tr
-          %th Email
-          %th Admin Privileges
-          %th Actions
+          %th #
+          %th Source Name
+          %th URL
       %tbody
         %tr
           %td
-            = text_field :user, 'email'
           %td
-            = check_box_tag "user[admin]", true, @user.admin?
           %td
-            = submit_tag 'Update', :class => "btn btn-mini"
-
-    %br
-    %br
-    %h3 Contributed Sources
-    %div.well
-      %table.table.table-striped#source_table
-        %thead
-          %tr
-            %th #
-            %th Source Name
-            %th URL
-        %tbody
-          %tr
-            %td
-            %td
-            %td

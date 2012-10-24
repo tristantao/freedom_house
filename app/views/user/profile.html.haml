@@ -1,0 +1,34 @@
+%div.row-fluid
+  %div.span3
+    %h2 #{current_user.name}
+  %div.span6
+    %div.well
+      %legend User Properties
+      = simple_form_for(current_user, :url => update_user_path(current_user.id), :html => { :method => :put, :class => 'form-horizontal'}) do |f|
+        = f.error_notification
+        .form-inputs
+          = f.input :email, :required => true, :input_html => { :class => "span8" }
+          = f.input :password, :autocomplete => "off", :hint => "leave it blank if you don't want to change it", :required => false, :input_html => { :class => "span8" }
+          = f.input :password_confirmation, :required => false, :input_html => { :class => "span8" }
+          = f.input :current_password, :hint => "we need your current password to confirm your changes", :required => true, :input_html => { :class => "span8" }
+          = f.input :admin, :as => :select, :input_html => { :class => "btn span8" }
+        .form-actions
+          %div.btn-group
+            = f.button :submit, "Update User", :class => "btn-success"
+            = f.button :submit, "Delete User", :class => "btn-danger", :value => "Delete User"
+
+  %div.span3
+%div.row-fluid
+  %h3 Contributed Sources
+  %div.well
+    %table.table.table-striped#source_table
+      %thead
+        %tr
+          %th #
+          %th Source Name
+          %th URL
+      %tbody
+        %tr
+          %td
+          %td
+          %td

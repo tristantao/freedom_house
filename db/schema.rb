@@ -19,20 +19,22 @@ ActiveRecord::Schema.define(:version => 20121022072725) do
     t.string   "location"
     t.string   "link"
     t.string   "author"
+    t.string   "text"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "sources", :force => true do |t|
     t.string   "name"
-    t.string   "home_page"
+    t.string   "url"
     t.integer  "quality_rating"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "users", :force => true do |t|
-    t.string   "name",                   :default => "",    :null => false
+    t.string   "first_name",             :default => "",    :null => false
+    t.string   "last_name",              :default => "",    :null => false
     t.string   "email",                  :default => "",    :null => false
     t.string   "encrypted_password",     :default => "",    :null => false
     t.string   "reset_password_token"

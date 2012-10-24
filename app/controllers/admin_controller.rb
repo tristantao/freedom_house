@@ -8,7 +8,7 @@ class AdminController < ApplicationController
 
   def admin_page
     @name = current_user.name
-    @users = User.all
+    @users = User.find(:all, :order => "first_name ASC")
   end
 
   def edit

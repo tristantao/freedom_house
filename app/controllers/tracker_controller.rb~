@@ -1,5 +1,5 @@
 class TrackerController < ApplicationController
-  before_filter :user?
+  before_filter :authenticate_user!
 
   def home
 
