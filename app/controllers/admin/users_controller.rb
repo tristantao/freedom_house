@@ -1,13 +1,8 @@
-class AdminController < ApplicationController
+class Admin::UsersController < ApplicationController
 
   before_filter :admin_user?
 
   def index
-    @users = User.all
-  end
-
-  def admin_page
-    @name = current_user.name
     @users = User.find(:all, :order => "first_name ASC")
   end
 
@@ -18,18 +13,18 @@ class AdminController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    @user.email = params[:user][:email]
     @user.admin = params[:user][:admin]
     if @user.save
-      redirect_to admin_page_url
+      flash[:notice] = "Successfully updated user!"
     else
       flash[:warning] = "Invalid Input"
-      redirect_to admin_page_url
     end
+    redirect_to admin_users_action_path(:edit, params[:id])
   end
-
- protected
+  
+  protected
   def admin_user?
     redirect_to root_path() unless user_signed_in? && current_user.admin?
   end
+
 end

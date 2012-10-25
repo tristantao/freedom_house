@@ -1,6 +1,11 @@
 %body
+  = render 'overview'
   %div.row-fluid
-    %h1 Event Map
+    %div.span6.pagination-centered
+      %h1 Event Map
+    %div.span6.pagination-centered.well
+      %h1 Time Graph
+  %div.row-fuid
     %h2 Articles
     %div.well
       %table.table.table-striped.table-hover#article_table

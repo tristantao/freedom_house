@@ -1,0 +1,44 @@
+%div.row-fluid
+  %div.span2.well
+    = render 'admin/shared/sidebar'
+    
+  %div.span10
+    %div.content
+      = render 'overview'
+      %div.row-fluid
+        %div.span6
+          %div.well
+            %legend Welcome back, #{current_user.name}!
+            %p 0 articles, 0 sources, 0 events have been added since your last connection.
+            %p <B>Content</B>
+            %ul
+              %li
+                %a{:href => home_path} Total Articles: 
+                0
+            %ul
+              %li
+                %a{:href => home_path} Total Sources: 
+                0
+            %ul
+              %li
+                %a{:href => home_path} Total Events: 
+                0
+            %p <B>Feedback</B>
+            %ul
+              %li
+                %a{:href => home_path} Total Messages: 
+                0
+
+          %div.well
+            %legend Webscraper Performance
+
+        %div.span6
+          %div.well
+            %legend Latest Article
+
+          %div.well
+            %legend Latest Event
+
+          %div.well
+            %legend Tracker Errors
+

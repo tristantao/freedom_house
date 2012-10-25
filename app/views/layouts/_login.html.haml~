@@ -5,7 +5,7 @@
       %i.icon-user
       Profile
   %li
-    %a{:href => settings_path}
+    %a{:href => "#"}
       %i.icon-cog
       Settings
   %li.divider
