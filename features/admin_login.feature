@@ -12,4 +12,4 @@ Scenario: add user to the website
   When I fill in "Email" with "hellojustinchan@gmail.com"
   And I fill in "Password" with "justin"
   And I press "Sign in"
-  Then I should see "Welcome, Justin Chan"
+  Then I should see "Welcome to the Administrator Dashboard."
