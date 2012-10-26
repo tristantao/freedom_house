@@ -1,0 +1,2 @@
+class WebscraperController < ApplicationController
+end
