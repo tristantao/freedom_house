@@ -10,6 +10,6 @@ Feature: User Log-in
   
 Scenario: add user to the website
   When I fill in "Email" with "hellojustinchan@gmail.com"
-  And I fill in "Password" with "justin"
+  And I fill in "Password" with "derp1234"
   And I press "Sign in"
   Then I should not see "Dashboard"
