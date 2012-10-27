@@ -5,7 +5,7 @@ Feature: Admin Log-in
   I want to be able to login with authentication
 
   Background:
-  	Given the blog is set up with an admin user
+    Given the blog is set up with an admin user
     And I am on the home page
   
 Scenario: add user to the website

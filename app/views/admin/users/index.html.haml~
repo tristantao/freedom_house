@@ -1,8 +1,8 @@
 %div.row-fluid
-  %div.span2.well
+  %div.span2
     = render 'admin/shared/sidebar'
   %div.span10
-    %div.pull-right= button_to 'Create New User', home_path, :class => "button btn"
+    %div.pull-right= button_to 'Create New User', admin_users_action_path(:new), :class => "button btn"
 
     -#= form_remote_tag :admin => {:action => 'index'}
 

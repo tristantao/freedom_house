@@ -2,7 +2,7 @@
   %div.span2
     = render 'admin/shared/sidebar'
   %div.span10
-    %div.pull-right= button_to 'Create New User', home_path, :class => "button btn"
+    %div.pull-right= button_to 'Create New User', admin_users_action_path(:new), :class => "button btn"
 
     -#= form_remote_tag :admin => {:action => 'index'}
 
@@ -23,4 +23,4 @@
               %td= user.admin_privileges
               %td
                 = link_to 'Edit', admin_users_action_path(:edit, user.id), :id => "edit_user_#{user.id}", :class => "btn btn-mini"
-                = link_to 'Delete', admin_dashboard_path, :class => "btn btn-mini btn-danger"
+                = link_to 'Delete', admin_users_action_path(:delete, user.id), :class => "btn btn-mini btn-danger"
