@@ -13,5 +13,5 @@ Scenario: add user to the website
   And I fill in "Password" with "derp1234"
   And I press "Sign in"
   And I follow "All Users"
-  Then I should be on the edit_users page
+  Then I should be on the users page
 

@@ -15,7 +15,8 @@ module NavigationHelpers
 
     when /^the admin dashboard$/ then '/admin'
     when /^the home page$/ then '/'
-
+    when /^the users page$/ then '/admin/users'
+    when /^the add user page$/ then '/admin/users/new'
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #
