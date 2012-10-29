@@ -17,6 +17,10 @@ module NavigationHelpers
     when /^the home page$/ then '/'
     when /^the users page$/ then '/admin/users'
     when /^the add user page$/ then '/admin/users/new'
+    when /^the add source page$/ then '/admin/sources/new'
+    when /^the edit source page for "(.*)"/
+      id = Source.find_by_name($1).id
+      "/admin/sources/edit/#{id}"
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #

@@ -5,9 +5,8 @@
   %div.span10
     %div.well.pagination-centered
 
-
       %h2 Create New User
-      = simple_form_for(resource, :as => resource_name, :url => admin_users_action_path(:new)) do |f|
+      = simple_form_for(:user, :as => :user_name, :url => admin_users_action_path(:new)) do |f|
         = f.error_notification
         .form-inputs
           = f.input :first_name, :required => true

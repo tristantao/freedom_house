@@ -1,8 +1,8 @@
 Feature: User Log-in
 
   As a User
-  So that I can securely access the freedom tracker
   I want to be able to login with authentication
+  So that I can securely access the freedom tracker
 
   Background:
   	Given the blog is set up without an admin user

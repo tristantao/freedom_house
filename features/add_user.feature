@@ -1,8 +1,9 @@
 Feature: Add users to the website
 
   As the website admin
-  So that I can increase the worker count on the project
   I want to be able to add users
+  So that I can increase the worker count on the project
+
 
   Background:
     Given the blog is set up with an admin user

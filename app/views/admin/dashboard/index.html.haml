@@ -13,16 +13,20 @@
             %p <B>Content</B>
             %ul
               %li
+                %a{:href => home_path} Total Users: 
+                #{@num_users}
+            %ul
+              %li
                 %a{:href => home_path} Total Articles: 
-                0
+                #{@num_articles}
             %ul
               %li
                 %a{:href => home_path} Total Sources: 
-                0
+                #{@num_sources}
             %ul
               %li
                 %a{:href => home_path} Total Events: 
-                0
+                #{@num_events}
             %p <B>Feedback</B>
             %ul
               %li
