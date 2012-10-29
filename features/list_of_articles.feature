@@ -22,8 +22,8 @@ Scenario: display list of movies with title
 
 Scenario: display list of movies with date
   When I follow "All Articles"
-  And I should see "14-Oct-2012"
-  And I should see "15-Oct-2012"
+  And I should see "2012-10-14"
+  And I should see "2012-10-15"
 
 Scenario: display list of movies with location
   When I follow "All Articles"

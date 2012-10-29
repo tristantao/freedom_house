@@ -24,4 +24,9 @@ Freedom::Application.routes.draw do
     match "/admin/#{i}", :to => "admin/#{i}#index", :as => "admin_#{i}"
     match "/admin/#{i}(/:action(/:id))", :to => "admin/#{i}", :action => nil, :id => nil, :format => false, :as => "admin_#{i}_action"
   end
+
+  %w{articles}.each do |i|
+    match "/admin/#{i}", :to => "admin/#{i}#index", :as => "admin_#{i}"
+    match "/admin/#{i}(/:action(/:id))", :to => "admin/#{i}", :action => nil, :id => nil, :format => false, :as => "admin_#{i}_action"
+  end
 end
