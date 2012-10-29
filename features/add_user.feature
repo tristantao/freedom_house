@@ -15,7 +15,7 @@ Scenario: add admin user to the website (happy path)
   And I fill in "user_password_confirmation" with "password1"
   And I fill in "user_first_name" with "tristan"
   And I fill in "user_last_name" with "tao"
-  And I check "user_admin"
+  And I select "Yes" from "user_admin"
   And I press "Sign up"
 #How do re change the selector? i.e. choose admin = true
   Then user should be in the database with these fields:
@@ -33,7 +33,7 @@ Scenario: add non-admin user to the website
   When I go to the add user page
   And I fill in "user_email" with "user2@foo.com"
   And I fill in "user_password" with "password2"
-  And I uncheck "user_admin"
+  And I select "No" from "user_admin"
   And I press "Sign up"
   Then user should be in the database with these fields:
   | name          | password  | admin |

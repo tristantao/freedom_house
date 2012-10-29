@@ -30,6 +30,7 @@ class Admin::UsersController < ApplicationController
       a.admin = is_admin
       if a.save
         flash[:notice] = "User #{userinput[:first_name]} #{userinput[:last_name]} has been created!"
+        redirect_to admin_users_path
       else
         flash[:notice] = "Error in creating user. Please try again."
       end
