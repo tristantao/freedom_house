@@ -1,0 +1,26 @@
+Members present: Chris, Justin, Tristan
+Notetaker: Justin
+Scrum MASTER: Was sleeping
+
+Stuff we need to do:
+
+1) Admin can destroy users
+
+Leftover from previous iteration. User story should be easy to write and pass.
+
+2) Map of Nigeria
+
+For now, our user story will pass by just having some text on the page indicating there is a map. Actual map -- we debated between a "homegrown" map vs. Google Maps API. We agreed everyone should look into both options this week to figure out which path was best.
+
+3) List of articles vs location 
+
+Chris already created the Article migration, and we debated whether or not Location itself needed to be a model, or would it be sufficient as an attribute. Some things we considered if Location had its own model:
+
+-an event only has one location
+-does an article only has one location? 
+
+Not particularly sure how the user story will work here.
+
+4) Figure out webscraper
+
+Richard says there's a gem for this. I assume this is our highest priority right now, so everyone should look into this. Not sure how the user story will work here.

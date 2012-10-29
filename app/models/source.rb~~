@@ -1,0 +1,10 @@
+class Source < ActiveRecord::Base
+<<<<<<< HEAD
+=======
+
+  has_many :articles
+  belongs_to :user
+  attr_accessible :name, :url
+
+>>>>>>> d4002b7b7986414e18445eb156a5791b0c98c47e
+end

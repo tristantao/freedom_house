@@ -1,0 +1,26 @@
+%div.row-fluid
+  %div.span2
+    = render 'admin/shared/sidebar'
+  %div.span10
+    %div.pull-right= button_to 'Create New User', admin_users_action_path(:new), :class => "button btn"
+
+    -#= form_remote_tag :admin => {:action => 'index'}
+
+    %table.table.table-striped.table-hover#user_table
+      %thead
+        %tr
+          %th #
+          %th Name
+          %th Email
+          %th Admin Privileges
+          %th Actions
+        %tbody
+          - @users.each do |user|
+            %tr
+              %td= user.id
+              %td= user.name
+              %td= user.email
+              %td= user.admin_privileges
+              %td
+                = link_to 'Edit', admin_users_action_path(:edit, user.id), :id => "edit_user_#{user.id}", :class => "btn btn-mini"
+                = link_to 'Delete', admin_dashboard_path, :class => "btn btn-mini btn-danger"

@@ -1,0 +1,39 @@
+%body
+  = render 'overview'
+  %div.row-fluid
+    %div.span6.pagination-centered
+      %h1 Event Map
+    %div.span6.pagination-centered.well
+      %h1 Time Graph
+  %div.row-fuid
+    %h2 Articles
+    %div.well
+      %table.table.table-striped.table-hover#article_table
+        %thead
+          %tr
+            %th #
+            %th Title
+            %th Date
+            %th Source
+            %th Certainty
+            %th Actions
+        %tbody
+          - @articles.each do |article|
+            %tr
+              %td= article.id
+              %td= article.title
+              %td= article.date
+              %td
+              %td
+              %td
+                %a.btn{"data-toggle" => "modal", :href => "#Article", :role => "button"} View Article
+
+#Article.modal.hide.fade.in{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
+  .modal-header
+    %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
+    %h3#myModalLabel Modal header
+  .modal-body
+    %p One fine body…
+  .modal-footer
+    %button.btn{"aria-hidden" => "true", "data-dismiss" => "modal"} Close
+    %button.btn.btn-primary Save changes
