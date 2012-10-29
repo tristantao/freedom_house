@@ -1,0 +1,17 @@
+%div.row-fluid
+  %div.span3
+    %h2 #{@soruce.name}
+    = image_tag 'default_user.png', :class => 'img-circle'
+  %div.span3
+  %div.span6
+    %div.well
+      %legend User Properties
+      = simple_form_for(@user, :url => admin_users_action_path(:update, @user.id), :html => { :method => :put, :class => 'form-horizontal'}) do |f|
+        = f.error_notification
+        .form-inputs
+          = f.input :email, :disabled => true, :input_html => { :class => "span8" }
+          = f.input :admin, :as => :select, :input_html => { :class => "btn span8" }
+        .form-actions
+          %div.btn-group
+            = f.button :submit, "Update Source", :class => "btn-success"
+            = f.button :submit, "Delete Source", :class => "btn-danger", :value => "Delete Source"

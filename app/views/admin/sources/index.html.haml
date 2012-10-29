@@ -1,0 +1,26 @@
+%div.row-fluid
+  %div.span2
+    = render 'admin/shared/sidebar'
+  %div.span10
+    %div.pull-right= button_to 'Create New Source', admin_sources_action_path(:new), :class => "button btn"
+
+    -#= form_remote_tag :admin => {:action => 'index'}
+
+    %table.table.table-striped.table-hover#source_table
+      %thead
+        %tr
+          %th #
+          %th Name
+          %th Home Page
+          %th Ratings/Quality
+          %th Actions
+        %tbody
+          - @sources.each do |source|
+            %tr
+              %td= source.id
+              %td= source.name
+              %td= source.home_page
+              %td= source.quality_rating
+              %td
+                = link_to 'Edit', admin_sources_action_path(:edit, source.id), :id => "edit_source_#{source.id}", :class => "btn btn-mini"
+                = link_to 'Delete', admin_sources_action_path(:delete, source.id), :class => "btn btn-mini btn-danger"
