@@ -1,7 +1,7 @@
 Feature: Add sources to the website
 
   As the website admin
-  So that I can increase the webscraper capacity
+  So that the webscraper can find more articles
   I want to be able to add sources
 
   Background:
