@@ -43,7 +43,6 @@ class Admin::UsersController < ApplicationController
     @user.delete
     flash[:notice] = "User #{firstname} #{lastname} has been deleted."
     redirect_to admin_dashboard_path
->>>>>>> 0d2cfed9193b9c26fd2a6a404797a1c7697e766c
   end
 
 
