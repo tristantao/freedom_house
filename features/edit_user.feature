@@ -10,8 +10,8 @@ Feature: Admin Log-in
 
 Scenario: add user to the website
   When I fill in "Email" with "hellojustinchan@gmail.com"
-  And I fill in "Password" with "justin"
+  And I fill in "Password" with "derp1234"
   And I press "Sign in"
-  And I follow "edit_user_1"
-  Then I should see "Dashboard"
+  And I follow "All Users"
+  Then I should be on the users page
 
