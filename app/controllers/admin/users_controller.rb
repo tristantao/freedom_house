@@ -27,6 +27,7 @@ class Admin::UsersController < ApplicationController
   		a = User.create(:first_name => userinput[:first_name], :last_name => userinput[:last_name], :email => userinput[:email], :password => userinput[:password])
   		if a.save
   			flash[:notice] = "User #{userinput[:first_name]} #{userinput[:last_name]} has been created!"
+  			redirect_to admin_users_path
   		else
   			flash[:notice] = "Error in creating user. Please try again."
   		end
