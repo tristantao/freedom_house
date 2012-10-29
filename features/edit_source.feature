@@ -1,8 +1,9 @@
 Feature: Edit Sources
 
   As an administrator
-  So that I can control the sources of text scraped
   I want to be able to edit sources
+  So that I can control the sources of text scraped
+
 
   Background:
   	Given the blog is set up with an admin user

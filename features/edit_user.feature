@@ -1,8 +1,8 @@
 Feature: Admin Log-in
 
   As an administrator
-  So that I can update existing users info
   I want to be able to modify their emails
+  So that I can update existing users info
 
   Background:
   	Given the blog is set up with an admin user

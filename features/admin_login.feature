@@ -1,8 +1,9 @@
 Feature: Admin Log-in
 
   As an administrator
-  So that I can securely access a confidential workbench
   I want to be able to login with authentication
+  So that I can securely access a confidential workbench
+
 
   Background:
     Given the blog is set up with an admin user
