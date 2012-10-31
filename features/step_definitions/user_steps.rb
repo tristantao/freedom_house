@@ -10,6 +10,16 @@ Then /user should be in the database with these fields:$/ do |user_table|
   end
 end
 
+Then /source should be in the database with these fields:$/ do |source_table|
+	source_table.hashes.each do |source|
+	
+	source1 = Source.find_by_name(source[:name])
+	assert(!source1.nil?, "Nil source")
+	assert_equal(source1.home_page, user[:home_page])
+	assert_equal(source1.quality_rating, user[:quality_rating])
+	end
+end
+
 def booltime(b)
 	if b == "1"
 		return true

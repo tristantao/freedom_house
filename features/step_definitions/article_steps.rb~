@@ -1,6 +1,0 @@
-Given /the following articles exist:$/ do |article_table|
-	article_table.hashes.each do |article|
-		Article.create(:link=>article[:link], :title=>article[:title], :author=>article[:author], :date=>article[:date])
-		Article.save
-	end
-end

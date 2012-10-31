@@ -15,7 +15,7 @@ Scenario: add new source to the website (happy path)
   And I fill in "source_quality_rating" with "10"
   And I press "Create"
   Then source should be in the database with these fields:
-  | name              | home_page   | quaility_rating |
+  | name              | home_page   | quality_rating  |
   | tristan's website | tristan.com | 10              |
 
 Scenario: add new source to the website (sad path)
