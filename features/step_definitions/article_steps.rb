@@ -1,6 +1,6 @@
 Given /the following articles exist:$/ do |article_table|
 	article_table.hashes.each do |article|
-		a = Article.create(:link=>article[:link], :location=>article[:location], :title=>article[:title], :author=>article[:author], :date=>article[:date])
+		a = Article.create(:link=>article[:link], :location=>article[:location], :title=>article[:title], :author=>article[:author], :date=>article[:date], :text=>article[:text])
 		a.save
 	end
 end

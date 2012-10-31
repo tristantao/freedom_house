@@ -7,12 +7,12 @@ class Admin::ArticlesController < ApplicationController
 	 def new
     article = params[:article]
     if article
-      s = Article.create(:title => article[:title], :location => article[:location], :date => article[:date], :author=> article[:author], :link=>article[:link])
+     s = Article.create!(:title => article[:title], :location => article[:location], :date => article[:date], :author=> article[:author], :link => article[:link], :text => article[:text])
       if s.save
         flash[:notice] = "Article #{article[:title]} has been created!"
         redirect_to admin_articles_path
       else
-        flash[:notice] = "Error in creating article. Please try again."
+        flash[:warning] = "Error in creating article. Please try again."
       end
     end
   end

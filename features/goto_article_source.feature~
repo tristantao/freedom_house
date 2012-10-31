@@ -8,16 +8,16 @@ Background: articles have been put in the database
   Given the blog is set up with an admin user
   And I am logged in as the administrator
   And the following articles exist:
-  | title                                              | date        | location   | source           | link                            |
-  | Officials: Deadly attack hits north Nigeria mosque | 14-Oct-2012 | Lagos, NG  | Associated Press | http://www.boston.com           |
-  | Gunmen kill 20 at mosque in Zaria                  | 15-Oct-2012 | Kaduna, NG | Nigerian Tribune | http://www.nigeriantribune.com  |
+  | title                                              | date        | location   | source           | link                            | text |
+  | Officials: Deadly attack hits north Nigeria mosque | 14-Oct-2012 | Lagos, NG  | Associated Press | http://www.boston.com           | adf  |
+  | Gunmen kill 20 at mosque in Zaria                  | 15-Oct-2012 | Kaduna, NG | Nigerian Tribune | http://www.nigeriantribune.com  | tfs  |
   And I am on the admin dashboard
 
 
 Scenario: follow a link to go and see an article's full text
   When I follow "All Articles"
   And I follow "Gunmen kill 20 at mosque in Zaria"
-  Then I should be on http://www.nigeriantribune.com
+  Then I should honestly be on the source page for "Gunmen kill 20 at mosque in Zaria"
   
 
 
