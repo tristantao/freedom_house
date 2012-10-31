@@ -17,7 +17,7 @@ Background: articles have been put in the database
 Scenario: follow a link to go and see an article's full text
   When I follow "All Articles"
   And I follow "Gunmen kill 20 at mosque in Zaria"
-  Then I should honestly be on the source page for "Gunmen kill 20 at mosque in Zaria"
+  Then I should be on http://www.nigeriantribune.com
   
 
 

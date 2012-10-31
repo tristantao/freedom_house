@@ -19,7 +19,7 @@
           - @articles.each do |article|
             %tr
               %td= article.id
-              %td= link_to article.title, article.link
+              %td= article.title
               %td= article.date
               %td= article.author
               %td= article.location

@@ -32,7 +32,7 @@ class Admin::SourcesController < ApplicationController
     else
       flash[:warning] = "Invalid in Source"
     end
-    redirect_to admin_sources_path
+    redirect_to admin_sources_action_path(:edit, @source.id)
   end
   
   def delete

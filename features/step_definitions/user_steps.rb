@@ -15,8 +15,8 @@ Then /source should be in the database with these fields:$/ do |source_table|
 	
 	source1 = Source.find_by_name(source[:name])
 	assert(!source1.nil?, "Nil source")
-	assert_equal(source1.home_page, user[:home_page])
-	assert_equal(source1.quality_rating, user[:quality_rating])
+	assert_equal(source1.home_page, source[:home_page])
+	assert_equal(source1.quality_rating, source[:quality_rating].to_i)
 	end
 end
 
@@ -26,5 +26,15 @@ def booltime(b)
 	else
 		return false
 	end
+end
+
+#EXTRA JUSTIN STUFF
+Then /^(?:|I )should honestly be on the source page for "(.+)"$/ do |page_name|
+  linkgiventitle = Article.find_by_title(page_name).link
+  if current_path.respond_to? :should
+    current_url == linkgiventitle
+  else
+    assert_equal linkgiventitle, current_url
+  end
 end
 
