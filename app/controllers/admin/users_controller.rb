@@ -32,7 +32,7 @@ class Admin::UsersController < ApplicationController
         flash[:notice] = "User #{userinput[:first_name]} #{userinput[:last_name]} has been created!"
         redirect_to admin_users_path
       else
-        flash[:notice] = "Error in creating user. Please try again."
+        flash[:warning] = "Error in creating user. Please try again."
       end
     end
   end

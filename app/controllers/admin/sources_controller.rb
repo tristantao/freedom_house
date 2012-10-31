@@ -12,7 +12,7 @@ class Admin::SourcesController < ApplicationController
         flash[:notice] = "Source #{sourcesinput[:name]} has been created!"
         redirect_to admin_sources_path
       else
-        flash[:notice] = "Error in creating source. Please try again."
+        flash[:warning] = "Error in creating source. Please try again."
       end
     end
   end

@@ -12,8 +12,9 @@
         .form-inputs
           = f.input :title, :required => true
           = f.input :date, :required => true
-          = f.input :author, :required => true
-          = f.input :location, :required => true
+          = f.input :author, :required => false
+          = f.input :location, :required => false
           = f.input :link, :required => true
+          = f.input :text, :required => true
         .form-actions
         = f.button :submit, "Create"
