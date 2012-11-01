@@ -10,6 +10,7 @@ gem 'devise'
 gem 'haml'
 gem 'twitter-bootstrap-rails'
 gem 'simple_form'
+gem 'newrelic_rpm'
 
 group :production do
   gem 'pg'
