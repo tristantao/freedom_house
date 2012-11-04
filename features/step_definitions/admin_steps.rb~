@@ -13,7 +13,16 @@ end
 
 # Justin Chan end
 
-
+And /^I initialize the following user:$/ do |user_info|
+  user_info.hashes.each do |info|
+  step %{I fill in "user_email" with "#{info[:email]}"}
+  step %{I fill in "user_password" with "#{info[:password]}"}
+  step %{I fill in "user_password_confirmation" with "#{info[:password_confirmation]}"}
+  step %{I fill in "user_first_name" with "#{info[:first_name]}"}
+  step %{I fill in "user_last_name" with "#{info[:last_name]}"}
+  step %{I select "#{info[:admin]}" from "user_admin"}
+	end
+end
 
 Given /^I am logged in as the administrator$/ do
   step %{I am on the home page}

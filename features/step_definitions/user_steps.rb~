@@ -10,6 +10,18 @@ Then /user should be in the database with these fields:$/ do |user_table|
   end
 end
 
+And /^I initialize the following user:$/ do |user_info|
+  user_info.hashes.each do |info|
+  is_admin = booltime2(info[:admin])
+  step %{I fill in "user_email" with "#{info[:email]}"}
+  step %{I fill in "user_password" with "#{info[:password]}"}
+  step %{I fill in "user_password_confirmation" with "#{info[:password_confirmation]}"}
+  step %{I fill in "user_first_name" with "#{info[:first_name]}"}
+  step %{I fill in "user_last_name" with "#{info[:last_name]}"}
+  step %{I select "#{info[:admin]}" from "user_admin"}
+	end
+end
+
 Then /source should be in the database with these fields:$/ do |source_table|
 	source_table.hashes.each do |source|
 	
@@ -28,14 +40,21 @@ def booltime(b)
 	end
 end
 
+def booltime2(b)
+  if b == "1"
+    return "Yes"
+  else
+    return "No"
+  end
+end
+
 #EXTRA JUSTIN STUFF
 Then /^(?:|I )should honestly be on the source page for "(.+)"$/ do |page_name|
-  current_path = URI.parse(current_url)
-  page_name2 = Article.find_by_title(page_name).link
+  linkgiventitle = Article.find_by_title(page_name).link
   if current_path.respond_to? :should
-    current_url == page_name2
+    current_url == linkgiventitle
   else
-    assert_equal page_name2, current_url
+    assert_equal linkgiventitle, current_url
   end
 end
 

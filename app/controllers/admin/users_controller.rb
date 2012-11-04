@@ -26,7 +26,7 @@ class Admin::UsersController < ApplicationController
 
     if userinput
       is_admin = (userinput[:admin] == "true")
-      a = User.create(:first_name => userinput[:first_name], :last_name => userinput[:last_name], :email => userinput[:email], :password => userinput[:password])
+      a = User.create(:first_name => userinput[:first_name], :last_name => userinput[:last_name], :email => userinput[:email], :password_confirmation => userinput[:password_confirmation], :password => userinput[:password])
       a.admin = is_admin
       if a.save
         flash[:notice] = "User #{userinput[:first_name]} #{userinput[:last_name]} has been created!"

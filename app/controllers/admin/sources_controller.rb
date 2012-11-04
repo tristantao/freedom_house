@@ -28,9 +28,9 @@ class Admin::SourcesController < ApplicationController
     @source.quality_rating = params[:source][:quality_rating]
 
     if @source.save
-      flash[:notice] = "Successfully updated Source!"
+      flash[:notice] = "Successfully updated source!"
     else
-      flash[:warning] = "Invalid in Source"
+      flash[:warning] = "Error in editing source. Please try again."
     end
     redirect_to admin_sources_action_path(:edit, @source.id)
   end

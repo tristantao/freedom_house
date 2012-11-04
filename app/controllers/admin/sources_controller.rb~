@@ -30,9 +30,9 @@ class Admin::SourcesController < ApplicationController
     if @source.save
       flash[:notice] = "Successfully updated Source!"
     else
-      flash[:warning] = "Invalid in Source"
+      flash[:warning] = "Error in editing source. Please try again."
     end
-    redirect_to admin_sources_path
+    redirect_to admin_sources_action_path(:edit, @source.id)
   end
   
   def delete

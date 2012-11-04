@@ -10,6 +10,18 @@ Then /user should be in the database with these fields:$/ do |user_table|
   end
 end
 
+And /^I initialize the following user:$/ do |user_info|
+  user_info.hashes.each do |info|
+  is_admin = booltime2(info[:admin])
+  step %{I fill in "user_email" with "#{info[:email]}"}
+  step %{I fill in "user_password" with "#{info[:password]}"}
+  step %{I fill in "user_password_confirmation" with "#{info[:password_confirmation]}"}
+  step %{I fill in "user_first_name" with "#{info[:first_name]}"}
+  step %{I fill in "user_last_name" with "#{info[:last_name]}"}
+  step %{I select "#{is_admin}" from "user_admin"}
+	end
+end
+
 Then /source should be in the database with these fields:$/ do |source_table|
 	source_table.hashes.each do |source|
 	
@@ -26,6 +38,14 @@ def booltime(b)
 	else
 		return false
 	end
+end
+
+def booltime2(b)
+  if b == "1"
+    return "Yes"
+  else
+    return "No"
+  end
 end
 
 #EXTRA JUSTIN STUFF
