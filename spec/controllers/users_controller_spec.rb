@@ -13,6 +13,7 @@ describe Admin::UsersController do
       test_user.should_receive(:save)
       Admin::UsersController.any_instance.stub(:admin_user?).and_return(true)
       post :update, {:id => '1', "user" => {'email' => "chris@gmail.com", 'first_name' => 'Chris', 'last_name' => 'Balcells', 'admin' => true}}
-    end 
+    end
   end
+
 end
