@@ -26,7 +26,6 @@ class Admin::SourcesController < ApplicationController
     @source.name = params[:source][:name]
     @source.home_page = params[:source][:home_page]
     @source.quality_rating = params[:source][:quality_rating]
-
     if @source.save
       flash[:notice] = "Successfully updated source!"
     else

@@ -19,6 +19,9 @@ module NavigationHelpers
     when /^the sources page$/ then '/admin/sources'
     when /^the add user page$/ then '/admin/users/new'
     when /^the add source page$/ then '/admin/sources/new'
+    when /^the edit user page for "(.*)"/
+      id = User.find_by_email($1).id
+      "/admin/users/edit/#{id}"
     when /^the edit source page for "(.*)"/
       id = Source.find_by_name($1).id
       "/admin/sources/edit/#{id}"

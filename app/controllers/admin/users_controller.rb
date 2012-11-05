@@ -13,10 +13,13 @@ class Admin::UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     @user.admin = params[:user][:admin]
+    @user.first_name = params[:user][:first_name]
+    @user.last_name = params[:user][:last_name]
+    @user.email = params[:user][:email]
     if @user.save
       flash[:notice] = "Successfully updated user!"
     else
-      flash[:warning] = "Invalid Input"
+      flash[:warning] = "Invalid input. Please try again."
     end
     redirect_to admin_users_action_path(:edit, params[:id])
   end
