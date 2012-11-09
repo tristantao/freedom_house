@@ -1,0 +1,22 @@
+%div.row-fluid
+  %div.span2
+    = render 'admin/shared/sidebar'
+    
+  %div.span10
+    %div.well.pagination-centered
+
+
+      %h2 Create New Evemt
+      = simple_form_for(:event, :as => :event_name, :url => admin_events_action_path(:new)) do |f|
+        = f.error_notification
+        .form-inputs
+          = f.input :name, :required => true
+          = f.text_area :description, :required => true, :cols => 100
+          = f.input :date, :required => false
+          = f.input :longitude, :required => false
+          = f.input :latitude, :required => false
+          = f.input :Country, :required => false
+          = f.input :province, :required => false
+          = f.input :city, :required => false
+        .form-actions
+        = f.button :submit, "Create"
