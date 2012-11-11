@@ -7,7 +7,7 @@
         = f.error_notification
         .form-inputs
           = f.input :name, :input_html => { :class => "span8" }
-          = f.text_area :description, :input_html => { :class => "span8" }
+          = f.text_area :description, :input_html => { :class => "span10" }
           = f.input :date, :input_html => { :class => "span8" }
           = f.input :longitude, :input_html => { :class => "span8" }
           = f.input :latitude, :input_html => { :class => "span8" }
@@ -16,5 +16,5 @@
           = f.input :city, :input_html => { :class => "span8" }
         .form-actions
           %div.btn-group
-            = f.button :submit, "Update Source", :class => "btn-success"
-            = f.button :submit, "Delete Source", :class => "btn-danger", :value => "Delete Source"
+            = f.button :submit, "Update Event", :class => "btn-success"
+            = f.button :submit, "Delete Event", :class => "btn-danger", :value => "Delete Event"
