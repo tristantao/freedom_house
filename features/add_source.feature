@@ -13,7 +13,7 @@ Scenario: add new source to the website (happy path)
   And I fill in "source_name" with "tristan's website"
   And I fill in "source_home_page" with "tristan.com"
   And I fill in "source_quality_rating" with "10"
-  And I press "Create"3
+  And I press "Create"
   Then source should be in the database with these fields:
   | name              | home_page   | quality_rating  |
   | tristan's website | tristan.com | 10              |
