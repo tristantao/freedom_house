@@ -5,7 +5,7 @@ class Admin::DashboardController < ApplicationController
 
   def index
     @num_users = User.count(:distinct => true)
-    @num_events = 0 # Event.count(:distinct => true)
+    @num_events = Event.count(:distinct => true)
     @num_sources = Source.count(:distinct => true)
     @num_articles = Article.count(:distinct => true)
   end

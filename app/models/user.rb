@@ -10,6 +10,9 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :admin
 
+  validates_confirmation_of :password
+  validates :first_name, :last_name, :email, :presence => true
+
   def admin_privileges
     if self.admin
       return "Yes"

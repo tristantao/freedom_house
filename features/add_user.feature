@@ -9,33 +9,43 @@ Feature: Add users to the website
     Given the blog is set up with an admin user
     And I am logged in as the administrator
 
-Scenario: add admin user to the website (happy path)
+Scenario: add admin user to the website 
   When I go to the add user page
-  And I fill in "user_email" with "user1@foo.com"
-  And I fill in "user_password" with "password1"
-  And I fill in "user_password_confirmation" with "password1"
-  And I fill in "user_first_name" with "tristan"
-  And I fill in "user_last_name" with "tao"
-  And I select "Yes" from "user_admin"
+  And I initialize the following user:
+  | email         | password  | admin | first_name | last_name | password_confirmation |
+  | user1@foo.com | password1 |    1  | tristan    | tao       | password1             |
   And I press "Sign up"
-#How do re change the selector? i.e. choose admin = true
   Then user should be in the database with these fields:
   | email         | password  | admin | first_name | last_name |
   | user1@foo.com | password1 |    1  | tristan    | tao       |
+  And I should be on the users page
+  And I should see "User tristan tao has been created!"
 
-Scenario: add user to the website (sad path)
+Scenario: add user to the website (sad path, not all fields are filled in)
   When I go to the add user page
   And I fill in "user_email" with "user_fail@foo.com"
   And I press "Sign up"
   Then I should be on the add user page
   And I should see "Error in creating user. Please try again."
-
-Scenario: add non-admin user to the website
+  
+Scenario: add user to the website (sad path, passwords don't match)
   When I go to the add user page
-  And I fill in "user_email" with "user2@foo.com"
-  And I fill in "user_password" with "password2"
-  And I select "No" from "user_admin"
+  And I initialize the following user:
+  | email         | password  | admin | first_name | last_name | password_confirmation |
+  | user1@foo.com | password1 |    1  | tristan    | tao       | password2             |
+  And I press "Sign up"
+  Then I should be on the add user page
+  And I should see "Error in creating user. Please try again."
+
+Scenario: add non-admin user to the website 
+  When I go to the add user page
+  And I initialize the following user:
+  | email         | password  | admin | first_name | last_name | password_confirmation |
+  | user2@foo.com | password2 |    0  | tristan    | tao       | password2             |
   And I press "Sign up"
   Then user should be in the database with these fields:
-  | name          | password  | admin |
-  | user2@foo.com | password2 |    0  |
+  | email         | password  | admin | first_name | last_name |
+  | user2@foo.com | password2 |    0  | tristan    | tao       |
+  And I should be on the users page
+  And I should see "User tristan tao has been created!"
+

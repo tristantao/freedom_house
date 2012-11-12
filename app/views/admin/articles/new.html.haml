@@ -1,0 +1,20 @@
+%div.row-fluid
+  %div.span2
+    = render 'admin/shared/sidebar'
+    
+  %div.span10
+    %div.well.pagination-centered
+
+
+      %h2 Create New Article
+      = simple_form_for(:article, :as => :article_name, :url => admin_articles_action_path(:new)) do |f|
+        = f.error_notification
+        .form-inputs
+          = f.input :title, :required => true
+          = f.input :date, :required => true
+          = f.input :author, :required => false
+          = f.input :location, :required => false
+          = f.input :link, :required => true
+          = f.input :text, :required => true
+        .form-actions
+        = f.button :submit, "Create"

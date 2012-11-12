@@ -1,1 +1,17 @@
-asd
+%div.row-fluid
+  %div.span2
+    = render 'admin/shared/sidebar'
+    
+  %div.span10
+    %div.well.pagination-centered
+
+
+      %h2 Create New Source
+      = simple_form_for(:source, :as => :source_name, :url => admin_sources_action_path(:new)) do |f|
+        = f.error_notification
+        .form-inputs
+          = f.input :name, :required => true
+          = f.input :home_page, :required => true
+          = f.input :quality_rating, :required => false
+        .form-actions
+        = f.button :submit, "Create"

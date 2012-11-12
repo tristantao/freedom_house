@@ -7,12 +7,12 @@ class Admin::SourcesController < ApplicationController
  def new
     sourcesinput = params[:source]
     if sourcesinput
-      s = Source.create(:name => sourcesinput[:name], :home_page => sourcesinput[:home_page], :quality_rating => sourcesinput[:quality_rating])
+      s = Source.create(:name => sourcesinput[:name], :home_page => sourcesinput["home_page"], :quality_rating => sourcesinput[:quality_rating])
       if s.save
         flash[:notice] = "Source #{sourcesinput[:name]} has been created!"
         redirect_to admin_sources_path
       else
-        flash[:notice] = "Error in creating source. Please try again."
+        flash[:warning] = "Error in creating source. Please try again."
       end
     end
   end
@@ -26,12 +26,19 @@ class Admin::SourcesController < ApplicationController
     @source.name = params[:source][:name]
     @source.home_page = params[:source][:home_page]
     @source.quality_rating = params[:source][:quality_rating]
-
     if @source.save
-      flash[:notice] = "Successfully updated Source!"
+      flash[:notice] = "Successfully updated source!"
     else
-      flash[:warning] = "Invalid in Source"
+      flash[:warning] = "Error in editing source. Please try again."
     end
-    redirect_to admin_sources_action_path(:edit, params[:id])
+    redirect_to admin_sources_action_path(:edit, @source.id)
+  end
+  
+  def delete
+    @source = Source.find(params[:id])
+    name = @source.name
+    @source.delete
+    flash[:notice] = "Source #{name} has been deleted."
+    redirect_to admin_dashboard_path
   end
 end

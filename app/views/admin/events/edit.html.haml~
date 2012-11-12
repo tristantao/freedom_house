@@ -1,0 +1,15 @@
+%div.row-fluid
+  %div.span3
+  %div.span6
+    %div.well
+      %legend Source Properties
+      = simple_form_for(@source, :url => admin_sources_action_path(:update, @source.id), :html => { :method => :put, :class => 'form-horizontal'}) do |f|
+        = f.error_notification
+        .form-inputs
+          = f.input :name, :input_html => { :class => "span8" }
+          = f.input :home_page, :input_html => { :class => "span8" }
+          = f.input :quality_rating, :input_html => { :class => "span8" }
+        .form-actions
+          %div.btn-group
+            = f.button :submit, "Update Source", :class => "btn-success"
+            = f.button :submit, "Delete Source", :class => "btn-danger", :value => "Delete Source"

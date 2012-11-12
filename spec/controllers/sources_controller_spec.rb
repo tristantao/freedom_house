@@ -1,5 +1,5 @@
 require 'spec_helper'
 
-describe SourcesController do
+describe Admin::SourcesController do
 
 end

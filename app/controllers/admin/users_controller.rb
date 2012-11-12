@@ -13,10 +13,13 @@ class Admin::UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     @user.admin = params[:user][:admin]
+    @user.first_name = params[:user][:first_name]
+    @user.last_name = params[:user][:last_name]
+    @user.email = params[:user][:email]
     if @user.save
       flash[:notice] = "Successfully updated user!"
     else
-      flash[:warning] = "Invalid Input"
+      flash[:warning] = "Invalid input. Please try again."
     end
     redirect_to admin_users_action_path(:edit, params[:id])
   end
@@ -26,13 +29,13 @@ class Admin::UsersController < ApplicationController
 
     if userinput
       is_admin = (userinput[:admin] == "true")
-      a = User.create(:first_name => userinput[:first_name], :last_name => userinput[:last_name], :email => userinput[:email], :password => userinput[:password])
+      a = User.create(:first_name => userinput[:first_name], :last_name => userinput[:last_name], :email => userinput[:email], :password_confirmation => userinput[:password_confirmation], :password => userinput[:password])
       a.admin = is_admin
       if a.save
         flash[:notice] = "User #{userinput[:first_name]} #{userinput[:last_name]} has been created!"
         redirect_to admin_users_path
       else
-        flash[:notice] = "Error in creating user. Please try again."
+        flash[:warning] = "Error in creating user. Please try again."
       end
     end
   end

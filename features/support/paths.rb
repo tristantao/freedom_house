@@ -16,11 +16,21 @@ module NavigationHelpers
     when /^the admin dashboard$/ then '/admin'
     when /^the home page$/ then '/'
     when /^the users page$/ then '/admin/users'
+    when /^the sources page$/ then '/admin/sources'
     when /^the add user page$/ then '/admin/users/new'
     when /^the add source page$/ then '/admin/sources/new'
+    when /^the add event page$/ then '/admin/events/new'
+
+    when /^the edit user page for "(.*)"/
+      id = User.find_by_email($1).id
+      "/admin/users/edit/#{id}"
     when /^the edit source page for "(.*)"/
       id = Source.find_by_name($1).id
       "/admin/sources/edit/#{id}"
+    when /^the edit event page for "(.*)"/
+      id = Event.find_by_name($1).id
+      "/admin/events/edit/#{id}"
+    when /^the login page$/ then '/login'
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #

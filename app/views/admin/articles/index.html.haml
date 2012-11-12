@@ -1,0 +1,29 @@
+%div.row-fluid
+  %div.span2
+    = render 'admin/shared/sidebar'
+  %div.span10
+    %div.pull-right= button_to 'Create New Article', admin_articles_action_path(:new), :class => "button btn"
+
+    -#= form_remote_tag :admin => {:action => 'index'}
+
+    %table.table.table-striped.table-hover#article_table
+      %thead
+        %tr
+          %th #
+          %th Title
+          %th Date
+          %th Author
+          %th Location
+          %th Link
+        %tbody
+          - @articles.each do |article|
+            %tr
+              %td= article.id
+              %td= link_to article.title, article.link
+              %td= article.date
+              %td= article.author
+              %td= article.location
+              %td= article.link
+              %td
+                = link_to 'Edit', admin_articles_action_path(:edit, article.id), :id => "edit_article_#{article.id}", :class => "btn btn-mini"
+                = link_to 'Delete', admin_articles_action_path(:delete, article.id), :class => "btn btn-mini btn-danger"
