@@ -15,25 +15,17 @@ Freedom::Application.routes.draw do
   match 'home' => 'tracker#index', :as => :home
 
   # Admin/XController
-  %w{users articles sources}.each do |i|
+<<<<<<< HEAD
+  %w{users articles sources events}.each do |i|
+=======
+  %w{users sources articles events webscraper}.each do |i|
+>>>>>>> CBscraper11/14
     match "/admin/#{i}", :to => "admin/#{i}#index", :as => "admin_#{i}"
     match "/admin/#{i}(/:action(/:id))", :to => "admin/#{i}", :action => nil, :id => nil, :format => false, :as => "admin_#{i}_action"
   end
 
 <<<<<<< HEAD
 =======
-  %w{sources}.each do |i|
-    match "/admin/#{i}", :to => "admin/#{i}#index", :as => "admin_#{i}"
-    match "/admin/#{i}(/:action(/:id))", :to => "admin/#{i}", :action => nil, :id => nil, :format => false, :as => "admin_#{i}_action"
-  end
-
-  %w{articles}.each do |i|
-    match "/admin/#{i}", :to => "admin/#{i}#index", :as => "admin_#{i}"
-    match "/admin/#{i}(/:action(/:id))", :to => "admin/#{i}", :action => nil, :id => nil, :format => false, :as => "admin_#{i}_action"
-  end
-  %w{events}.each do |i|
-    match "/admin/#{i}", :to => "admin/#{i}#index", :as => "admin_#{i}"
-    match "/admin/#{i}(/:action(/:id))", :to => "admin/#{i}", :action => nil, :id => nil, :format => false, :as => "admin_#{i}_action"
-  end
->>>>>>> 45e15fa83babe8a39b0b10cdbb06509f14ab30dc
+  
+>>>>>>> CBscraper11/14
 end

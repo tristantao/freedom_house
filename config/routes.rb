@@ -15,7 +15,8 @@ Freedom::Application.routes.draw do
   match 'home' => 'tracker#index', :as => :home
 
   # Admin/XController
-  %w{users articles sources events}.each do |i|
+
+  %w{users sources articles events webscraper}.each do |i|
     match "/admin/#{i}", :to => "admin/#{i}#index", :as => "admin_#{i}"
     match "/admin/#{i}(/:action(/:id))", :to => "admin/#{i}", :action => nil, :id => nil, :format => false, :as => "admin_#{i}_action"
   end

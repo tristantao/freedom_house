@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(:version => 20121116105056) do
     t.integer  "quality_rating"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "last_scraped"
   end
 
   create_table "users", :force => true do |t|

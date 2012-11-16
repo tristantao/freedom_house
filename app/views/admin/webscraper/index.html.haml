@@ -1,0 +1,18 @@
+%div.row-fluid
+  %div.span2
+    = render 'admin/shared/sidebar'
+  %div.span10
+    %table.table.table-striped.table-hover#source_table
+      %thead
+        %tr
+          %th #
+          %th Name
+          %th Last Scraped
+          %th 
+        %tbody
+          - @sources.each do |source|
+            %tr
+              %td= source.id
+              %td= link_to source.name, source.home_page
+              %td= source.last_scraped
+              %td= link_to 'scrape', admin_webscraper_action_path(:scrape, source.id), :id => "scrape_source_#{source.id}", :class => "btn btn-mini"
