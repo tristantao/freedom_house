@@ -14,6 +14,7 @@ gem 'simple_form'
 gem 'newrelic_rpm'
 gem 'country-select'
 gem 'gmaps4rails'
+gem 'nokogiri'
 
 group :production do
   gem 'pg'
