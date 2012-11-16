@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121109072444) do
+ActiveRecord::Schema.define(:version => 20121116054747) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(:version => 20121109072444) do
     t.integer  "quality_rating"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "last_scraped"
   end
 
   create_table "users", :force => true do |t|
