@@ -82,6 +82,7 @@ GEM
       json (>= 1.4.6)
     gherkin (2.11.5-x86-mingw32)
       json (>= 1.4.6)
+    gmaps4rails (1.5.6)
     haml (3.1.7)
     hike (1.2.1)
     i18n (0.6.1)
@@ -223,6 +224,7 @@ DEPENDENCIES
   cucumber-rails-training-wheels
   database_cleaner
   devise
+  gmaps4rails
   haml
   jquery-rails
   launchy
