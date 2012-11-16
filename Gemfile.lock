@@ -224,6 +224,7 @@ DEPENDENCIES
   haml
   jquery-rails
   launchy
+  less-rails
   newrelic_rpm
   pg
   railroady
