@@ -43,7 +43,6 @@
 
           %div.well
             %legend Latest Event
-            #{@latest_event}
 
           %div.well
             %legend Tracker Errors

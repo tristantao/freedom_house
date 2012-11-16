@@ -18,23 +18,23 @@
   %li
     %a{:href => admin_articles_path} All Articles
   %li
-    %a{:href => admin_articles_path(:new)} Add Article
+    %a{:href => admin_articles_action_path(:new)} Add Article
 
   %li.nav-header Events
   %li
-    %a{:href => admin_dashboard_path} All Events
+    %a{:href => admin_events_path} All Events
   %li
-    %a{:href => admin_dashboard_path} Add Event
+    %a{:href => admin_events_action_path(:new)} Add Event
   %li
-    %a{:href => admin_dashboard_path} Map
+    %a{:href => admin_events_path(:map)} Map
 
   %li.nav-header Webscraper
   %li
-    %a{:href => admin_dashboard_path} Settings
+    %a{:href => admin_webscraper_path} Main
   %li
-    %a{:href => admin_dashboard_path} Keywords
+    %a{:href => admin_dashboard_path} Accept/Reject
   %li
-    %a{:href => admin_dashboard_path} Overrides
+    %a{:href => admin_dashboard_path} Log
 
   %li.nav-header Feedback
   %li

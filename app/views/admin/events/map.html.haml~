@@ -1,0 +1,9 @@
+%body
+  %div.row-fluid
+    %div.span2
+      = render 'admin/shared/sidebar'
+    
+    %div.span10
+      
+      = gmaps(:markers => { :data => @json }, :map_options => { :container_class=>"map_container_full"})
+  

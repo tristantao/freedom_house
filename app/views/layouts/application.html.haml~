@@ -10,9 +10,10 @@
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
   %body
     = render 'layouts/topbar'
-    %div.container
+    %div.container-fluid
       = render 'layouts/messages'
       
       #main
         = yield
+        = yield :scripts
       
