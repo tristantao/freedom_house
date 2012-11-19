@@ -16,3 +16,6 @@
         %ul.nav.pull-right
           - if current_user
             %li= link_to 'Home', home_path
+        %ul.nav.pull-right
+          - if controller_name == 'home'
+            %li{"data-toggle" => "modal", :href => "#Signin", :role => "button"}= link_to 'Sign in'

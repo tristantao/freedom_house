@@ -4,17 +4,20 @@
     
   %div.span10
     %div.well
-      %legend.pagination-centered Create New Evemt
+      %legend.pagination-centered Create New Event
       = simple_form_for(:event, :as => :event_name, :url => admin_events_action_path(:new), :html => { :method => :put, :class => 'form-horizontal'}) do |f|
         = f.error_notification
         .form-inputs
-          = f.input :name, :required => true, :input_html => { :class => "span8" }
-          = f.input :description, :as => :text, :required => true, :input_html => { :class => "span8", :rows => "10" }
-          = f.input :date, :required => false, :input_html => { :class => "span8" }
-          = f.input :longitude, :as => :float, :required => false, :input_html => { :class => "span8" }
-          = f.input :latitude, :as => :float, :required => false, :input_html => { :class => "span8" }
-          = f.input :country, :required => false, :input_html => { :class => "span8" }
-          = f.input :province, :required => false, :input_html => { :class => "span8" }
-          = f.input :city, :required => false, :input_html => { :class => "span8" }
+          = f.input :name, :input_html => { :class => "span9" }
+          = f.input :date, :input_html => { :class => "span3" }
+          = f.input :longitude, :input_html => { :class => "span9" }
+          = f.input :latitude, :input_html => { :class => "span9" }
+          = f.input :country, :input_html => { :class => "span9" }
+          = f.input :province, :input_html => { :class => "span9" }
+          = f.input :city, :input_html => { :class => "span9" }
+          = f.input :description, :as => :text, :input_html => { :class => "span9", :rows => "10" }
         .form-actions
-        = f.button :submit, "Create"
+          %div.btn-group
+            = f.button :submit, "Create", :class => "btn-success"
+            = link_to 'Cancel', admin_events_path, :class => "btn btn-danger"
+

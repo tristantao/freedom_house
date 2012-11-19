@@ -7,17 +7,14 @@
       = simple_form_for(@event, :url => admin_events_action_path(:update, @event.id), :html => { :method => :put, :class => 'form-horizontal'}) do |f|
         = f.error_notification
         .form-inputs
-          %div.row-fluid
-            %div.span5
-              = f.input :name, :input_html => { :class => "span" }
-              = f.input :date, :as => :date, :input_html => { :class => "span" }
-              = f.input :longitude, :input_html => { :class => "span" }
-              = f.input :latitude, :input_html => { :class => "span" }
-              = f.input :country, :input_html => { :class => "span" }
-              = f.input :province, :input_html => { :class => "span" }
-              = f.input :city, :input_html => { :class => "span" }
-            %div.span5
-              = f.input :description, :as => :text, :input_html => { :class => "span" }
+          = f.input :name, :input_html => { :class => "span9" }
+          = f.input :date, :as => :date, :input_html => { :class => "span3" }
+          = f.input :longitude, :input_html => { :class => "span9" }
+          = f.input :latitude, :input_html => { :class => "span9" }
+          = f.input :country, :input_html => { :class => "span9" }
+          = f.input :province, :input_html => { :class => "span9" }
+          = f.input :city, :input_html => { :class => "span9" }
+          = f.input :description, :as => :text, :input_html => { :class => "span9", :rows => "10" }
         .form-actions
           %div.btn-group
             = f.button :submit, "Update Event", :class => "btn-success"

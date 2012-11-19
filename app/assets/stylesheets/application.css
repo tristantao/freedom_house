@@ -7,4 +7,18 @@
 */
 *= require bootstrap_and_overrides
 
+.center {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.form-buttons {
+  padding-left: 180px;
+}
+
+.img-height {
+  height: 125px;
+  vertical-align: middle;
+}
+
 

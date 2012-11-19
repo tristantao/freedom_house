@@ -1,0 +1,35 @@
+%div.row-fluid
+  %div.span2
+    = render 'admin/shared/sidebar'
+  %div.span10
+    %div.pull-right= button_to 'Create New Event', admin_events_action_path(:new), :class => "button btn"
+
+    -#= form_remote_tag :admin => {:action => 'index'}
+
+    %table.table.table-striped.table-hover#article_table
+      %thead
+        %tr
+          %th #
+          %th Name
+          %th Date
+          %th Description
+          %th Longitude
+          %th Latitude
+          %th Country
+          %th Province
+          %th City
+        %tbody
+          - @events.each do |event|
+            %tr
+              %td= event.id
+              %td= event.name
+              %td= event.date
+              %td= event.description
+              %td= event.longitude
+              %td= event.latitude
+              %td= event.country
+              %td= event.province
+              %td= event.city
+              %td
+                = link_to 'Edit', admin_events_action_path(:edit, event.id), :id => "edit_event_#{event.id}"
+                = link_to 'Delete', admin_events_action_path(:delete, event.id)

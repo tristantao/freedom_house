@@ -1,0 +1,10 @@
+%li.dropdown-toggle{"data-toggle" => "dropdown"}= link_to "Sign in"
+%ul.dropdown-menu
+  %div.span4
+    = simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => "form"}) do |f|
+      %h2 Sign in
+      .form-inputs
+        = f.input :email, :required => false, :autofocus => true, :input_html => { :class => "span" }
+        = f.input :password, :required => false, :input_html => { :class => "span" }
+      = f.button :submit, "Sign in"
+    = render "devise/shared/links"  

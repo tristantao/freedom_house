@@ -8,7 +8,7 @@
       = simple_form_for(:user, :as => :user_name, :url => admin_users_action_path(:new), :html => { :method => :put, :class => 'form-horizontal'}) do |f|
         = f.error_notification
         .form-inputs
-          = f.input :first_name, :required => true, :input_html => { :class => "span9" }
+          = f.input :first_name, :required => true, :input_html => { :class => "span4 offset3" }
           = f.input :last_name, :required => true, :input_html => { :class => "span9" }
           = f.input :email, :required => true, :autofocus => true, :input_html => { :class => "span9" }
           = f.input :password, :required => true, :input_html => { :class => "span9" }
