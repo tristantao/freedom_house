@@ -1,10 +1,9 @@
 %body
   = render 'overview'
   %div.row-fluid
-    %div.span6.pagination-centered
+    %div.span12.pagination-centered
       %h1 Event Map
-    %div.span6.pagination-centered
-      %h1 Time Graph
+      = gmaps4rails(@json)
   %div.row-fuid
     %h2 Articles
     %div.well

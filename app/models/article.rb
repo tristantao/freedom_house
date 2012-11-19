@@ -5,4 +5,10 @@ class Article < ActiveRecord::Base
   validates :title, :date, :link, :presence => true
   
   has_many :hate_speech
+  acts_as_gmappable :process_geocoding => false
+
+  def gmaps4rails_address
+    "#{latitude}, #{longitude}"
+  end
+  
 end
