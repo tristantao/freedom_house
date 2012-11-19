@@ -1,5 +1,6 @@
 %div.row-fluid
   %div.span2
+<<<<<<< HEAD
     = render 'admin/shared/sidebar'
   %div.span10
     %div.well
@@ -18,6 +19,22 @@
               = f.input :city, :input_html => { :class => "span" }
             %div.span5
               = f.input :description, :as => :text, :input_html => { :class => "span" }
+=======
+  %div.span10
+    %div.well.pagination-centered
+      %legend Event Properties
+      = simple_form_for(@event, :url => admin_events_action_path(:update, @event.id), :html => { :method => :put, :class => 'form-horizontal'}) do |f|
+        = f.error_notification
+        .form-inputs
+          = f.input :name, :input_html => { :class => "span8", :placeholder => ".span8"}
+          = f.input :description, :input_html => { :class => "span8", :rows => "5"}
+          = f.input :date, :input_html => { :class => "span8" }
+          = f.input :longitude, :input_html => { :class => "span8" }
+          = f.input :latitude, :input_html => { :class => "span8" }
+          = f.input :country, :input_html => { :class => "span8" }
+          = f.input :province, :input_html => { :class => "span8" }
+          = f.input :city, :input_html => { :class => "span8" }
+>>>>>>> eb487c9f4fbad5c5a9364269f38b7c6852e3ca2d
         .form-actions
           %div.btn-group
             = f.button :submit, "Update Event", :class => "btn-success"
