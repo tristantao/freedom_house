@@ -12,4 +12,6 @@
           = f.input :home_page, :required => true, :input_html => { :class => "span9" }
           = f.input :quality_rating, :required => false, :input_html => { :class => "span9" }
         .form-actions
-          = f.button :submit, "Create", :class => "btn btn-success"
+          %div.btn-group
+            = f.button :submit, "Create", :class => "btn btn-success"
+            = link_to 'Cancel', admin_sources_path, :class => "btn btn-danger"
