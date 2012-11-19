@@ -6,7 +6,7 @@
           %h2 Sign in
           %hr
           = f.input :email, :required => false, :autofocus => true, :input_html => { :class => "span" }
-          = f.input :password, :required => false, :input_html => { :class => "span" }    
+          = f.input :password, :required => false, :input_html => { :class => "span" }
           %div  
             = f.button :submit, "Sign in"
             = render "devise/shared/links"  
