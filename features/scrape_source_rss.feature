@@ -1,4 +1,4 @@
-Feature: Add sources to the website
+Feature: Scrape website via RSS Feed
 
   As the website admin
   I want to be able to click on a button to initiate a scrape method
