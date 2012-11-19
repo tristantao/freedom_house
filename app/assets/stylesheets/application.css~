@@ -21,7 +21,3 @@
   vertical-align: middle;
 }
 
-.navbar-wrapper {
-  position: relative;
-}
-

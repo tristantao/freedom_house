@@ -5,7 +5,7 @@
       %div.container
         %div.carousel-caption
           %h1 About The Project
-          %p.lead Freedom Tracker is a joint project between Freedom House and UC Berkeley students in the CS169 class. Its purpose is to create a correlation between speech and violent hate events. 
+          %p.lead Freedom Tracker is a joint project between Freedom House and UC Berkeley students in the CS169 class that attempts to create a correlation between speech and violent hate events. 
           %a.btn.btn-large.btn-primary{:href => "#"} Learn More
     %div.item
       = image_tag "campanile.jpg"
@@ -18,15 +18,15 @@
 %div.container.marketing
   %div.row-fluid
     %div.span4.center
-      = image_tag "BE.jpg", :class => "img-height"
+      = image_tag( "BE.jpg"), :class => "img-height"
       %h2 UC Berkeley
       %p Berkeley Engineering is a community that is dedicated to creating tomorrow's leaders and supporting today's pioneers. Students and researchers from around the world are drawn to Berkeley by its outstanding reputation, its internationally recognized faculty and its strong tradition of impact in research and teaching.
     %div.span4.center
-      = image_tag "freedom_house.jpg", :class => "img-height"
+      = image_tag( "freedom_house.jpg"), :class => "img-height"
       %h2 Freedom House
       %p Freedom House is an independent watchdog organization dedicated to the expansion of freedom around the world. Today, as more than two billion people live under oppressive rule, Freedom House speaks out against the main threats to democracy and empowers citizens to exercise their fundamental rights.  
     %div.span4.center
-      = image_tag "saas.jpg", :class => "img-height"
+      = image_tag( "saas.jpg"), :class => "img-height"
       %h2 CS 169
       %p   CS 169 is the Berkeley software engineering course where students learn ideas and techniques for designing, developing, and modifying large software systems. They also learn about modular design techniques, designing for reuse and maintainability, and project team organization and management.
   

@@ -12,8 +12,6 @@
     = render 'layouts/topbar'
     %div.container.main
       = render 'layouts/messages'
-      
-      #main
-        = yield
-        = yield :scripts
+      = yield
+      = yield :scripts
       

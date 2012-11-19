@@ -60,3 +60,6 @@
   vertical-align: middle;
 }
 
+.carousel-caption .btn {
+  margin-top: 10px;
+}
