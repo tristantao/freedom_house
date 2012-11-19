@@ -1,4 +1,4 @@
-%div.navbar.navbar-fixed-top
+%div.navbar.navbar-fixed-top.navbar-inverse
   %div.navbar-inner
     %div.container
       %a.btn.btn-navbar{"data-toggle" => "collapse", "data-target" => ".nav-collapse"}
@@ -18,4 +18,4 @@
             %li= link_to 'Home', home_path
         %ul.nav.pull-right
           - if controller_name == 'home'
-            %li{"data-toggle" => "modal", :href => "#Article", :role => "button"}= link_to 'Sign in'
+            %li{"data-toggle" => "modal", :href => "#Signin", :role => "button"}= link_to 'Sign in'

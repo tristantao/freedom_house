@@ -1,17 +1,16 @@
-%div.row-fluid
-  %div#carousel.carousel.slide
-    %div.carousel-inner
-      %div.active.item
-        = image_tag "Space.jpg"
-        %div.container
-          %div.carousel-caption
-            %h1 About The Project
-            %p.lead Freedom Tracker is a joint project between Freedom House and UC Berkeley students in the CS169 class. Its purpose is to scrape the web for hate speech between certain groups of interest and create a correlation between speech and violent hate events. 
-            %a.btn.btn-large.btn-primary{:href => "#"} Learn More
-      %div.item
-        = image_tag "campanile.jpg"
-      %div.item
-        = image_tag "Africa.jpg"
+%div#carousel.carousel.slide
+  %div.carousel-inner
+    %div.active.item
+      = image_tag "Space.jpg"
+      %div.container
+        %div.carousel-caption
+          %h1 About The Project
+          %p.lead Freedom Tracker is a joint project between Freedom House and UC Berkeley students in the CS169 class that attempts to create a correlation between speech and violent hate events. 
+          %a.btn.btn-large.btn-primary{:href => "#"} Learn More
+    %div.item
+      = image_tag "campanile.jpg"
+    %div.item
+      = image_tag "Africa.jpg"
 
   %a.carousel-control.left{"data-slide" => "prev", :href => "#carousel"} &lsaquo;
   %a.carousel-control.right{"data-slide" => "next", :href => "#carousel"} &rsaquo;

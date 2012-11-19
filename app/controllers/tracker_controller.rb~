@@ -5,7 +5,8 @@ class TrackerController < ApplicationController
     @articles = Article.all
     @json = Event.all.to_gmaps4rails do |event, marker|
       marker.title event.name
-      marker.infowindow render_to_string(:partial => "/shared/event_marker", :locals => {:object => event})
+      marker.sidebar "bye"
+      marker.infowindow "hi"
     end
   end
 

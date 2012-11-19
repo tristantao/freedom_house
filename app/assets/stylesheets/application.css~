@@ -19,7 +19,9 @@
 .img-height {
   height: 125px;
   vertical-align: middle;
-  horizontal-align: middle;
 }
 
+.navbar-wrapper {
+  position: relative;
+}
 

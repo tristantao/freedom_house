@@ -9,11 +9,8 @@
     = csrf_meta_tags
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
   %body
-    = render 'layouts/topbar'
-    %div.main2
-      = render 'layouts/messages'
-      
-      #main
-        = yield
-        = yield :scripts
+    %div.navbar-wrapper
+      = render 'layouts/topbar'    
+    = yield
+    = yield :scripts
       

@@ -55,4 +55,8 @@
   margin-left: auto;
 }
 
+.center {
+  text-align: center;
+  vertical-align: middle;
+}
 
