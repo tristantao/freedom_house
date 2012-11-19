@@ -1,7 +1,7 @@
 {
   "Cucumber Features": {
     "coverage": {
-      "/home/jose/work/freedom_house/app/models/user.rb": [
+      "/home/ubuntu/Desktop/freedom_house/app/models/user.rb": [
         1,
         null,
         null,
@@ -25,18 +25,18 @@
         null,
         null,
         1,
-        33,
+        37,
         null,
         null,
         null
       ],
-      "/home/jose/work/freedom_house/app/controllers/application_controller.rb": [
+      "/home/ubuntu/Desktop/freedom_house/app/controllers/application_controller.rb": [
         1,
         1,
         null,
         1,
-        20,
-        19,
+        24,
+        23,
         null,
         1,
         null,
@@ -48,67 +48,67 @@
         null,
         null
       ],
-      "/home/jose/work/freedom_house/app/helpers/application_helper.rb": [
+      "/home/ubuntu/Desktop/freedom_house/app/helpers/application_helper.rb": [
         1,
         null,
         1,
-        66,
+        78,
         null,
         null,
         1,
-        22,
+        26,
         null,
         null,
         1,
-        110,
+        130,
         null,
         null
       ],
-      "/home/jose/work/freedom_house/app/helpers/admin_helper.rb": [
+      "/home/ubuntu/Desktop/freedom_house/app/helpers/admin_helper.rb": [
         1,
         null
       ],
-      "/home/jose/work/freedom_house/app/helpers/articles_helper.rb": [
+      "/home/ubuntu/Desktop/freedom_house/app/helpers/articles_helper.rb": [
         1,
         null
       ],
-      "/home/jose/work/freedom_house/app/helpers/dashboard_helper.rb": [
+      "/home/ubuntu/Desktop/freedom_house/app/helpers/dashboard_helper.rb": [
         1,
         null
       ],
-      "/home/jose/work/freedom_house/app/helpers/events_helper.rb": [
+      "/home/ubuntu/Desktop/freedom_house/app/helpers/events_helper.rb": [
         1,
         null
       ],
-      "/home/jose/work/freedom_house/app/helpers/feedback_helper.rb": [
+      "/home/ubuntu/Desktop/freedom_house/app/helpers/feedback_helper.rb": [
         1,
         null
       ],
-      "/home/jose/work/freedom_house/app/helpers/home_helper.rb": [
+      "/home/ubuntu/Desktop/freedom_house/app/helpers/home_helper.rb": [
         1,
         null
       ],
-      "/home/jose/work/freedom_house/app/helpers/sources_helper.rb": [
+      "/home/ubuntu/Desktop/freedom_house/app/helpers/sources_helper.rb": [
         1,
         null
       ],
-      "/home/jose/work/freedom_house/app/helpers/tracker_helper.rb": [
+      "/home/ubuntu/Desktop/freedom_house/app/helpers/tracker_helper.rb": [
         1,
         null
       ],
-      "/home/jose/work/freedom_house/app/helpers/user_helper.rb": [
+      "/home/ubuntu/Desktop/freedom_house/app/helpers/user_helper.rb": [
         1,
         null
       ],
-      "/home/jose/work/freedom_house/app/helpers/users_helper.rb": [
+      "/home/ubuntu/Desktop/freedom_house/app/helpers/users_helper.rb": [
         1,
         null
       ],
-      "/home/jose/work/freedom_house/app/helpers/webscraper_helper.rb": [
+      "/home/ubuntu/Desktop/freedom_house/app/helpers/webscraper_helper.rb": [
         1,
         null
       ],
-      "/home/jose/work/freedom_house/app/controllers/admin/articles_controller.rb": [
+      "/home/ubuntu/Desktop/freedom_house/app/controllers/admin/articles_controller.rb": [
         1,
         null,
         1,
@@ -141,35 +141,42 @@
         null,
         null
       ],
-      "/home/jose/work/freedom_house/app/models/article.rb": [
+      "/home/ubuntu/Desktop/freedom_house/app/models/article.rb": [
         1,
         null,
         1,
         1,
         1,
-        null
-      ],
-      "/home/jose/work/freedom_house/app/controllers/admin/dashboard_controller.rb": [
         1,
         null,
         1,
-        1,
-        null,
-        1,
-        23,
-        23,
-        23,
-        23,
-        null,
-        null,
-        1,
-        1,
-        23,
-        null,
+        0,
         null,
         null
       ],
-      "/home/jose/work/freedom_house/app/controllers/admin/events_controller.rb": [
+      "/home/ubuntu/Desktop/freedom_house/app/controllers/admin/dashboard_controller.rb": [
+        1,
+        null,
+        1,
+        1,
+        null,
+        1,
+        27,
+        27,
+        27,
+        27,
+        27,
+        27,
+        null,
+        null,
+        1,
+        1,
+        27,
+        null,
+        null,
+        null
+      ],
+      "/home/ubuntu/Desktop/freedom_house/app/controllers/admin/events_controller.rb": [
         1,
         1,
         1,
@@ -187,33 +194,39 @@
         null,
         null,
         null,
-        1,
-        0,
         null,
         1,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        null,
-        0,
-        0,
-        null,
-        0,
-        null,
-        0,
+        4,
         null,
         null,
         1,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        null,
+        2,
+        1,
+        null,
+        1,
+        null,
+        2,
+        null,
+        null,
+        1,
         0,
         0,
         0,
         0,
+        0,
+        null,
+        null,
+        1,
         0,
         null,
         null
@@ -224,13 +237,18 @@
         1,
         1,
         1,
+        1,
+        null,
+        1,
+        0,
+        null,
         null
       ],
-      "/home/jose/work/freedom_house/app/controllers/admin/feedback_controller.rb": [
+      "/home/ubuntu/Desktop/freedom_house/app/controllers/admin/feedback_controller.rb": [
         1,
         null
       ],
-      "/home/jose/work/freedom_house/app/controllers/admin/sources_controller.rb": [
+      "/home/ubuntu/Desktop/freedom_house/app/controllers/admin/sources_controller.rb": [
         1,
         null,
         1,
@@ -276,7 +294,8 @@
         null,
         null
       ],
-      "/home/jose/work/freedom_house/app/models/source.rb": [
+      "/home/ubuntu/Desktop/freedom_house/app/models/source.rb": [
+        1,
         1,
         null,
         1,
@@ -284,9 +303,23 @@
         1,
         1,
         1,
+        null,
+        1,
+        1,
+        1,
+        null,
+        1,
+        null,
+        1,
+        30,
+        30,
+        30,
+        30,
+        null,
+        null,
         null
       ],
-      "/home/jose/work/freedom_house/app/controllers/admin/users_controller.rb": [
+      "/home/ubuntu/Desktop/freedom_house/app/controllers/admin/users_controller.rb": [
         1,
         null,
         1,
@@ -346,31 +379,43 @@
         null,
         null
       ],
-      "/home/jose/work/freedom_house/app/controllers/admin/webscraper_controller.rb": [
-        1,
-        null
-      ],
-      "/home/jose/work/freedom_house/app/controllers/home_controller.rb": [
+      "/home/ubuntu/Desktop/freedom_house/app/controllers/admin/webscraper_controller.rb": [
         1,
         null,
         1,
-        40,
-        18,
+        3,
         null,
         null,
-        null
-      ],
-      "/home/jose/work/freedom_house/app/controllers/tracker_controller.rb": [
         1,
         1,
-        null,
         1,
-        19,
+        1,
         null,
         null,
         null
       ],
-      "/home/jose/work/freedom_house/app/controllers/user_controller.rb": [
+      "/home/ubuntu/Desktop/freedom_house/app/controllers/home_controller.rb": [
+        1,
+        null,
+        1,
+        48,
+        22,
+        null,
+        null,
+        null
+      ],
+      "/home/ubuntu/Desktop/freedom_house/app/controllers/tracker_controller.rb": [
+        1,
+        1,
+        null,
+        1,
+        23,
+        23,
+        null,
+        null,
+        null
+      ],
+      "/home/ubuntu/Desktop/freedom_house/app/controllers/user_controller.rb": [
         1,
         null,
         null,
@@ -391,15 +436,11 @@
         null
       ]
     },
-<<<<<<< HEAD
-    "timestamp": 1352102668
-=======
-    "timestamp": 1352667033
->>>>>>> 45e15fa83babe8a39b0b10cdbb06509f14ab30dc
+    "timestamp": 1353303486
   },
   "RSpec": {
     "coverage": {
-      "/home/jose/work/freedom_house/app/models/user.rb": [
+      "/home/ubuntu/Desktop/freedom_house/app/models/user.rb": [
         1,
         null,
         null,
@@ -428,7 +469,7 @@
         null,
         null
       ],
-      "/home/jose/work/freedom_house/app/controllers/application_controller.rb": [
+      "/home/ubuntu/Desktop/freedom_house/app/controllers/application_controller.rb": [
         1,
         1,
         null,
@@ -446,7 +487,7 @@
         null,
         null
       ],
-      "/home/jose/work/freedom_house/app/helpers/application_helper.rb": [
+      "/home/ubuntu/Desktop/freedom_house/app/helpers/application_helper.rb": [
         1,
         null,
         1,
@@ -462,51 +503,51 @@
         null,
         null
       ],
-      "/home/jose/work/freedom_house/app/helpers/admin_helper.rb": [
+      "/home/ubuntu/Desktop/freedom_house/app/helpers/admin_helper.rb": [
         1,
         null
       ],
-      "/home/jose/work/freedom_house/app/helpers/articles_helper.rb": [
+      "/home/ubuntu/Desktop/freedom_house/app/helpers/articles_helper.rb": [
         1,
         null
       ],
-      "/home/jose/work/freedom_house/app/helpers/dashboard_helper.rb": [
+      "/home/ubuntu/Desktop/freedom_house/app/helpers/dashboard_helper.rb": [
         1,
         null
       ],
-      "/home/jose/work/freedom_house/app/helpers/events_helper.rb": [
+      "/home/ubuntu/Desktop/freedom_house/app/helpers/events_helper.rb": [
         1,
         null
       ],
-      "/home/jose/work/freedom_house/app/helpers/feedback_helper.rb": [
+      "/home/ubuntu/Desktop/freedom_house/app/helpers/feedback_helper.rb": [
         1,
         null
       ],
-      "/home/jose/work/freedom_house/app/helpers/home_helper.rb": [
+      "/home/ubuntu/Desktop/freedom_house/app/helpers/home_helper.rb": [
         1,
         null
       ],
-      "/home/jose/work/freedom_house/app/helpers/sources_helper.rb": [
+      "/home/ubuntu/Desktop/freedom_house/app/helpers/sources_helper.rb": [
         1,
         null
       ],
-      "/home/jose/work/freedom_house/app/helpers/tracker_helper.rb": [
+      "/home/ubuntu/Desktop/freedom_house/app/helpers/tracker_helper.rb": [
         1,
         null
       ],
-      "/home/jose/work/freedom_house/app/helpers/user_helper.rb": [
+      "/home/ubuntu/Desktop/freedom_house/app/helpers/user_helper.rb": [
         1,
         null
       ],
-      "/home/jose/work/freedom_house/app/helpers/users_helper.rb": [
+      "/home/ubuntu/Desktop/freedom_house/app/helpers/users_helper.rb": [
         1,
         null
       ],
-      "/home/jose/work/freedom_house/app/helpers/webscraper_helper.rb": [
+      "/home/ubuntu/Desktop/freedom_house/app/helpers/webscraper_helper.rb": [
         1,
         null
       ],
-      "/home/jose/work/freedom_house/app/controllers/admin/articles_controller.rb": [
+      "/home/ubuntu/Desktop/freedom_house/app/controllers/admin/articles_controller.rb": [
         1,
         null,
         1,
@@ -533,149 +574,30 @@
         1,
         1,
         1,
-        1,
-        1,
-        null,
-        null,
-        null
-      ],
-      "/home/jose/work/freedom_house/app/models/article.rb": [
-        1,
-        null,
-        1,
-        1,
-        1,
-        null
-      ],
-      "/home/jose/work/freedom_house/app/controllers/admin/dashboard_controller.rb": [
-        1,
-        null,
-        1,
-        1,
-        null,
-        1,
-        0,
-        0,
-        0,
-        0,
-        null,
-        null,
-        1,
-        1,
-        0,
-        null,
-        null,
-        null
-      ],
-      "/home/jose/work/freedom_house/app/controllers/admin/events_controller.rb": [
         1,
         1,
         null,
         null,
         null
       ],
-      "/home/jose/work/freedom_house/app/controllers/admin/feedback_controller.rb": [
-        1,
-        null
-      ],
-      "/home/jose/work/freedom_house/app/controllers/admin/sources_controller.rb": [
+      "/home/ubuntu/Desktop/freedom_house/app/models/article.rb": [
         1,
         null,
         1,
-        0,
-        null,
+        1,
+        1,
+        1,
         null,
         1,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        null,
-        0,
-        null,
-        null,
-        null,
-        null,
-        1,
-        0,
-        null,
-        null,
-        1,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        null,
-        0,
-        null,
-        0,
-        null,
-        null,
-        1,
-        0,
-        0,
-        0,
-        0,
         0,
         null,
         null
       ],
-      "/home/jose/work/freedom_house/app/models/source.rb": [
+      "/home/ubuntu/Desktop/freedom_house/app/controllers/admin/dashboard_controller.rb": [
         1,
         null,
         1,
         1,
-        1,
-        1,
-        1,
-        null
-      ],
-      "/home/jose/work/freedom_house/app/controllers/admin/users_controller.rb": [
-        1,
-        null,
-        1,
-        null,
-        1,
-        0,
-        null,
-        null,
-        1,
-        0,
-        null,
-        null,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        0,
-        null,
-        1,
-        null,
-        1,
-        null,
-        null,
-        1,
-        0,
-        null,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        null,
-        0,
-        null,
-        null,
-        null,
         null,
         1,
         0,
@@ -684,7 +606,6 @@
         0,
         0,
         0,
-        null,
         null,
         null,
         1,
@@ -694,11 +615,225 @@
         null,
         null
       ],
-      "/home/jose/work/freedom_house/app/controllers/admin/webscraper_controller.rb": [
+      "/home/ubuntu/Desktop/freedom_house/app/controllers/admin/events_controller.rb": [
+        1,
+        1,
+        0,
+        null,
+        null,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        null,
+        0,
+        null,
+        null,
+        null,
+        null,
+        1,
+        0,
+        null,
+        null,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        null,
+        0,
+        0,
+        null,
+        0,
+        null,
+        0,
+        null,
+        null,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        null,
+        null,
+        1,
+        0,
+        null,
+        null
+      ],
+      "/home/ubuntu/Desktop/freedom_house/app/models/event.rb": [
+        1,
+        null,
+        1,
+        1,
+        1,
+        1,
+        null,
+        1,
+        0,
+        null,
+        null
+      ],
+      "/home/ubuntu/Desktop/freedom_house/app/controllers/admin/feedback_controller.rb": [
         1,
         null
       ],
-      "/home/jose/work/freedom_house/app/controllers/home_controller.rb": [
+      "/home/ubuntu/Desktop/freedom_house/app/controllers/admin/sources_controller.rb": [
+        1,
+        null,
+        1,
+        0,
+        null,
+        null,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        null,
+        0,
+        null,
+        null,
+        null,
+        null,
+        1,
+        0,
+        null,
+        null,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        null,
+        0,
+        null,
+        0,
+        null,
+        null,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        null,
+        null
+      ],
+      "/home/ubuntu/Desktop/freedom_house/app/models/source.rb": [
+        1,
+        1,
+        null,
+        1,
+        1,
+        1,
+        1,
+        1,
+        null,
+        1,
+        0,
+        0,
+        null,
+        0,
+        null,
+        0,
+        0,
+        0,
+        0,
+        0,
+        null,
+        null,
+        null
+      ],
+      "/home/ubuntu/Desktop/freedom_house/app/controllers/admin/users_controller.rb": [
+        1,
+        null,
+        1,
+        null,
+        1,
+        0,
+        null,
+        null,
+        1,
+        0,
+        null,
+        null,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        null,
+        1,
+        null,
+        1,
+        null,
+        null,
+        1,
+        0,
+        null,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        null,
+        0,
+        null,
+        null,
+        null,
+        null,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        null,
+        null,
+        null,
+        1,
+        1,
+        0,
+        null,
+        null,
+        null
+      ],
+      "/home/ubuntu/Desktop/freedom_house/app/controllers/admin/webscraper_controller.rb": [
+        1,
+        null,
+        1,
+        0,
+        null,
+        null,
+        1,
+        0,
+        0,
+        0,
+        null,
+        null,
+        null
+      ],
+      "/home/ubuntu/Desktop/freedom_house/app/controllers/home_controller.rb": [
         1,
         null,
         1,
@@ -708,17 +843,18 @@
         null,
         null
       ],
-      "/home/jose/work/freedom_house/app/controllers/tracker_controller.rb": [
+      "/home/ubuntu/Desktop/freedom_house/app/controllers/tracker_controller.rb": [
         1,
         1,
         null,
         1,
         0,
+        0,
         null,
         null,
         null
       ],
-      "/home/jose/work/freedom_house/app/controllers/user_controller.rb": [
+      "/home/ubuntu/Desktop/freedom_house/app/controllers/user_controller.rb": [
         1,
         null,
         null,
@@ -739,6 +875,6 @@
         null
       ]
     },
-    "timestamp": 1352102732
+    "timestamp": 1353303292
   }
 }

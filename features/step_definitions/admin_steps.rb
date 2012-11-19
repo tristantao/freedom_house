@@ -20,6 +20,7 @@ end
 
 
 Given /^I am logged in as the administrator$/ do
+
   step %{I am on the home page}
   step %{I fill in "Email" with "hellojustinchan@gmail.com"}
   step %{I fill in "Password" with "derp1234"}

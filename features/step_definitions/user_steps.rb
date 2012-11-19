@@ -19,25 +19,16 @@ And /^I initialize the following user:$/ do |user_info|
   step %{I fill in "user_first_name" with "#{info[:first_name]}"}
   step %{I fill in "user_last_name" with "#{info[:last_name]}"}
   step %{I select "#{is_admin}" from "user_admin"}
-	end
+  end
 end
 
-Then /source should be in the database with these fields:$/ do |source_table|
-	source_table.hashes.each do |source|
-	
-	source1 = Source.find_by_name(source[:name])
-	assert(!source1.nil?, "Nil source")
-	assert_equal(source1.home_page, source[:home_page])
-	assert_equal(source1.quality_rating, source[:quality_rating].to_i)
-	end
-end
 
 def booltime(b)
-	if b == "1"
-		return true
-	else
-		return false
-	end
+  if b == "1"
+    return true
+  else
+    return false
+  end
 end
 
 def booltime2(b)

@@ -1,27 +1,17 @@
 Feature: Add sources to the website
 
   As the website admin
-  I want to be able to add sources
-  So that the webscraper can find more articles
+  I want to be able to click on a button to initiate a scrape method
+  So that I can manually keep all sources up to date
  
   Background:
     Given the blog is set up with an admin user
     And I am logged in as the administrator
+    And the site contains a source named "Daily Trust" and with url "http://www.dailytrust.com.ng/index.php/rss/xml/RSS2.0/full"
+    
 
-Scenario: add new source to the website (happy path)
-  When I go to the add source page
-  And I fill in "source_name" with "tristan's website"
-  And I fill in "source_home_page" with "tristan.com"
-  And I fill in "source_quality_rating" with "10"
-  And I press "Create"
-  Then source should be in the database with these fields:
-  | name              | home_page   | quality_rating  |
-  | tristan's website | tristan.com | 10              |
+Scenario: Scraper adds at least one new article from source
+  When I go to the scraper page
+  And I follow "scrape_source_1"
+  Then there should be at least "1" articles in the database
 
-Scenario: add new source to the website (sad path)
-  When I go to the add source page
-  And I fill in "source_name" with "invalid_source"
-  And I press "Create"
-  Then I should not see "invalid_source"
-  Then I should be on the add source page
-  And I should see "Error in creating source. Please try again."
