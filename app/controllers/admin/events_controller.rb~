@@ -44,7 +44,7 @@ class Admin::EventsController < ApplicationController
     name = @event.name
     @event.delete
     flash[:notice] = "Event #{name} has been deleted."
-    redirect_to admin_events_path
+    redirect_to admin_dashboard_path
   end
 
   def map

@@ -230,6 +230,7 @@ DEPENDENCIES
   launchy
   less-rails
   newrelic_rpm
+  nokogiri
   pg
   railroady
   rails (= 3.1.0)
