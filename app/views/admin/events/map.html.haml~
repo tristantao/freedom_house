@@ -4,5 +4,6 @@
       = render 'admin/shared/sidebar'
     
     %div.span9
+      %h2.pagination-centered Events Map
       = gmaps(:markers => { :data => @json }, :map_options => { :container_class=>"map_container_full"})
   

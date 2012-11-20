@@ -152,6 +152,7 @@
         1,
         0,
         null,
+        null,
         null
       ],
       "/home/jose/work/freedom_house/app/controllers/admin/dashboard_controller.rb": [
@@ -161,6 +162,10 @@
         1,
         null,
         1,
+        26,
+        26,
+        26,
+        26,
         26,
         26,
         26,
@@ -440,7 +445,7 @@
         null
       ]
     },
-    "timestamp": 1353350921
+    "timestamp": 1353418932
   },
   "RSpec": {
     "coverage": {
@@ -595,6 +600,7 @@
         1,
         0,
         null,
+        null,
         null
       ],
       "/home/jose/work/freedom_house/app/controllers/admin/dashboard_controller.rb": [
@@ -604,6 +610,10 @@
         1,
         null,
         1,
+        0,
+        0,
+        0,
+        0,
         0,
         0,
         0,
@@ -883,6 +893,6 @@
         null
       ]
     },
-    "timestamp": 1353350630
+    "timestamp": 1353418972
   }
 }

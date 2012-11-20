@@ -2,17 +2,18 @@
   %div.span2
     = render 'admin/shared/sidebar'
     
-  %div.span10
-    %div.well
-      %legend.pagination-centered Create New User
+  %div.span5.offset2
+    %div
+      %h2 Create New User
       = simple_form_for(:user, :as => :user_name, :url => admin_users_action_path(:new), :html => { :method => :put, :class => 'form-horizontal'}) do |f|
-        = f.error_notification
-        .form-inputs
-          = f.input :first_name, :required => true, :input_html => { :class => "span4 offset3" }
-          = f.input :last_name, :required => true, :input_html => { :class => "span9" }
-          = f.input :email, :required => true, :autofocus => true, :input_html => { :class => "span9" }
-          = f.input :password, :required => true, :input_html => { :class => "span9" }
-          = f.input :password_confirmation, :required => true, :input_html => { :class => "span9" }
-          = f.input :admin, :as => :select, :input_html => { :class => "btn span3" }
-        .form-actions
-          = f.button :submit, "Sign up", :class => "btn btn-success"
+        #card
+          = f.error_notification
+          .form-inputs
+            = f.input :first_name, :required => true, :input_html => { :class => "span" }
+            = f.input :last_name, :required => true, :input_html => { :class => "span" }
+            = f.input :email, :required => true, :autofocus => true, :input_html => { :class => "span" }
+            = f.input :password, :required => true, :input_html => { :class => "span" }
+            = f.input :password_confirmation, :required => true, :input_html => { :class => "span" }
+            = f.input :admin, :as => :select, :input_html => { :class => "btn span" }
+        
+          = f.button :submit, "Create", :class => "btn btn-success pull-right"

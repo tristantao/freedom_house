@@ -31,5 +31,5 @@
               %td= event.province
               %td= event.city
               %td
-                = link_to 'Edit', admin_events_action_path(:edit, event.id), :id => "edit_event_#{event.id}"
-                = link_to 'Delete', admin_events_action_path(:delete, event.id)
+                = link_to 'Edit', admin_events_action_path(:edit, event.id), :id => "edit_event_#{event.id}", :class => "btn btn-mini"
+                = link_to 'Delete', admin_events_action_path(:delete, event.id), :class => "btn btn-mini btn-danger"

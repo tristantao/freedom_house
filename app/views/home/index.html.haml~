@@ -16,18 +16,21 @@
   %a.carousel-control.right{"data-slide" => "next", :href => "#carousel"} &rsaquo;
 
 %div.container.marketing
-  %div.row-fluid
+  %div.row
     %div.span4.center
-      = image_tag( "BE.jpg"), :class => "img-height"
+      = image_tag "BE.jpg", :class => "img-height"
       %h2 UC Berkeley
+      %hr
       %p Berkeley Engineering is a community that is dedicated to creating tomorrow's leaders and supporting today's pioneers. Students and researchers from around the world are drawn to Berkeley by its outstanding reputation, its internationally recognized faculty and its strong tradition of impact in research and teaching.
     %div.span4.center
-      = image_tag( "freedom_house.jpg"), :class => "img-height"
+      = image_tag "freedom_house.png", :class => "img-height"
       %h2 Freedom House
+      %hr
       %p Freedom House is an independent watchdog organization dedicated to the expansion of freedom around the world. Today, as more than two billion people live under oppressive rule, Freedom House speaks out against the main threats to democracy and empowers citizens to exercise their fundamental rights.  
     %div.span4.center
-      = image_tag( "saas.jpg"), :class => "img-height"
+      = image_tag "saas.png", :class => "img-height"
       %h2 CS 169
+      %hr
       %p   CS 169 is the Berkeley software engineering course where students learn ideas and techniques for designing, developing, and modifying large software systems. They also learn about modular design techniques, designing for reuse and maintainability, and project team organization and management.
   
   

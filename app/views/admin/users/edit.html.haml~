@@ -20,7 +20,7 @@
  
 %div.row-fluid
   %h3 Contributed Sources
-  %div#card
+  %div.well
     %table.table.table-striped#source_table
       %thead
         %tr

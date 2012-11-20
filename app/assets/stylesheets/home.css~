@@ -8,9 +8,6 @@
   margin-bottom: 60px;
 }
 
-.main2 {
-  padding-top: 40px;
-}
 .carousel .container {
   position: absolute;
   right: 0;
@@ -38,7 +35,7 @@
   background-color: transparent;
   position: static;
   max-width: 550px;
-  padding: 0 20px;
+  padding: 0 80px;
   margin-bottom: 100px;
 }
 
@@ -63,3 +60,27 @@
 .carousel-caption .btn {
   margin-top: 10px;
 }
+
+.carousel {
+  -webkit-box-shadow: 0 0 10px 5px rgba(0, 0, 0, .3);
+  -moz-box-shadow: 0 0 10px 5px rgba(0,0,0,.3);
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, .3);
+  
+}
+
+.depth {
+    color: grey;
+    position: relative;
+}
+
+.depth:before, .depth:after {
+    content: attr(title);
+    color: rgba(255,255,255,.1);
+    position: absolute;
+}
+
+.depth:before { top: 1px; left: 1px }
+.depth:after  { top: 2px; left: 2px }
+
+
+

@@ -4,12 +4,12 @@
     
   %div.span10
     %div.content
-      = render 'overview'
+      -#= render 'overview'
       %div.row-fluid
         %div.span6
-          %div.well
+          %div#card
             %legend Welcome back, #{current_user.name}!
-            %p 0 articles, 0 sources, 0 events have been added since your last connection.
+            %p #{@new_articles} articles, #{@new_sources} sources, #{@new_events} events have been added since your last connection.
             %p <B>Content</B>
             %ul
               %li
@@ -31,24 +31,27 @@
             %ul
               %li
                 %a{:href => home_path} Total Messages: 
-                0
-
-          %div.well
+                #{@num_messages}
+          
+          %div#card
             %legend Webscraper Performance
 
         %div.span6
-          %div.well
+          %div#card
             %legend Latest Articles
-            - @latest_articles.each do |article|
-              %p
-              = link_to article.title, article.link 
+            %ul
+              - @latest_articles.each do |article|
+                %li= link_to article.title, article.link 
+                %br
             
 
-          %div.well
+          %div#card
             %legend Latest Events
-            - @latest_events.each do |event|
-              %p #{event.name}
+            %ul
+              - @latest_events.each do |event|
+                %li #{event.name}
+                %br
 
-          %div.well
+          %div#card
             %legend Tracker Errors
 

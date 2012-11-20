@@ -1,10 +1,9 @@
 %div.row-fluid
-  %div.span2
+  %div.span2#card
     = render 'admin/shared/sidebar'
   %div.span10
+    %h2 All Articles
     %div.pull-right= button_to 'Create New Article', admin_articles_action_path(:new), :class => "button btn"
-
-    -#= form_remote_tag :admin => {:action => 'index'}
 
     %table.table.table-striped.table-hover#article_table
       %thead
@@ -14,7 +13,6 @@
           %th Date
           %th Author
           %th Location
-          %th Link
         %tbody
           - @articles.each do |article|
             %tr
@@ -23,7 +21,6 @@
               %td= article.date.strftime('%m/%d/%y')
               %td= article.author
               %td= article.location
-              %td= article.link
               %td
                 = link_to 'Edit', admin_articles_action_path(:edit, article.id), :id => "edit_article_#{article.id}", :class => "btn btn-mini"
                 = link_to 'Delete', admin_articles_action_path(:delete, article.id), :class => "btn btn-mini btn-danger"

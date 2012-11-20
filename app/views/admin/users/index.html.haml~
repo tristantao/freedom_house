@@ -2,7 +2,7 @@
   %div.span2
     = render 'admin/shared/sidebar'
   %div.span10
-    %h2 All Users
+    %h2 Users
     %div.pull-right= button_to 'Create New User', admin_users_action_path(:new), :class => "button btn"
 
     %table.table.table-striped.table-hover#user_table

@@ -1,4 +1,4 @@
-%ul.nav.nav-list
+%ul.nav.nav-list#card
   %li
     %a{:href => admin_dashboard_path} Dashboard
 

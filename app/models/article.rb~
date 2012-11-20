@@ -8,5 +8,4 @@ class Article < ActiveRecord::Base
   def gmaps4rails_address
     "#{latitude}, #{longitude}"
   end
-  
 end

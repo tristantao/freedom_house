@@ -14,26 +14,26 @@
       <img src="./assets/0.7.1/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2012-11-19T10:48:41-08:00">2012-11-19T10:48:41-08:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2012-11-20T05:42:53-08:00">2012-11-20T05:42:53-08:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
         <div class="file_list_container" id="AllFiles">
   <h2>
     <span class="group_name">All Files</span>
-    (<span class="covered_percent"><span class="yellow">86.78%</span></span>
+    (<span class="covered_percent"><span class="yellow">87.01%</span></span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         4.76
+         4.85
        </span>
     </span> hits/line)
   </h2>
   <a name="AllFiles"></a>
   <div>
     <b>27</b> files in total.
-    <b>227</b> relevant lines. 
-    <span class="green"><b>197</b> lines covered</span> and
+    <b>231</b> relevant lines. 
+    <span class="green"><b>201</b> lines covered</span> and
     <span class="red"><b>30</b> lines missed </span>
   </div>
   <table class="file_list">
@@ -63,11 +63,11 @@
       <tr>
         <td class="strong"><a href="#e8ff687bdde2f999b399899650f98d77d5b4db99" class="src_link" title="app/controllers/admin/dashboard_controller.rb">app/controllers/admin/dashboard_controller.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>20</td>
-        <td>13</td>
-        <td>13</td>
+        <td>24</td>
+        <td>17</td>
+        <td>17</td>
         <td>0</td>
-        <td>14.9</td>
+        <td>17.5</td>
       </tr>
       
       <tr>
@@ -283,7 +283,7 @@
       <tr>
         <td class="strong"><a href="#fda9ad3b982af7be32fa59f7136c4f727bcd705f" class="src_link" title="app/models/article.rb">app/models/article.rb</a></td>
         <td class="yellow strong">85.71 %</td>
-        <td>11</td>
+        <td>12</td>
         <td>7</td>
         <td>6</td>
         <td>1</td>
@@ -329,19 +329,19 @@
           <div class="file_list_container" id="Controllers">
   <h2>
     <span class="group_name">Controllers</span>
-    (<span class="covered_percent"><span class="yellow">83.23%</span></span>
+    (<span class="covered_percent"><span class="yellow">83.63%</span></span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         5.08
+         5.32
        </span>
     </span> hits/line)
   </h2>
   <a name="Controllers"></a>
   <div>
     <b>11</b> files in total.
-    <b>167</b> relevant lines. 
-    <span class="green"><b>139</b> lines covered</span> and
+    <b>171</b> relevant lines. 
+    <span class="green"><b>143</b> lines covered</span> and
     <span class="red"><b>28</b> lines missed </span>
   </div>
   <table class="file_list">
@@ -371,11 +371,11 @@
       <tr>
         <td class="strong"><a href="#e8ff687bdde2f999b399899650f98d77d5b4db99" class="src_link" title="app/controllers/admin/dashboard_controller.rb">app/controllers/admin/dashboard_controller.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>20</td>
-        <td>13</td>
-        <td>13</td>
+        <td>24</td>
+        <td>17</td>
+        <td>17</td>
         <td>0</td>
-        <td>14.9</td>
+        <td>17.5</td>
       </tr>
       
       <tr>
@@ -508,7 +508,7 @@
       <tr>
         <td class="strong"><a href="#fda9ad3b982af7be32fa59f7136c4f727bcd705f" class="src_link" title="app/models/article.rb">app/models/article.rb</a></td>
         <td class="yellow strong">85.71 %</td>
-        <td>11</td>
+        <td>12</td>
         <td>7</td>
         <td>6</td>
         <td>1</td>
@@ -1037,8 +1037,8 @@
     <h3>app/controllers/admin/dashboard_controller.rb</h3>
     <h4><span class="green">100.0 %</span> covered</h4>
     <div>
-      <b>13</b> relevant lines. 
-      <span class="green"><b>13</b> lines covered</span> and
+      <b>17</b> relevant lines. 
+      <span class="green"><b>17</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
@@ -1118,49 +1118,73 @@
           <code class="ruby">    @latest_events = Event.all(:order =&gt;&quot;date desc&quot;, :limit =&gt; 5)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="13">
+        <li class="covered" data-hits="26" data-linenumber="13">
+          <span class="hits">26</span>
+          
+          <code class="ruby">    @new_articles = Article.where('date &gt; ?', @current_user.last_sign_in_at.to_s).length</code>
+        </li>
+      
+        <li class="covered" data-hits="26" data-linenumber="14">
+          <span class="hits">26</span>
+          
+          <code class="ruby">    @new_events = Event.where('date &gt; ?', @current_user.last_sign_in_at.to_s).length</code>
+        </li>
+      
+        <li class="covered" data-hits="26" data-linenumber="15">
+          <span class="hits">26</span>
+          
+          <code class="ruby">    @new_sources = Source.where('created_at &gt; ?', @current_user.last_sign_in_at.to_s).length</code>
+        </li>
+      
+        <li class="covered" data-hits="26" data-linenumber="16">
+          <span class="hits">26</span>
+          
+          <code class="ruby">    @num_messages = 0</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="17">
           
           
           <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="14">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="2" data-linenumber="15">
-          <span class="hits">2</span>
-          
-          <code class="ruby">  protected</code>
-        </li>
-      
-        <li class="covered" data-hits="2" data-linenumber="16">
-          <span class="hits">2</span>
-          
-          <code class="ruby">  def admin_user?</code>
-        </li>
-      
-        <li class="covered" data-hits="26" data-linenumber="17">
-          <span class="hits">26</span>
-          
-          <code class="ruby">    redirect_to root_path() unless user_signed_in? &amp;&amp; current_user.admin?</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="18">
           
           
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="19">
+          <span class="hits">2</span>
+          
+          <code class="ruby">  protected</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="20">
+          <span class="hits">2</span>
+          
+          <code class="ruby">  def admin_user?</code>
+        </li>
+      
+        <li class="covered" data-hits="26" data-linenumber="21">
+          <span class="hits">26</span>
+          
+          <code class="ruby">    redirect_to root_path() unless user_signed_in? &amp;&amp; current_user.admin?</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="22">
+          
+          
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="19">
+        <li class="never" data-hits="" data-linenumber="23">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="20">
+        <li class="never" data-hits="" data-linenumber="24">
           
           
           <code class="ruby">end</code>
@@ -3189,6 +3213,12 @@
         </li>
       
         <li class="never" data-hits="" data-linenumber="11">
+          
+          
+          <code class="ruby">  </code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="12">
           
           
           <code class="ruby">end</code>

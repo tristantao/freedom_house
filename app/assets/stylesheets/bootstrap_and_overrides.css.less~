@@ -1,14 +1,5 @@
 @import "twitter/bootstrap/bootstrap";
-body { 
-  padding-top: 40px;
-  padding-left: 0;
-  padding-right: 0;
-}
-.main {
-  padding-top: 20px;
-  padding-left: 0;
-  padding-right: 0;
-}
+
 @import "twitter/bootstrap/responsive";
 
 // Set the correct sprite paths
@@ -36,8 +27,9 @@ body {
 //
 // Example:
 // @linkColor: #ff0000;
-@navbarBackground: #3D368B;
-@navbarBackgroundHighlight: #232051;
+//@navbarBackground: #3D368B;
+//@navbarBackgroundHighlight: #232051;
+@bodyBackground: #f2f2f2;
 
 
 #map {
@@ -48,5 +40,15 @@ body {
     img {
         max-width: none;
     }
+}
+
+.brand {
+float: right;
+font-weight: bold;
+color: black;
+text-shadow: 0 1px 0 rgba(255, 255, 255, .1), 0 0 30px rgba(255, 255, 255, .125);
+-webkit-transition: all .2s linear;
+-moz-transition: all .2s linear;
+transition: all .2s linear;
 }
 
