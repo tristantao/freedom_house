@@ -12,5 +12,5 @@
     = render 'layouts/topbar'
     %div.container#main    
       = yield
-      = yield :scripts
       = render 'layouts/footer'
+      = yield :scripts
