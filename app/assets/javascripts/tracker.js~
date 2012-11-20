@@ -5,7 +5,6 @@ $(window).bind("load", function() {
        itemSelector : '.gridItem',
        isAnimated: true,
        isFitWidth: true,
-       isResizable: true,
        columnWidth: 20
      });
    });

@@ -2,11 +2,10 @@ class TrackerController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    @articles = Article.all
+    @articles = Article.all(:limit => 25, :order => "date asc")
     @json = Event.all.to_gmaps4rails do |event, marker|
       marker.title event.name
-      marker.sidebar "bye"
-      marker.infowindow "hi"
+      marker.infowindow render_to_string(:partial => "/shared/event_marker", :locals => {:object => event})
     end
   end
 

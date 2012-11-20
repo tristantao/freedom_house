@@ -48,6 +48,9 @@ class Admin::EventsController < ApplicationController
   end
 
   def map
-    @json = Event.all.to_gmaps4rails
+    @json = Event.all.to_gmaps4rails do |event, marker|
+      marker.title event.name
+      marker.infowindow render_to_string(:partial => "/shared/event_marker", :locals => {:object => event})
+    end
   end
 end

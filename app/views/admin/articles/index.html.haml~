@@ -1,5 +1,5 @@
 %div.row-fluid
-  %div.span2#card
+  %div.span2
     = render 'admin/shared/sidebar'
   %div.span10
     %h2 All Articles
