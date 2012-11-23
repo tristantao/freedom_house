@@ -11,7 +11,7 @@ class Admin::EventsController < ApplicationController
         flash[:notice] = "Event #{event[:name]} has been created!"
         redirect_to admin_events_path
       else
-        flash[:warning] = "Error in creating event. Please try again."
+        flash[:warning] = s.errors.full_messages.join(". ")
       end
     end
   end
@@ -34,7 +34,7 @@ class Admin::EventsController < ApplicationController
     if @event.save
       flash[:notice] = "Successfully updated event!"
     else
-      flash[:warning] = "Error in editing event. Please try again."
+      flash[:warning] = s.errors.full_messages.join(". ")
     end
     redirect_to admin_events_action_path(:edit, @event.id)
   end
