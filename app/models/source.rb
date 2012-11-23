@@ -1,4 +1,5 @@
 require 'open-uri'
+require 'date'
 
 class Source < ActiveRecord::Base
 
@@ -14,10 +15,10 @@ class Source < ActiveRecord::Base
 
   def scrape
      min_interval = 5 * 60
-     if its_not_empty = !self.last_scraped.nil?
-       its_too_early = Time.now - self.last_scraped.to_time < min_interval
+     unless its_empty = self.last_scraped.nil? then
+       its_too_early = Time.now - self.last_scraped.to_time >= min_interval
      end
-     unless its_too_early then
+     unless its_empty || its_too_early then
        rss_url = self.url
        doc = Nokogiri::HTML(open(rss_url))
 
@@ -30,11 +31,12 @@ class Source < ActiveRecord::Base
          article.date = DateTime.parse(item.at_css('pubdate').text)
          article.source = self
 
-         article.save if date > self.last_scraped
+         article.save if (self.last_scraped.nil? || article.date > self.last_scraped)
        end
+       self.last_scraped = DateTime.now
        return nil
      else 
-       return "Source #{source.name} was scraped less than #{min_interval/60} minutes ago."
+       return "Source #{self.name} was scraped less than #{min_interval/60} minutes ago."
      end
   end
 end

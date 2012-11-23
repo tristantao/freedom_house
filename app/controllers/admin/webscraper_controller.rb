@@ -7,10 +7,11 @@ end
 def scrape
   id = params[:id]
   source = Source.find_by_id(id)
-  if result = source.scrape
+  result = source.scrape
+  if result.nil?
     flash[:notice] = "Source #{source.name} has been successfully scraped!"
   else
-    flash[:warning] = result
+    flash[:warning] = result 
   end
   redirect_to admin_webscraper_path
 end
