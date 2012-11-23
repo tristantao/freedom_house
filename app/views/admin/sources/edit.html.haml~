@@ -1,16 +1,25 @@
 %div.row-fluid
   %div.span2
     = render 'admin/shared/sidebar'
-  %div.span10
-    %div.well
-      %legend.pagination-centered Source Properties
+    
+  %div.span5.offset2
+    %h2.pagination-centered Source Properties
+    %div#card
       = simple_form_for(@source, :url => admin_sources_action_path(:update, @source.id), :html => { :method => :put, :class => 'form-horizontal'}) do |f|
         = f.error_notification
         .form-inputs
+<<<<<<< HEAD
+          = f.input :name, :input_html => { :class => "span" }
+          = f.input :home_page, :input_html => { :class => "span" }
+          = f.input :quality_rating, :input_html => { :class => "span" }
+          %div.btn-group.pull-right
+=======
           = f.input :name, :input_html => { :class => "span8" }
           = f.input :home_page, :input_html => { :class => "span8" }
+          = f.input :url, :input_html => { :class => "span8" }
           = f.input :quality_rating, :input_html => { :class => "span8" }
         .form-actions
           %div.btn-group
+>>>>>>> CBscraper11/14
             = f.button :submit, "Update Source", :class => "btn-success"
             = link_to 'Cancel', admin_sources_path, :class => "btn btn-danger"
