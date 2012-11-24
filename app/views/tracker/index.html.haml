@@ -1,12 +1,29 @@
-<<<<<<< HEAD
 :javascript
   $(document).ready(function(){
     $(document).on("click", ".open-Article", function () {
-      var article_ID = $(this).data('articleID');
-      alert (article_ID);
-      $('#Article_modal4').modal('show');
+      var articleID = $(this).data('article');
+      alert (articleID);
+      $.ajax({
+          type: 'POST',
+          url: "#{view_article_path()}",
+          data: "articleID=" + articleID,
+          success: function(article){
+            return_title = article["title"];
+            return_text = article["text"];
+            $('#myModalLabel').text(return_title);
+            $('#modalBody').html(return_text);
+            $('#Article_modal').modal('show');
+
+          },
+          error: function(data){
+            alert(data.responseText);
+            //$("#bookmarklet_chapter").prepend('<div class="alert-message error"><p>'+data.responseText+'</p></div>');
+          }
+          });
+          
       
      });
+     
   });
 
 %body
@@ -15,34 +32,11 @@
     %div.span12.pagination-centered
       %h1 Event Map
       = gmaps4rails(@json)
-  %div.row-fuid
-    %h2 Articles
-    %div.well
-      %table.table.table-striped.table-hover#article_table
-        %thead
-          %tr
-            %th #
-            %th Title
-            %th Date
-            %th Source
-            %th Certainty
-            %th Actions
-        %tbody
-          - @articles.each do |article|
-            %tr
-              %td= article.id
-              %td= article.title
-              %td= article.date
-              %td
-              %td
-              %td
-                %a.btn{"data-toggle" => "modal", :href => "#Article", :role => "button", "data-articleID" => article.id.to_s, "class" => "open-Article btn btn-primary"} View Article
-=======
-%div.row-fluid
-  %div.span12.pagination-centered
-    %h1 Event Map
-    = gmaps4rails(@json)
-    
+  -#
+    %a.btn{"data-toggle" => "modal", :href => "#Article", :role => "button", "data-articleID" => article.id.to_s, "class" => "open-Article btn btn-primary"} View Article
+                
+
+
 %h1.pagination-centered Articles
 %hr      
 %div#grid
@@ -51,16 +45,29 @@
       %legend #{article.title}
       %p Date: #{article.date}
       %p Source: #{article.source}
-      %a.btn{"data-toggle" => "modal", :href => "#Article", :role => "button"} View Article
-    
->>>>>>> bb4f16105eebf80524eab7a380752551bcae9d5f
+      %a.btn{"data-toggle" => "modal", :href => "#Article", :role => "button", "class" => "open-Article btn btn-primary", "data-article" => article.id.to_s} View Article
 
-              #Article.modal.hide.fade.in{"data-articleID" => article.id.to_s, "aria-hidden" => "true", "aria-labelledby" => article.title, :role => "dialog", :tabindex => "-1", :id => 'modal'+ article.id.to_s}
-                .modal-header
-                  %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"}
-                  %h3#myModalLabel #{article.title}
-                .modal-body
-                  = highlight_whole_word(article.text, article.hateArray, :highlighter => '<strong class="highlight">\1</strong>')
-                .modal-footer
-                  %button.btn{"aria-hidden" => "true", "data-dismiss" => "modal"} Close
-                  %button.btn.btn-primary Save changes
+#Article.modal.hide.fade.in{"aria-hidden" => "true", "aria-labelledby" => "myModalHeader", :role => "dialog", :tabindex => "-1", :id => 'modal'}
+  .modal-header
+    %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"}
+    %h3#myModalLabel Blank
+  .modal-body
+    %p#modalBody
+      Filler
+  .modal-footer
+    %button.btn{"aria-hidden" => "true", "data-dismiss" => "modal"} Close
+    %button.btn.btn-primary Save changes
+
+-#      
+  #Article.modal.hide.fade.in{:articleID => article.id.to_s, "aria-hidden" => "true", "aria-labelledby" => article.title, :role => "dialog", :tabindex => "-1", :id => 'modal'}
+    .modal-header
+      %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"}
+      %h3#myModalLabel #{article.title}
+    .modal-body
+      = highlight_whole_word(article.text, article.hateArray, :highlighter => '<strong class="highlight">\1</strong>')
+    .modal-footer
+      %button.btn{"aria-hidden" => "true", "data-dismiss" => "modal"} Close
+      %button.btn.btn-primary Save changes
+
+
+  
