@@ -13,7 +13,7 @@
           = f.input :author, :required => false, :input_html => { :class => "span" }
           = f.input :location, :required => false, :input_html => { :class => "span" }
           = f.input :link, :required => true, :input_html => { :class => "span" }
-          = f.input :text, :required => true, :input_html => { :class => "span" }
+          = f.input :text, :as => :text, :required => true, :input_html => { :class => "span", :rows => "10" }
           %div.btn-group.pull-right
             = f.button :submit, "Create", :class => "btn btn-success"
             = link_to 'Cancel', admin_articles_path, :class => "btn btn-danger"
