@@ -14,7 +14,7 @@ Scenario: add admin user to the website
   And I initialize the following user:
   | email         | password  | admin | first_name | last_name | password_confirmation |
   | user1@foo.com | password1 |    1  | tristan    | tao       | password1             |
-  And I press "Sign up"
+  And I press "Create"
   Then user should be in the database with these fields:
   | email         | password  | admin | first_name | last_name |
   | user1@foo.com | password1 |    1  | tristan    | tao       |
@@ -24,7 +24,7 @@ Scenario: add admin user to the website
 Scenario: add user to the website (sad path, not all fields are filled in)
   When I go to the add user page
   And I fill in "user_email" with "user_fail@foo.com"
-  And I press "Sign up"
+  And I press "Create"
   Then I should be on the add user page
   And I should see "Error in creating user. Please try again."
   
@@ -33,7 +33,7 @@ Scenario: add user to the website (sad path, passwords don't match)
   And I initialize the following user:
   | email         | password  | admin | first_name | last_name | password_confirmation |
   | user1@foo.com | password1 |    1  | tristan    | tao       | password2             |
-  And I press "Sign up"
+  And I press "Create"
   Then I should be on the add user page
   And I should see "Error in creating user. Please try again."
 
@@ -42,7 +42,7 @@ Scenario: add non-admin user to the website
   And I initialize the following user:
   | email         | password  | admin | first_name | last_name | password_confirmation |
   | user2@foo.com | password2 |    0  | tristan    | tao       | password2             |
-  And I press "Sign up"
+  And I press "Create"
   Then user should be in the database with these fields:
   | email         | password  | admin | first_name | last_name |
   | user2@foo.com | password2 |    0  | tristan    | tao       |

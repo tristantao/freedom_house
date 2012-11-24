@@ -1,17 +1,54 @@
-%div.row-fluid
-  %div.span6
-    %h2 About The Project
-    %p.well Freedom Tracker is a joint project between Freedom House and UC Berkeley students in the CS169 class. Its purpose is to scrape the web for hate speech between certain groups of interest and create a correlation between speech and violent hate events. We are using this platforz as a test of wether a web-based approach is even possible and if so, to one day extend the system to many groups; effectively creating an early warning system.
+%div#carousel.carousel.slide
+  %div.carousel-inner
+    %div.active.item
+      = image_tag "Space.jpg"
+      %div.container
+        %div.carousel-caption
+          %h1 About The Project
+          %p.lead Freedom Tracker is a joint project between Freedom House and UC Berkeley students in the CS169 class that attempts to create a correlation between speech and violent hate events. 
+          %a.btn.btn-large.btn-primary{:href => "#"} Learn More
+    %div.item
+      = image_tag "campanile.jpg"
+    %div.item
+      = image_tag "Africa.jpg"
+
+  %a.carousel-control.left{"data-slide" => "prev", :href => "#carousel"} &lsaquo;
+  %a.carousel-control.right{"data-slide" => "next", :href => "#carousel"} &rsaquo;
+
+%div.container.marketing
+  %div.row
+    %div.span4.center
+      = image_tag "BE.jpg", :class => "img-height"
+      %h2 UC Berkeley
+      %p Berkeley Engineering is a community that is dedicated to creating tomorrow's leaders and supporting today's pioneers. Students and researchers from around the world are drawn to Berkeley by its outstanding reputation, its internationally recognized faculty and its strong tradition of impact in research and teaching.
+    %div.span4.center
+      = image_tag "freedom_house.png", :class => "img-height"
+      %h2 Freedom House
+      %p Freedom House is an independent watchdog organization dedicated to the expansion of freedom around the world. Today, as more than two billion people live under oppressive rule, Freedom House speaks out against the main threats to democracy and empowers citizens to exercise their fundamental rights.  
+    %div.span4.center
+      = image_tag "saas.png", :class => "img-height"
+      %h2 CS 169
+      %p   CS 169 is the Berkeley software engineering course where students learn ideas and techniques for designing, developing, and modifying large software systems. They also learn about modular design techniques, designing for reuse and maintainability, and project team organization and management.
+  
+  
+  %div.featurette
+    %hr.featurette-divider
+      
+      
+      
+      
+#Signin.modal.hide.fade.in{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
+  = simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => "form-horizontal"}) do |f|
+    .modal-header
+      %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
+      %h3#myModalLabel.center Sign in
+    .modal-body.well
+      %div.row-fluid
+        %div.span10
+          .form-inputs  
+            = f.input :email, :required => false, :autofocus => true, :input_html => { :class => "span" }
+            = f.input :password, :required => false, :input_html => { :class => "span" }    
+          .form-buttons
+            = f.button :submit, "Sign in"
+            = render "devise/shared/links"  
     
-    %div.container.well
-      = image_tag "berkeley.png"
-      = image_tag "freedom_house.jpg"
-  %div.span2
-  %div.span4
-    = simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => "form"}) do |f|
-      %h2 Sign in
-      .form-inputs
-        = f.input :email, :required => false, :autofocus => true, :input_html => { :class => "span8" }
-        = f.input :password, :required => false, :input_html => { :class => "span8" }
-      = f.button :submit, "Sign in"
-    = render "devise/shared/links"  

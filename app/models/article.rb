@@ -5,6 +5,7 @@ class Article < ActiveRecord::Base
   validates :title, :date, :link, :presence => true
   
   has_many :hate_speech
+  validates :title, :uniqueness => {:scope => :date, :case_sensitive => false}
   acts_as_gmappable :process_geocoding => false
 
   def gmaps4rails_address
@@ -17,4 +18,5 @@ class Article < ActiveRecord::Base
     self.hate_speech.each { |speech| hate_array.push(speech.body) }
     return hate_array
   end
+
 end

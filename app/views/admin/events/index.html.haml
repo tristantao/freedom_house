@@ -2,9 +2,8 @@
   %div.span2
     = render 'admin/shared/sidebar'
   %div.span10
+    %h2 All Events
     %div.pull-right= button_to 'Create New Event', admin_events_action_path(:new), :class => "button btn"
-
-    -#= form_remote_tag :admin => {:action => 'index'}
 
     %table.table.table-striped.table-hover#article_table
       %thead

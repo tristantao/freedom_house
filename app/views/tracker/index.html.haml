@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 :javascript
   $(document).ready(function(){
     $(document).on("click", ".open-Article", function () {
@@ -36,6 +37,23 @@
               %td
               %td
                 %a.btn{"data-toggle" => "modal", :href => "#Article", :role => "button", "data-articleID" => article.id.to_s, "class" => "open-Article btn btn-primary"} View Article
+=======
+%div.row-fluid
+  %div.span12.pagination-centered
+    %h1 Event Map
+    = gmaps4rails(@json)
+    
+%h1.pagination-centered Articles
+%hr      
+%div#grid
+  - @articles.each do |article|
+    .gridItem#card
+      %legend #{article.title}
+      %p Date: #{article.date}
+      %p Source: #{article.source}
+      %a.btn{"data-toggle" => "modal", :href => "#Article", :role => "button"} View Article
+    
+>>>>>>> bb4f16105eebf80524eab7a380752551bcae9d5f
 
               #Article.modal.hide.fade.in{"data-articleID" => article.id.to_s, "aria-hidden" => "true", "aria-labelledby" => article.title, :role => "dialog", :tabindex => "-1", :id => 'modal'+ article.id.to_s}
                 .modal-header

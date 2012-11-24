@@ -11,7 +11,7 @@ class Admin::EventsController < ApplicationController
         flash[:notice] = "Event #{event[:name]} has been created!"
         redirect_to admin_events_path
       else
-        flash[:warning] = "Error in creating event. Please try again."
+        flash[:warning] = s.errors.full_messages.join(". ")
       end
     end
   end
@@ -23,7 +23,7 @@ class Admin::EventsController < ApplicationController
   def update
     @event = Event.find(params[:id])
     @event.name = params[:event][:name]
-    @event.date = params[:event][:date]
+    @event.date = params[:event]['date(3i)'] + "/" + params[:event]['date(2i)'] + "/" + params[:event]['date(1i)']
     @event.description = params[:event][:description]
     @event.longitude = params[:event][:longitude]
     @event.latitude = params[:event][:latitude]
@@ -34,7 +34,7 @@ class Admin::EventsController < ApplicationController
     if @event.save
       flash[:notice] = "Successfully updated event!"
     else
-      flash[:warning] = "Error in editing event. Please try again."
+      flash[:warning] = s.errors.full_messages.join(". ")
     end
     redirect_to admin_events_action_path(:edit, @event.id)
   end
@@ -44,7 +44,12 @@ class Admin::EventsController < ApplicationController
     name = @event.name
     @event.delete
     flash[:notice] = "Event #{name} has been deleted."
-    redirect_to admin_dashboard_path
+    redirect_to admin_events_path
   end
 
+  def map
+    @json = Event.all.to_gmaps4rails do |event, marker|
+      marker.title event.name
+      marker.infowindow render_to_string(:partial => "/shared/event_marker", :locals => {:object => event})
+  end
 end

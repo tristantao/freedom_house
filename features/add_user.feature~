@@ -19,7 +19,7 @@ Scenario: add admin user to the website
   | email         | password  | admin | first_name | last_name |
   | user1@foo.com | password1 |    1  | tristan    | tao       |
   And I should be on the users page
-  And I should see "User tristan tao added successfully!"
+  And I should see "User tristan tao has been created!"
 
 Scenario: add user to the website (sad path, not all fields are filled in)
   When I go to the add user page
@@ -47,5 +47,5 @@ Scenario: add non-admin user to the website
   | email         | password  | admin | first_name | last_name |
   | user2@foo.com | password2 |    0  | tristan    | tao       |
   And I should be on the users page
-  And I should see "User tristan tao added successfully!"
+  And I should see "User tristan tao has been created!"
 

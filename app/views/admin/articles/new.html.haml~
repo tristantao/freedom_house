@@ -1,0 +1,20 @@
+%div.row-fluid
+  %div.span2
+    = render 'admin/shared/sidebar'
+    
+  %div.span5.offset2
+    %h2.pagination-centered Create New Article
+    %div#card
+      = simple_form_for(:article, :as => :article_name, :url => admin_articles_action_path(:new), :html => {:method => :put, :class => 'form-horizontal'}) do |f|
+        = f.error_notification
+        .form-inputs
+          = f.input :title, :required => true, :input_html => { :class => "span" }
+          = f.input :date, :required => true, :input_html => { :class => "span" }
+          = f.input :author, :required => false, :input_html => { :class => "span" }
+          = f.input :location, :required => false, :input_html => { :class => "span" }
+          = f.input :link, :required => true, :input_html => { :class => "span" }
+          = f.input :text, :required => true, :input_html => { :class => "span" }
+        .form-actions
+          %div.btn-group
+            = f.button :submit, "Create", :class => "btn btn-success"
+            = link_to 'Cancel', admin_articles_path, :class => "btn btn-danger"

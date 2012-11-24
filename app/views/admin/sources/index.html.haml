@@ -2,6 +2,7 @@
   %div.span2
     = render 'admin/shared/sidebar'
   %div.span10
+    %h2 All Sources
     %div.pull-right= button_to 'Create New Source', admin_sources_action_path(:new), :class => "button btn"
 
     -#= form_remote_tag :admin => {:action => 'index'}

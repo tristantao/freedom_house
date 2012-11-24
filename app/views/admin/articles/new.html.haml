@@ -2,19 +2,18 @@
   %div.span2
     = render 'admin/shared/sidebar'
     
-  %div.span10
-    %div.well.pagination-centered
-
-
-      %h2 Create New Article
-      = simple_form_for(:article, :as => :article_name, :url => admin_articles_action_path(:new)) do |f|
+  %div.span5.offset2
+    %h2.pagination-centered Create New Article
+    %div#card
+      = simple_form_for(:article, :as => :article_name, :url => admin_articles_action_path(:new), :html => {:method => :put, :class => 'form-horizontal'}) do |f|
         = f.error_notification
         .form-inputs
-          = f.input :title, :required => true
-          = f.input :date, :required => true
-          = f.input :author, :required => false
-          = f.input :location, :required => false
-          = f.input :link, :required => true
-          = f.input :text, :required => true
-        .form-actions
-        = f.button :submit, "Create"
+          = f.input :title, :required => true, :input_html => { :class => "span" }
+          = f.input :date, :required => true, :input_html => { :class => "span" }
+          = f.input :author, :required => false, :input_html => { :class => "span" }
+          = f.input :location, :required => false, :input_html => { :class => "span" }
+          = f.input :link, :required => true, :input_html => { :class => "span" }
+          = f.input :text, :required => true, :input_html => { :class => "span" }
+          %div.btn-group.pull-right
+            = f.button :submit, "Create", :class => "btn btn-success"
+            = link_to 'Cancel', admin_articles_path, :class => "btn btn-danger"

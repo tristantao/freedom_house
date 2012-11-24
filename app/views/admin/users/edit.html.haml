@@ -2,26 +2,25 @@
   %div.span3
     %h2 #{@user.name}
     = image_tag 'default_user.png', :class => 'img-circle'
-  %div.span3
-  %div.span6
-    %div.well
-      %legend User Properties
+  
+  %div.span6.offset3
+    %div#card
+      %legend.pagination-centered User Properties
       = simple_form_for(@user, :url => admin_users_action_path(:update, @user.id), :html => { :method => :put, :class => 'form-horizontal'}) do |f|
         = f.error_notification
         .form-inputs
-          = f.input :first_name, :presence => true, :input_html => { :class=> "span8" }
-          = f.input :last_name, :input_html => { :class => "span8" }
-          = f.input :email, :input_html => { :class => "span8" }
-          = f.input :admin, :as => :select, :input_html => { :class => "btn span8" }
-        .form-actions
-          %div.btn-group
+          = f.input :first_name, :presence => true, :input_html => { :class=> "span" }
+          = f.input :last_name, :input_html => { :class => "span" }
+          = f.input :email, :input_html => { :class => "span" }
+          = f.input :admin, :as => :select, :input_html => { :class => "btn span" }
+          %div.btn-group.pull-right
             = f.button :submit, "Update User", :class => "btn-success"
-            = f.button :submit, "Delete User", :class => "btn-danger", :value => "Delete User"
+            = link_to 'Delete User', admin_users_action_path(:delete, @user.id), :class => "btn btn-danger"
 
  
 %div.row-fluid
   %h3 Contributed Sources
-  %div.well
+  %div#card
     %table.table.table-striped#source_table
       %thead
         %tr

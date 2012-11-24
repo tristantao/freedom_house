@@ -19,3 +19,9 @@
     a.admin = true
     a.save
   end
+
+  sources = [{:name => "Daily Trust", :home_page => "www.dailytrust.com.ng", :url => "http://www.dailytrust.com.ng/index.php/rss/xml/RSS2.0/full", :quality_rating => "10"}]
+
+  sources.each do |source|
+    Source.create!(source)
+  end

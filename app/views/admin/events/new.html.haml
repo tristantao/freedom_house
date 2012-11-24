@@ -2,21 +2,21 @@
   %div.span2
     = render 'admin/shared/sidebar'
     
-  %div.span10
-    %div.well.pagination-centered
-
-
-      %h2 Create New Evemt
-      = simple_form_for(:event, :as => :event_name, :url => admin_events_action_path(:new)) do |f|
+  %div.span7.offset1
+    %h2.pagination-centered Create New Event
+    %div#card
+      = simple_form_for(:event, :as => :event_name, :url => admin_events_action_path(:new), :html => { :method => :put, :class => 'form-horizontal'}) do |f|
         = f.error_notification
         .form-inputs
-          = f.input :name, :required => true
-          = f.text_area :description, :required => true, :cols => 100
-          = f.input :date, :required => false
-          = f.input :longitude, :required => false
-          = f.input :latitude, :required => false
-          = f.input :country, :required => false
-          = f.input :province, :required => false
-          = f.input :city, :required => false
-        .form-actions
-        = f.button :submit, "Create"
+          = f.input :name, :input_html => { :class => "span" }
+          = f.input :date, :input_html => { :class => "span" }
+          = f.input :longitude, :input_html => { :class => "span" }
+          = f.input :latitude, :input_html => { :class => "span" }
+          = f.input :country, :input_html => { :class => "span" }
+          = f.input :province, :input_html => { :class => "span" }
+          = f.input :city, :input_html => { :class => "span" }
+          = f.input :description, :as => :text, :input_html => { :class => "span", :rows => "10" }
+          %div.btn-group.pull-right
+            = f.button :submit, "Create", :class => "btn-success"
+            = link_to 'Cancel', admin_events_path, :class => "btn btn-danger"
+

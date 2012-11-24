@@ -22,8 +22,8 @@ Scenario: display list of articles with title
 
 Scenario: display list of articles with date
   When I follow "All Articles"
-  And I should see "2012-10-14"
-  And I should see "2012-10-15"
+  And I should see "10/15/12"
+  And I should see "10/14/12"
 
 Scenario: display list of articles with location
   When I follow "All Articles"
