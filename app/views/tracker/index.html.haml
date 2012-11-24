@@ -2,7 +2,6 @@
   $(document).ready(function(){
     $(document).on("click", ".open-Article", function () {
       var articleID = $(this).data('article');
-      alert (articleID);
       $.ajax({
           type: 'POST',
           url: "#{view_article_path()}",

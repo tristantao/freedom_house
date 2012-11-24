@@ -1,3 +1,31 @@
+:javascript
+  $(document).ready(function(){
+    $(document).on("click", ".open-Article", function () {
+      var articleID = $(this).data('article');
+      $.ajax({
+          type: 'POST',
+          url: "#{view_article_path()}",
+          data: "articleID=" + articleID,
+          success: function(article){
+            return_title = article["title"];
+            return_text = article["text"];
+            $('#myModalLabel').text(return_title);
+            $('#modalBody').html(return_text);
+            $('#Article_modal').modal('show');
+
+          },
+          error: function(data){
+            alert(data.responseText);
+            //$("#bookmarklet_chapter").prepend('<div class="alert-message error"><p>'+data.responseText+'</p></div>');
+          }
+          });
+          
+      
+     });
+     
+  });
+
+
 %div.row-fluid
   %div.span2
     = render 'admin/shared/sidebar'
@@ -22,5 +50,17 @@
               %td= article.author
               %td= article.location
               %td
+                %a.btn{"data-toggle" => "modal", :href => "#Article", :role => "button", "class" => "open-Article btn btn-primary btn-mini", "data-article" => article.id.to_s} View Article
                 = link_to 'Edit', admin_articles_action_path(:edit, article.id), :id => "edit_article_#{article.id}", :class => "btn btn-mini"
                 = link_to 'Delete', admin_articles_action_path(:delete, article.id), :class => "btn btn-mini btn-danger"
+
+#Article.modal.hide.fade.in{"aria-hidden" => "true", "aria-labelledby" => "myModalHeader", :role => "dialog", :tabindex => "-1", :id => 'modal'}
+  .modal-header
+    %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"}
+    %h3#myModalLabel Blank
+  .modal-body
+    %p#modalBody
+      Filler
+  .modal-footer
+    %button.btn{"aria-hidden" => "true", "data-dismiss" => "modal"} Close
+    %button.btn.btn-primary Save changes
