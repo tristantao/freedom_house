@@ -11,4 +11,10 @@ class Article < ActiveRecord::Base
     "#{latitude}, #{longitude}"
   end
   
+  #Returns an array with all hate_speech linked to this article
+  def hateArray
+    hate_array = []
+    self.hate_speech.each { |speech| hate_array.push(speech.body) }
+    return hate_array
+  end
 end

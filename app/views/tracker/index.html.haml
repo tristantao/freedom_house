@@ -1,9 +1,9 @@
 :javascript
   $(document).ready(function(){
     $(document).on("click", ".open-Article", function () {
-      //var article = Article.find_by_id($("#articleId"));
-      $('.modal-body').html("CHANGED");
-      $('#modal').modal('show');
+      var article_ID = $(this).data('articleID');
+      alert (article_ID);
+      $('#Article_modal4').modal('show');
       
      });
   });
@@ -35,14 +35,14 @@
               %td
               %td
               %td
-                %a.btn{"data-toggle" => "modal", :href => "#Article", :role => "button", :articleID => article.id, "class" => "open-Article btn btn-primary"} View Article
+                %a.btn{"data-toggle" => "modal", :href => "#Article", :role => "button", "data-articleID" => article.id.to_s, "class" => "open-Article btn btn-primary"} View Article
 
-#Article.modal.hide.fade.in#modal{"aria-hidden" => "true", "aria-labelledby" => "Model Header", :role => "dialog", :tabindex => "-1"}
-  .modal-header
-    %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"}
-    %h3#myModalLabel Modal header
-  .modal-body
-    %p Title
-  .modal-footer
-    %button.btn{"aria-hidden" => "true", "data-dismiss" => "modal"} Close
-    %button.btn.btn-primary Save changes
+              #Article.modal.hide.fade.in{"data-articleID" => article.id.to_s, "aria-hidden" => "true", "aria-labelledby" => article.title, :role => "dialog", :tabindex => "-1", :id => 'modal'+ article.id.to_s}
+                .modal-header
+                  %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"}
+                  %h3#myModalLabel #{article.title}
+                .modal-body
+                  = highlight_whole_word(article.text, article.hateArray, :highlighter => '<strong class="highlight">\1</strong>')
+                .modal-footer
+                  %button.btn{"aria-hidden" => "true", "data-dismiss" => "modal"} Close
+                  %button.btn.btn-primary Save changes
