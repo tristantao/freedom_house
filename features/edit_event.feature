@@ -1,4 +1,4 @@
-Feature: Edit user
+Feature: Edit events
 
   As an administrator
   I want to be able to modify events
@@ -23,6 +23,6 @@ Scenario: edit event to an invalid form(sad path, empty field)
   When I fill in "event_name" with ""
   And I press "Update Event"
   Then I should be on the edit event page for "Genocide in Africa"
-  And I should see "Error in editing event. Please try again."
+  And I should see "Name can't be blank."
 
 
