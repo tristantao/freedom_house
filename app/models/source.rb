@@ -11,14 +11,16 @@ class Source < ActiveRecord::Base
   validates :url, rss: true
 
 #In the future, should define a scrape method that sends to methods
-#scrape_rss, scrape_htmlpage, scrape_twitter																																q 
+#scrape_rss, scrape_htmlpage, scrape_twitter
 
   def scrape
      min_interval = 5 * 60
      unless its_empty = self.last_scraped.nil? then
        its_too_early = Time.now - self.last_scraped.to_time >= min_interval
      end
-     unless its_empty || its_too_early then
+     if !its_empty && its_too_early then
+       return "Source #{self.name} was scraped less than #{min_interval/60} minutes ago."
+     else 
        rss_url = self.url
        doc = Nokogiri::HTML(open(rss_url))
 
@@ -35,8 +37,6 @@ class Source < ActiveRecord::Base
        end
        self.last_scraped = DateTime.now
        return nil
-     else 
-       return "Source #{self.name} was scraped less than #{min_interval/60} minutes ago."
      end
   end
 end
