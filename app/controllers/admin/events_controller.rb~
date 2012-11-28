@@ -55,9 +55,4 @@ class Admin::EventsController < ApplicationController
       marker.infowindow render_to_string(:partial => "/shared/event_marker", :locals => {:object => event})
     end
   end
-  
-  protected
-  def admin_user?
-    redirect_to root_path() unless user_signed_in? && current_user.admin?
-  end
 end

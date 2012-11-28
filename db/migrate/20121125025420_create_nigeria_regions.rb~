@@ -1,6 +1,6 @@
-class CreateNigeriaRegions < ActiveRecord::Migration
+class CreateNigeria < ActiveRecord::Migration
   def up
-    create_table :nigeriaRegions, :force => true do |t|
+    create_table :nigerias, :force => true do |t|
       t.string :name
       t.string :f_class
       t.string :f_desig

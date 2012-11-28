@@ -15,7 +15,9 @@ gem 'newrelic_rpm'
 gem 'country-select'
 gem 'gmaps4rails'
 gem 'nokogiri'
-gem'client-side-validations'
+gem 'client_side_validations'
+gem 'ruby-readability', :require => 'readability'
+gem 'feedzirra'
 
 group :production do
   gem 'pg'

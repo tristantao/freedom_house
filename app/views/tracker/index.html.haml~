@@ -1,6 +1,5 @@
 %div.row-fluid
   %div.span12.pagination-centered
-    = render 'overview'
     %h1 Event Map
     = gmaps4rails(@json)
     
@@ -9,11 +8,11 @@
 %div#grid
   - @articles.each do |article|
     .gridItem#card
-      %legend #{article.title}
+      %h5 #{article.title}
       %p Date: #{article.date}
-      %p Source: #{article.source}
+      %p Source: #{article.source.name}
       %br
-      %p #{article.text}
+      %p #{article.text.html_safe}
       %a.btn{"data-toggle" => "modal", :href => "#Article", :role => "button"} View Article
     
 

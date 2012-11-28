@@ -1,6 +1,6 @@
 class Admin::UsersController < ApplicationController
+
   before_filter :admin_user?
-  before_filter :authenticate_user!
 
   def index
     @users = User.find(:all, :order => "first_name ASC")
