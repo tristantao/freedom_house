@@ -2,7 +2,7 @@ Feature: display the hate speech in an article
 
   As an admin or user
   I want to be able to see the text that the machine learner classified as hate speech
-  So that I can approve or disapprove the machine's work
+  So that I can see if it correctly works
  
   Background:
     Given the blog is set up with an admin user
@@ -12,6 +12,7 @@ Feature: display the hate speech in an article
 
 Scenario:  hate speech of an article should be displayed
   When I go to the home page
-  Then I should see "violence between Muslims and Christians"
+  And then I press "Article1"
+  Then I should see "highlight"
   
   
