@@ -19,7 +19,7 @@ class Admin::UsersController < ApplicationController
     if @user.save
       flash[:notice] = "Successfully updated user!"
     else
-      flash[:warning] = "Invalid input. Please try again."
+      flash[:warning] = @user.errors.full_messages.join(". ") + "."
     end
     redirect_to admin_users_action_path(:edit, params[:id])
   end
@@ -35,7 +35,7 @@ class Admin::UsersController < ApplicationController
         flash[:notice] = "User #{userinput[:first_name]} #{userinput[:last_name]} has been created!"
         redirect_to admin_users_path
       else
-        flash[:warning] = "Error in creating user. Please try again."
+        flash[:warning] = a.errors.full_messages.join(". ") + "."
       end
     end
   end
@@ -46,7 +46,7 @@ class Admin::UsersController < ApplicationController
     lastname = @user.last_name
     @user.delete
     flash[:notice] = "User #{firstname} #{lastname} has been deleted."
-    redirect_to admin_dashboard_path
+    redirect_to admin_users_path
   end
 
 
