@@ -10,9 +10,10 @@ Feature: display the hate speech in an article
     And the webscraper extracted an article from a source
     And the machine learner processed that article
 
+#THIS TEST CAN'T CHECK AJAX
 Scenario:  hate speech of an article should be displayed
   When I go to the home page
-  And then I press "Article1"
-  Then I should see "highlight"
+  And I follow "Article1"
+  Then I should see "Filler"
   
   
