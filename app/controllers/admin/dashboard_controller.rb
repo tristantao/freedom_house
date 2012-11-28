@@ -8,8 +8,12 @@ class Admin::DashboardController < ApplicationController
     @num_events = Event.count(:distinct => true)
     @num_sources = Source.count(:distinct => true)
     @num_articles = Article.count(:distinct => true)
-    @latest_article = Article.all(:order => "date desc", :limit => 1)[0].try(:title)
-    @latest_event = Event.all(:order =>"date desc", :limit => 1)[0].try(:name)
+    @latest_articles = Article.all(:order => "date desc", :limit => 5)
+    @latest_events = Event.all(:order =>"date desc", :limit => 5)
+    @new_articles = Article.where('date > ?', @current_user.last_sign_in_at.to_s).length
+    @new_events = Event.where('date > ?', @current_user.last_sign_in_at.to_s).length
+    @new_sources = Source.where('created_at > ?', @current_user.last_sign_in_at.to_s).length
+    @num_messages = 0
   end
 
   protected

@@ -1,18 +1,22 @@
-%div.navbar.navbar-fixed-top
-  %div.navbar-inner
-    %div.container
-      %a.btn.btn-navbar{"data-toggle" => "collapse", "data-target" => ".nav-collapse"}
-        %span.icon-bar
-        %span.icon-bar
-        %span.icon-bar
-      %a.brand{:href => root_path} Freedom Tracker
-      %div.nav-collapse
-        %ul.nav.pull-right
-          - if controller_name != 'home' && controller_name != 'sessions'
-            = render 'layouts/login'
-        %ul.nav.pull-right
-          - if current_user && current_user.admin
-            %li= link_to 'Admin Dashboard', admin_page_path
-        %ul.nav.pull-right
-          - if current_user
-            %li= link_to 'Home', home_path
+%div.container.navbar-wrapper
+  %div.navbar
+    %div.navbar-inner
+      %div.container
+        %a.btn.btn-navbar{"data-toggle" => "collapse", "data-target" => ".nav-collapse"}
+          %span.icon-bar
+          %span.icon-bar
+          %span.icon-bar
+        %a.brand{:href => root_path} Freedom Tracker
+        %div.nav-collapse
+          %ul.nav.pull-right
+            - if controller_name != 'home' && controller_name != 'sessions'
+              = render 'layouts/login'
+          %ul.nav.pull-right
+            - if current_user && current_user.admin
+              %li= link_to 'Admin Dashboard', admin_dashboard_path
+          %ul.nav.pull-right
+            - if current_user
+              %li= link_to 'Home', home_path
+          %ul.nav.pull-right
+            - if controller_name == 'home'
+              %li{"data-toggle" => "modal", :href => "#Signin", :role => "button"}= link_to 'Sign in'

@@ -1,31 +1,18 @@
-%body
-  = render 'overview'
-  %div.row-fluid
-    %div.span12.pagination-centered
-      %h1 Event Map
-      = gmaps4rails(@json)
-  %div.row-fuid
-    %h2 Articles
-    %div.well
-      %table.table.table-striped.table-hover#article_table
-        %thead
-          %tr
-            %th #
-            %th Title
-            %th Date
-            %th Source
-            %th Certainty
-            %th Actions
-        %tbody
-          - @articles.each do |article|
-            %tr
-              %td= article.id
-              %td= article.title
-              %td= article.date
-              %td
-              %td
-              %td
-                %a.btn{"data-toggle" => "modal", :href => "#Article", :role => "button"} View Article
+%div.row-fluid
+  %div.span12.pagination-centered
+    %h1 Event Map
+    = gmaps4rails(@json)
+    
+%h1.pagination-centered Articles
+%hr      
+%div#grid
+  - @articles.each do |article|
+    .gridItem#card
+      %legend #{article.title}
+      %p Date: #{article.date}
+      %p Source: #{article.source}
+      %a.btn{"data-toggle" => "modal", :href => "#Article", :role => "button"} View Article
+    
 
 #Article.modal.hide.fade.in{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
   .modal-header

@@ -1,7 +1,7 @@
 %li.dropdown-toggle{"data-toggle" => "dropdown"}= link_to "Account"
 %ul.dropdown-menu
   %li
-    %a{:href => profile_path}
+    %a{:href => user_profile_path}
       %i.icon-user
       Profile
   %li

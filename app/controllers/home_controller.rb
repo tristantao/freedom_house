@@ -1,4 +1,5 @@
 class HomeController < ApplicationController
+  layout "carousel"
 
   def index
     if user_signed_in?

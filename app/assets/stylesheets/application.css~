@@ -7,13 +7,77 @@
 */
 *= require bootstrap_and_overrides
 
-.footer{
-  height: 100%;
+.center {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.form-buttons {
+  padding-left: 180px;
+}
+
+.img-height {
+  height: 125px;
+  vertical-align: middle;
+}
+
+#main {
+  margin-top: 100px;
+}
+
+
+.navbar-wrapper {
   position: relative;
-  margin-top: -150px; /* negative value of footer height */
-  height: 150px;
-  clear:both;
-  padding-top:20px;
-  color:#fff;
+  z-index: 10;
+  margin-top: 20px;
+  margin-bottom: -100px;
+}
+
+#card {
+  background: white;
+  border: 1px solid #CECECE;
+  display: block;
+  font-size: 13px;
+  overflow: hidden;
+  padding: 8px 20px 20px 20px;
+  -webkit-border-top-right-radius: 4px;
+  -webkit-border-bottom-right-radius: 4px;
+  -webkit-border-bottom-left-radius: 4px;
+  -webkit-border-top-left-radius: 4px;
+  -moz-border-radius-topright: 4px;
+  -moz-border-radius-bottomright: 4px;
+  -moz-border-radius-bottomleft: 4px;
+  -moz-border-radius-topleft: 4px;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  border-bottom-left-radius: 4px;
+  border-top-left-radius: 4px;
+  margin-bottom: 20px;
+  -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.15), 0 4px 0 -3px white, 0 4px 0 -2px #BEC2C8, 0 8px 0 -5px white, 0 8px 0 -4px #BEC2C8;
+  -moz-box-shadow: 0 0 3px rgba(0,0,0,0.15), 0 4px 0 -3px #fff, 0 4px 0 -2px #bec2c8, 0 8px 0 -5px #fff, 0 8px 0 -4px #bec2c8;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.15), 0 4px 0 -3px white, 0 4px 0 -2px #BEC2C8, 0 8px 0 -5px white, 0 8px 0 -4px #BEC2C8;
+}
+
+.gridItem {
+  max-width: 225px;
+  float: left;
+}
+
+#grid {
+  margin: 0 auto;
+}
+
+
+.brand {
+  font-weight: bold;
+  color: black;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, .1), 0 0 30px rgba(255, 255, 255, .125);
+  -webkit-transition: all .2s linear;
+  -moz-transition: all .2s linear;
+  transition: all .2s linear;
+}
+
+.footer {
+  border-top: 1px solid #DEDEDE;
 }
 

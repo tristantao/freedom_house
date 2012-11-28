@@ -40,7 +40,7 @@ Scenario: add user to the website (sad path, empty field)
   And I press "Update User"
   Then I should be on the edit user page for "bbunny@gmail.com"
   And I should see "Bugs Bunny"
-  And I should see "Invalid input. Please try again."
+  And I should see "First name can't be blank."
   And user should be in the database with these fields:
   | email            | admin | first_name | last_name |
   | bbunny@gmail.com |  0    | Bugs       | Bunny     |

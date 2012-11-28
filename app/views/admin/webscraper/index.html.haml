@@ -1,7 +1,10 @@
 %div.row-fluid
   %div.span2
     = render 'admin/shared/sidebar'
+    
   %div.span10
+    %h2 Scraping Controls
+    %div.pull-right= button_to 'Scrape All', admin_sources_action_path(:super_scrape), :class => "btn btn-success"
     %table.table.table-striped.table-hover#source_table
       %thead
         %tr
