@@ -1,4 +1,4 @@
-Feature: Add sources to the website
+Feature: Add events to the website
 
   As a website user
   I want to be able to add Event
