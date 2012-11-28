@@ -18,10 +18,10 @@ Scenario: add new event to the website (happy path)
   And I press "Create"
   Then I should see "Event Genocide in Africa has been created"
 
-Scenario: add new source to the website (sad path)
+Scenario: add new event to the website (sad path)
   When I go to the add event page
   And I fill in "event_name" with "invalid_name"
   And I press "Create"
   Then I should not see "invalid_name"
   Then I should be on the add event page
-  And I should see "Error in creating event. Please try again."
+  And I should see "Description can't be blank."

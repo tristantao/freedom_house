@@ -48,7 +48,7 @@
               %td= link_to article.title, article.link
               %td= article.date.strftime('%m/%d/%y')
               %td= article.author
-              %td= article.location
+              %td= @article_location[article.id]
               %td
                 %a.btn{"data-toggle" => "modal", :href => "#Article", :role => "button", "class" => "open-Article btn btn-primary btn-mini", "data-article" => article.id.to_s} View Article
                 = link_to 'Edit', admin_articles_action_path(:edit, article.id), :id => "edit_article_#{article.id}", :class => "btn btn-mini"

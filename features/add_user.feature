@@ -26,7 +26,7 @@ Scenario: add user to the website (sad path, not all fields are filled in)
   And I fill in "user_email" with "user_fail@foo.com"
   And I press "Create"
   Then I should be on the add user page
-  And I should see "Error in creating user. Please try again."
+  And I should see "Password can't be blank. First name can't be blank. Last name can't be blank."
   
 Scenario: add user to the website (sad path, passwords don't match)
   When I go to the add user page
@@ -35,7 +35,7 @@ Scenario: add user to the website (sad path, passwords don't match)
   | user1@foo.com | password1 |    1  | tristan    | tao       | password2             |
   And I press "Create"
   Then I should be on the add user page
-  And I should see "Error in creating user. Please try again."
+  And I should see "Password doesn't match confirmation."
 
 Scenario: add non-admin user to the website 
   When I go to the add user page

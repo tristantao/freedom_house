@@ -3,6 +3,19 @@ class Admin::ArticlesController < ApplicationController
   def index
     @articles = Article.all
   end
+  
+  def index
+    @articles = Article.all
+    @article_location = {}
+    @articles.each do |a|
+      loc = a.locations
+      if not loc.size == 0
+        @article_location[a.id] = loc[0].name
+      else
+        @article_location[a.id] = ""
+      end
+    end
+  end
 	
   def new
     article = params[:article]
@@ -19,7 +32,6 @@ class Admin::ArticlesController < ApplicationController
 	
   def edit
     @article = Article.find(params[:id]) 	  
-  end
 	
   def update
     @article = Article.find(params[:id])
