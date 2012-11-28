@@ -3,3 +3,4 @@
 
 en:
   hello: "Hello world"
+  server_error: "Server Error! Unable to retrieve article contents."

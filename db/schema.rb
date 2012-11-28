@@ -46,13 +46,19 @@ ActiveRecord::Schema.define(:version => 20121128221628) do
     t.boolean  "gmaps"
   end
 
+  create_table "hate_speeches", :force => true do |t|
+    t.string   "speaker"
+    t.text     "body"
+    t.integer  "article_id"
+    
   create_table "locations", :force => true do |t|
     t.string   "name"
     t.float    "latitude"
     t.float    "longitude"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
+
+  add_index "hate_speeches", ["article_id"], :name => "index_hate_speeches_on_article_id"
 
   create_table "nigeriaRegions", :force => true do |t|
     t.string   "name"
