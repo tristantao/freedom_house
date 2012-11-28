@@ -1,9 +1,10 @@
 %div.row-fluid
   %div.span12.pagination-centered
+    = render 'overview'
     %h1 Event Map
     = gmaps4rails(@json)
     
-%h1 Articles
+%h1.pagination-centered Articles
 %hr      
 %div#grid
   - @articles.each do |article|
@@ -11,6 +12,8 @@
       %legend #{article.title}
       %p Date: #{article.date}
       %p Source: #{article.source}
+      %br
+      %p #{article.text}
       %a.btn{"data-toggle" => "modal", :href => "#Article", :role => "button"} View Article
     
 
