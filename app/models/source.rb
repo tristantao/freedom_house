@@ -22,7 +22,7 @@ class Source < ActiveRecord::Base
      if its_not_empty = !self.last_scraped.nil? then
        its_too_early = Time.now - self.last_scraped.to_time >= min_interval
      end
-     if its_not_empty && !its_too_early then
+     if its_not_empty && its_too_early then
        return "Source #{self.name} was scraped less than #{min_interval/60} minutes ago. Time is #{Time.now}."
      else 
        feed = Feedzirra::Feed.fetch_and_parse(self.url)
