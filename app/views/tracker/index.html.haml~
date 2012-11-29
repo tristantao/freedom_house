@@ -9,8 +9,10 @@
           success: function(article){
             return_title = article["title"];
             return_text = article["text"];
+            return_link = article["link"]
             $('#myModalLabel').text(return_title);
             $('#modalBody').html(return_text);
+            $('#modalLink').attr("href", return_link)
             $('#Article_modal').modal('show');
 
           },
@@ -40,28 +42,24 @@
 %div#grid
   - @articles.each do |article|
     .gridItem#card
+      - if !article.picture.nill?
+        = image_tag article.picture
       %h5 #{article.title}
       %p Date: #{article.date}
       %p Source: #{article.source}
-<<<<<<< HEAD
-      %br
-      %p #{article.text.html_safe}
-      %a.btn{"data-toggle" => "modal", :href => "#Article", :role => "button"} View Article
-    
-=======
       %a.btn{:id => "Article" + article.id.to_s, "data-toggle" => "modal", :href => "#Article", :role => "button", "class" => "open-Article btn btn-primary", "data-article" => article.id.to_s} View Article
->>>>>>> 193c251f5ed5a4f9b06a700c4838b425ee5bf59b
+      
 
 #Article.modal.hide.fade.in{"aria-hidden" => "true", "aria-labelledby" => "myModalHeader", :role => "dialog", :tabindex => "-1", :id => 'modal'}
   .modal-header
     %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"}
-    %h3#myModalLabel Blank
+    %h4#myModalLabel Blank
   .modal-body
     %p#modalBody
       Filler
   .modal-footer
     %button.btn{"aria-hidden" => "true", "data-dismiss" => "modal"} Close
-    %button.btn.btn-primary Save changes
+    = link_to 'View Original', "#", :class => "btn btn-primary", :id => "modalLink"
 
 
 

@@ -36,7 +36,7 @@ class Source < ActiveRecord::Base
            article.date = item.published
            article.source = self
            source = open(article.link).read
-           doc =  Readability::Document.new(source)
+           doc =  Readability::Document.new(source, :ignore_image_format =>["gif"], :min_image_height => 200, :min_image_width => 200 )
            article.text = doc.content
            article.picture = doc.images[0]
            article.save
