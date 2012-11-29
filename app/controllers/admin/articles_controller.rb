@@ -1,22 +1,30 @@
 class Admin::ArticlesController < ApplicationController
 
-	def index
-  	@articles = Article.all
-    @article_location = {}
+  def index
+    @articles = Article.all
+    @article_city = {}
+    @article_country = {}
     @articles.each do |a|
       loc = a.locations
       if not loc.size == 0
-        @article_location[a.id] = loc[0].name
+        @article_city[a.id] = loc[0].name
+        @article_country[a.id] = loc[0].country
       else
-        @article_location[a.id] = ""
+        @article_city[a.id] = ""
+        @article_country[a.id] = ""
       end
     end
-	end
-	
-	 def new
+  end
+
+  def new
     article = params[:article]
     if article
-     s = Article.create(:title => article[:title], :location => article[:location], :date => article[:date], :author=> article[:author], :link => article[:link], :text => article[:text])
+      s = Article.create(:title => article[:title], :date => article[:date], :author=> article[:author], :link => article[:link], :text => article[:text])
+       loc = Location.find_by_name(article[:city])
+      if loc.nil?
+        loc = Location.create(:name => article[:city], :latitude => 0.0, :longitude => 0.0, :country => article[:country])
+      end
+      s.locations << loc
       if s.save
         flash[:notice] = "Article #{article[:title]} has been created!"
         redirect_to admin_articles_path
@@ -25,11 +33,11 @@ class Admin::ArticlesController < ApplicationController
       end
     end
   end
-	
-	def edit
-	end
-	
-	def delete
+
+  def edit
+  end
+
+  def delete
     @article = Article.find_by_id(params[:id])
     title = @article.title
     @article.delete

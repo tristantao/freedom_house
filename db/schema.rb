@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121128044837) do
+ActiveRecord::Schema.define(:version => 20121129053608) do
 
   create_table "NGA", :force => true do |t|
     t.string "name",    :limit => 77
@@ -31,8 +31,6 @@ ActiveRecord::Schema.define(:version => 20121128044837) do
     t.string   "text"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.float    "latitude"
-    t.float    "longitude"
     t.boolean  "gmaps"
   end
 
@@ -55,12 +53,19 @@ ActiveRecord::Schema.define(:version => 20121128044837) do
     t.boolean  "gmaps"
   end
 
+  create_table "events_locations", :id => false, :force => true do |t|
+    t.integer "location_id"
+    t.integer "event_id"
+  end
+
   create_table "locations", :force => true do |t|
     t.string   "name"
     t.float    "latitude"
     t.float    "longitude"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "country"
+    t.boolean  "gmap"
   end
 
   create_table "nigeria", :force => true do |t|
