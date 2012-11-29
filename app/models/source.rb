@@ -1,5 +1,9 @@
 require 'open-uri'
 require 'date'
+require 'uri'
+require 'readability'
+require 'feedzirra'
+
 
 class Source < ActiveRecord::Base
 
@@ -15,27 +19,32 @@ class Source < ActiveRecord::Base
 
   def scrape
      min_interval = 5 * 60
-     unless its_empty = self.last_scraped.nil? then
+     if its_not_empty = !self.last_scraped.nil? then
        its_too_early = Time.now - self.last_scraped.to_time >= min_interval
      end
-     if !its_empty && its_too_early then
-       return "Source #{self.name} was scraped less than #{min_interval/60} minutes ago."
+     if its_not_empty && !its_too_early then
+       return "Source #{self.name} was scraped less than #{min_interval/60} minutes ago. Time is #{Time.now}."
      else 
-       rss_url = self.url
-       doc = Nokogiri::HTML(open(rss_url))
-
-       items = doc.css('channel item')
-
+       feed = Feedzirra::Feed.fetch_and_parse(self.url)
+       items = feed.entries
+       
        items.each do |item|
-         article = Article.new
-         article.title = item.at_css('title').text
-         article.link = item.at_css('link').next.text
-         article.date = DateTime.parse(item.at_css('pubdate').text)
-         article.source = self
-
-         article.save if (self.last_scraped.nil? || article.date > self.last_scraped)
+         if item.published <= Time.now
+           article = Article.new
+           article.title = item.title
+           article.link = item.url
+           article.date = item.published
+           article.source = self
+           source = open(article.link).read
+           doc =  Readability::Document.new(source, :ignore_image_format =>["gif"], :min_image_height => 200, :min_image_width => 200 )
+           article.text = doc.content
+           article.picture = doc.images[0]
+           article.save
+         end
        end
+       
        self.last_scraped = DateTime.now
+       self.save
        return nil
      end
   end

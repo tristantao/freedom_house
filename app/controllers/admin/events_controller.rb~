@@ -1,4 +1,6 @@
 class Admin::EventsController < ApplicationController
+  before_filter :admin_user?
+  before_filter :authenticate_user!
   def index
     @events = Event.all
   end
@@ -11,7 +13,7 @@ class Admin::EventsController < ApplicationController
         flash[:notice] = "Event #{event[:name]} has been created!"
         redirect_to admin_events_path
       else
-        flash[:warning] = s.errors.full_messages.join(". ")
+        flash[:warning] = e.errors.full_messages.join(". ") + "."
       end
     end
   end
@@ -34,7 +36,7 @@ class Admin::EventsController < ApplicationController
     if @event.save
       flash[:notice] = "Successfully updated event!"
     else
-      flash[:warning] = s.errors.full_messages.join(". ")
+      flash[:warning] = @event.errors.full_messages.join(". ") + "."
     end
     redirect_to admin_events_action_path(:edit, @event.id)
   end
@@ -51,5 +53,6 @@ class Admin::EventsController < ApplicationController
     @json = Event.all.to_gmaps4rails do |event, marker|
       marker.title event.name
       marker.infowindow render_to_string(:partial => "/shared/event_marker", :locals => {:object => event})
+    end
   end
 end

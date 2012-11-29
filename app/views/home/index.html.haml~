@@ -29,10 +29,6 @@
       = image_tag "saas.png", :class => "img-height"
       %h2 CS 169
       %p   CS 169 is the Berkeley software engineering course where students learn ideas and techniques for designing, developing, and modifying large software systems. They also learn about modular design techniques, designing for reuse and maintainability, and project team organization and management.
-  
-  
-  %div.featurette
-    %hr.featurette-divider
       
       
       

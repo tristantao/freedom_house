@@ -59,8 +59,12 @@
 }
 
 .gridItem {
-  width: 225px;
+  width: 300px;
   float: left;
+}
+
+.gridItem legend{
+  font-size: 20;
 }
 
 #grid {
@@ -80,4 +84,6 @@
 .footer {
   border-top: 1px solid #DEDEDE;
 }
+
+
 

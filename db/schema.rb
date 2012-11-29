@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121116105056) do
+ActiveRecord::Schema.define(:version => 20121128221628) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(:version => 20121116105056) do
     t.float    "latitude"
     t.float    "longitude"
     t.boolean  "gmaps"
+    t.string   "picture"
   end
 
   create_table "events", :force => true do |t|
@@ -39,6 +40,28 @@ ActiveRecord::Schema.define(:version => 20121116105056) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "gmaps"
+  end
+
+  create_table "hate_speeches", :force => true do |t|
+    t.string   "speaker"
+    t.text     "body"
+    t.integer  "article_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "hate_speeches", ["article_id"], :name => "index_hate_speeches_on_article_id"
+
+  create_table "nigeriaRegions", :force => true do |t|
+    t.string   "name"
+    t.string   "f_class"
+    t.string   "f_desig"
+    t.float    "lat"
+    t.float    "long"
+    t.string   "state"
+    t.string   "local_government"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "sources", :force => true do |t|

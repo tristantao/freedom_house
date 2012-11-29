@@ -1,8 +1,11 @@
 class Article < ActiveRecord::Base
 
   belongs_to :source
-  attr_accessible :title, :date, :text, :location, :author, :link
+  has_and_belongs_to_many :locations
+  attr_accessible :title, :date, :text, :location, :author, :link, :picture
   validates :title, :date, :link, :presence => true
+  
+  has_many :hate_speech
   validates :title, :uniqueness => {:scope => :date, :case_sensitive => false}
   acts_as_gmappable :process_geocoding => false
 
@@ -10,4 +13,11 @@ class Article < ActiveRecord::Base
     "#{latitude}, #{longitude}"
   end
   
+  #Returns an array with all hate_speech linked to this article
+  def hateArray
+    hate_array = []
+    self.hate_speech.each { |speech| hate_array.push(speech.body) }
+    return hate_array
+  end
+
 end

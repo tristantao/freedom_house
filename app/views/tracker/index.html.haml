@@ -1,25 +1,66 @@
-%div.row-fluid
-  %div.span12.pagination-centered
-    %h1 Event Map
-    = gmaps4rails(@json)
-    
+:javascript
+  $(document).ready(function(){
+    $(document).on("click", ".open-Article", function () {
+      var articleID = $(this).data('article');
+      $.ajax({
+          type: 'POST',
+          url: "#{view_article_path()}",
+          data: "articleID=" + articleID,
+          success: function(article){
+            return_title = article["title"];
+            return_text = article["text"];
+            return_link = article["link"]
+            $('#myModalLabel').text(return_title);
+            $('#modalBody').html(return_text);
+            $('#modalLink').attr("href", return_link)
+            $('#Article_modal').modal('show');
+
+          },
+          error: function(data){
+            alert(data.responseText);
+            //$("#bookmarklet_chapter").prepend('<div class="alert-message error"><p>'+data.responseText+'</p></div>');
+          }
+          });
+          
+      
+     });
+     
+  });
+
+%body
+  = render 'overview'
+  %div.row-fluid
+    %div.span12.pagination-centered
+      %h1 Event Map
+      = gmaps4rails(@json)
+ 
+                
+
+
 %h1.pagination-centered Articles
 %hr      
 %div#grid
   - @articles.each do |article|
     .gridItem#card
-      %legend #{article.title}
+      - if !article.picture.nil?
+        = image_tag article.picture
+      %h5 #{article.title}
       %p Date: #{article.date}
       %p Source: #{article.source}
-      %a.btn{"data-toggle" => "modal", :href => "#Article", :role => "button"} View Article
-    
+      %a.btn{:id => "Article" + article.id.to_s, "data-toggle" => "modal", :href => "#Article", :role => "button", "class" => "open-Article btn btn-primary", "data-article" => article.id.to_s} View Article
+      
 
-#Article.modal.hide.fade.in{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
+#Article.modal.hide.fade.in{"aria-hidden" => "true", "aria-labelledby" => "myModalHeader", :role => "dialog", :tabindex => "-1", :id => 'modal'}
   .modal-header
-    %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
-    %h3#myModalLabel Modal header
+    %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"}
+    %h4#myModalLabel Blank
   .modal-body
-    %p One fine body…
+    %p#modalBody
+      Filler
   .modal-footer
     %button.btn{"aria-hidden" => "true", "data-dismiss" => "modal"} Close
-    %button.btn.btn-primary Save changes
+    = link_to 'View Original', "#", :class => "btn btn-primary", :id => "modalLink"
+
+
+
+  

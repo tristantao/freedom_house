@@ -2,6 +2,7 @@
   %div.span2
     = render 'admin/shared/sidebar'
   %div.span10
+    %h2 All Sources
     %div.pull-right= button_to 'Create New Source', admin_sources_action_path(:new), :class => "button btn"
 
     -#= form_remote_tag :admin => {:action => 'index'}
@@ -11,15 +12,15 @@
         %tr
           %th #
           %th Name
-          %th Home Page
           %th Ratings/Quality
+          %th Last Scraped
           %th Actions
         %tbody
           - @sources.each do |source|
             %tr
               %td= source.id
-              %td= source.name
-              %td= source.home_page
+              %td= link_to source.name, source.home_page
+              %td= source.last_scraped
               %td= source.quality_rating
               %td
                 = link_to 'Edit', admin_sources_action_path(:edit, source.id), :id => "edit_source_#{source.id}", :class => "btn btn-mini"

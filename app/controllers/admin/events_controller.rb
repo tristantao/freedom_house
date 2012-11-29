@@ -1,4 +1,6 @@
 class Admin::EventsController < ApplicationController
+  before_filter :admin_user?
+  before_filter :authenticate_user!
   def index
     @events = Event.all
   end
@@ -52,5 +54,10 @@ class Admin::EventsController < ApplicationController
       marker.title event.name
       marker.infowindow render_to_string(:partial => "/shared/event_marker", :locals => {:object => event})
     end
+  end
+  
+  protected
+  def admin_user?
+    redirect_to root_path() unless user_signed_in? && current_user.admin?
   end
 end

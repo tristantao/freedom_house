@@ -59,8 +59,12 @@
 }
 
 .gridItem {
-  max-width: 225px;
+  width: 300px;
   float: left;
+}
+
+.gridItem legend{
+  font-size: 25;
 }
 
 #grid {
