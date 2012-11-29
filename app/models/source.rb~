@@ -22,7 +22,7 @@ class Source < ActiveRecord::Base
      if its_not_empty = !self.last_scraped.nil? then
        its_too_early = Time.now - self.last_scraped.to_time >= min_interval
      end
-     if its_not_empty && !its_too_early then
+     if its_not_empty && its_too_early then
        return "Source #{self.name} was scraped less than #{min_interval/60} minutes ago. Time is #{Time.now}."
      else 
        feed = Feedzirra::Feed.fetch_and_parse(self.url)
@@ -35,8 +35,8 @@ class Source < ActiveRecord::Base
            article.link = item.url
            article.date = item.published
            article.source = self
-           source = open(article.link).read
-           doc =  Readability::Document.new(source, :ignore_image_format =>["gif"], :min_image_height => 200, :min_image_width => 200 )
+           source = open(item.url).read
+           doc =  Readability::Document.new(source, :ignore_image_format =>["gif"], :min_image_height => 250, :min_image_width => 250 )
            article.text = doc.content
            article.picture = doc.images[0]
            article.save

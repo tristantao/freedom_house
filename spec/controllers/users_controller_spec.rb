@@ -11,6 +11,9 @@ describe Admin::UsersController do
       test_user.should_receive(:last_name=).with("Balcells")
       test_user.should_receive(:admin=).with(true)
       test_user.should_receive(:save)
+      test_user.stub(:errors).and_return(test_user)
+      test_user.stub(:full_messages).and_return([])
+
       Admin::UsersController.any_instance.stub(:admin_user?).and_return(true)
       post :update, {:id => '1', "user" => {'email' => "chris@gmail.com", 'first_name' => 'Chris', 'last_name' => 'Balcells', 'admin' => true}}
     end

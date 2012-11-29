@@ -3,14 +3,17 @@ class TrackerController < ApplicationController
 
   def index
     @articles = Article.all(:limit => 25, :order => "date desc")
-    @json = Event.all.to_gmaps4rails do |event, marker|
-      marker.title event.name
-      marker.infowindow render_to_string(:partial => "/shared/event_marker", :locals => {:object => event})
+    @json = ""
+    Event.all.each do |event|
+      @json << event.locations.to_gmaps4rails do |event, marker|
+        marker.title event.name
+        marker.infowindow render_to_string(:partial => "/shared/event_marker", :locals => {:object => event})
+      end
     end
   end
-  
+
   def viewArticle
-    @article = Article.find_by_id(params[:articleID])    
+    @article = Article.find_by_id(params[:articleID])
     if @article.nil?
       render :text => t("server_error"), :status => 403
     else

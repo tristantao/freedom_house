@@ -1,0 +1,15 @@
+require 'csv'
+
+desc "Import the Nigerian location database from csv file"
+task :import => [:environment] do
+
+  file = "db/Nigeria.csv"
+
+  CSV.foreach(file, :headers => true) do |row|
+    Nigeria.create {
+    #create the import here.
+      :name => row[1],
+      :league => row[2],
+      :some_other_data => row[4]
+    }
+  end
