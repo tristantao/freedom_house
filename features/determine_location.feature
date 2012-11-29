@@ -2,7 +2,7 @@ Feature: determine the location of from the article
  
   As a user
   I want to see a list of locations that the article talks about
-  So that I can easily detect the relation ship between articles and events
+  So that I can easily detect the relationship between articles and events
 
 Background: display article with locations
   Given the following articles exist:
@@ -14,5 +14,7 @@ Background: display article with locations
   And I am logged in as the administrator
   And I am on the admin dashboard
 
-Scenario: display article with locations
+Scenario: mine location out of articles
   When I go to the articles page
+  Then I should see "Jaji"
+  And I should see all the locations determined
