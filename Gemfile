@@ -34,7 +34,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
-
+gem 'dbf'
 # Use unicorn as the web server
 # gem 'unicorn'
 

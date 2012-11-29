@@ -11,7 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121128221628) do
+ActiveRecord::Schema.define(:version => 20121129053608) do
+
+  create_table "NGA", :force => true do |t|
+    t.string "name",    :limit => 77
+    t.string "f_class", :limit => 9
+    t.string "f_desig", :limit => 9
+    t.string "lat",     :limit => 9
+    t.string "long",    :limit => 9
+    t.string "adm1",    :limit => 25
+    t.string "adm2",    :limit => 25
+  end
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -22,8 +32,6 @@ ActiveRecord::Schema.define(:version => 20121128221628) do
     t.string   "text"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.float    "latitude"
-    t.float    "longitude"
     t.boolean  "gmaps"
     t.string   "picture"
   end
@@ -46,8 +54,21 @@ ActiveRecord::Schema.define(:version => 20121128221628) do
     t.string   "speaker"
     t.text     "body"
     t.integer  "article_id"
+  end
+
+  create_table "events_locations", :id => false, :force => true do |t|
+    t.integer "location_id"
+    t.integer "event_id"
+  end
+
+  create_table "locations", :force => true do |t|
+    t.string   "name"
+    t.float    "latitude"
+    t.float    "longitude"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "country"
+    t.boolean  "gmap"
   end
 
   add_index "hate_speeches", ["article_id"], :name => "index_hate_speeches_on_article_id"

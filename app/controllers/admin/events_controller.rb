@@ -3,14 +3,45 @@ class Admin::EventsController < ApplicationController
   before_filter :authenticate_user!
   def index
     @events = Event.all
+    @event_city = {}
+    @event_country = {}
+    @event_longitude = {}
+    @event_latitude = {}
+
+    @events.each do |e|
+      loc = e.locations
+      if not loc.size == 0
+        @event_city[e.id] = loc[0].name
+        @event_country[e.id] = loc[0].country
+        @event_latitude[e.id] = loc[0].latitude
+        @event_longitude[e.id] = loc[0].longitude
+      else
+        @event_city[e.id] = ""
+        @event_country[e.id] = ""
+        @event_latitude[e.id] = 0.00
+        @event_longitude[e.id] = 0.00
+      end
+    end
+
   end
 
   def new
     event = params[:event]
+    found_loc = true
     if event
-      e = Event.create(:name => event[:name], :description => event[:description], :date => event[:date], :longitude => event[:longitude], :latitude => event[:latitude], :country => event[:country], :province => event[:province], :city => event[:city])
+      e = Event.create(:name => event[:name], :description => event[:description], :date => event[:date])
+      loc = Location.find_by_name(event[:city])
+      if loc.nil?
+        loc = Location.create(:name => event[:city], :latitude => event[:latitude].to_f, :longitude => event[:longitude].to_f, :country => event[:country])
+        found_loc = false
+      end
+      e.locations << loc
       if e.save
-        flash[:notice] = "Event #{event[:name]} has been created!"
+        message = "Event #{event[:name]} has been created!"
+        if found_loc
+          message = message + " We also found a city in the existing database with the same name, with Lat: #{loc.latitude} and Long: #{loc.longitude}. Using the existing location instead. Rename the location if you want to add a new Location"
+        end
+        flash[:notice] = message
         redirect_to admin_events_path
       else
         flash[:warning] = e.errors.full_messages.join(". ") + "."
@@ -27,11 +58,18 @@ class Admin::EventsController < ApplicationController
     @event.name = params[:event][:name]
     @event.date = params[:event]['date(3i)'] + "/" + params[:event]['date(2i)'] + "/" + params[:event]['date(1i)']
     @event.description = params[:event][:description]
-    @event.longitude = params[:event][:longitude]
-    @event.latitude = params[:event][:latitude]
-    @event.country = params[:event][:country]
-    @event.province = params[:event][:province]
-    @event.city = params[:event][:city]
+    @loc = Location.first(:conditions => {:longitude => params[:event][:longitude], :latitude => params[:event][:latitude]})
+
+    if @loc.nil?
+      @loc = Location.create(:name => params[:event][:city], :latitude => params[:event][:latitude], :longitude => params[:event][:longitude], :country => params[:event][:country])
+      @event.locations << @loc
+    else
+      @loc.name = params[:event][:city]
+      @loc.country = params[:event][:country]
+      @loc.latitude = params[:event][:latitude]
+      @loc.longitude = params[:event][:longitude]
+      @loc.save
+    end
 
     if @event.save
       flash[:notice] = "Successfully updated event!"
@@ -50,9 +88,14 @@ class Admin::EventsController < ApplicationController
   end
 
   def map
-    @json = Event.all.to_gmaps4rails do |event, marker|
-      marker.title event.name
-      marker.infowindow render_to_string(:partial => "/shared/event_marker", :locals => {:object => event})
+    @json = ""
+    Event.all.each do |event|
+      event.locations.each do |loc|
+        @json << loc.to_gmaps4rails do |event, marker|
+          marker.title event.name
+          marker.infowindow render_to_string(:partial => "/shared/event_marker", :locals => {:object => event})
+        end
+      end
     end
   end
   

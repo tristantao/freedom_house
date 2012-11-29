@@ -21,6 +21,8 @@ module NavigationHelpers
     when /^the add source page$/ then '/admin/sources/new'
     when /^the add event page$/ then '/admin/events/new'
     when /^the scraper page$/ then '/admin/webscraper'
+    when /^the articles page$/ then '/admin/articles'
+
 
     when /^the edit user page for "(.*)"/
       id = User.find_by_email($1).id
