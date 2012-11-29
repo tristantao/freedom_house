@@ -19,6 +19,7 @@ gem 'client_side_validations'
 gem 'ruby-readability', :require => 'readability'
 gem 'feedzirra'
 gem 'mini_magick'
+gem 'libsvm-ruby-swig'
 
 group :production do
   gem 'pg'
