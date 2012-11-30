@@ -9,7 +9,7 @@
         = f.error_notification
         .form-inputs
           = f.input :title, :input_html => { :class => "span" }
-          = f.input :date, :input_html => { :class => "span" }
+          = f.input :date, :as => :string, :input_html => { :class => "span" }
           = f.input :author, :input_html => { :class => "span" }
           = f.input :location, :input_html => { :class => "span" }
           = f.input :link, :input_html => { :class => "span" }

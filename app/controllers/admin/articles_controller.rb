@@ -56,11 +56,10 @@ class Admin::ArticlesController < ApplicationController
     else
       flash[:warning] = @article.errors.full_messages.join(". ")
     end
-    redirect_to admin_article_action_path(:edit, @artcle.id)
+    redirect_to admin_articles_action_path(:edit, @article.id)
   end
 
-  def edit
-  end
+
 
   def delete
     @article = Article.find_by_id(params[:id])
