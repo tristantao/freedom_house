@@ -34,8 +34,10 @@ class Source < ActiveRecord::Base
     end
   
        
-    mine_location('../../db/dbf/NGA_CSV.TXT', '../../db/dbf/NGA.dbf', articles)
+#mine_location('../../db/dbf/NGA_CSV.TXT', '../../db/dbf/NGA.dbf', articles, 1)
        
+    mine_location('NGA_CSV.TXT', 'NGA.dbf', articles, 1)
+
     self.last_scraped = DateTime.now
     self.save
   end

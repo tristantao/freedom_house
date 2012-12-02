@@ -1,4 +1,3 @@
-=begin
 require_relative '../../db/dbf/location_miner.rb'
 require 'descriptive_statistics'
 
@@ -17,6 +16,5 @@ puts 'finished mining, returned hash to follow'
 puts a.sum
 puts a.max.nil?
 #determine_relevant_loc(cache_t, 0.75)
-=end
 
 
