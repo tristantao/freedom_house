@@ -42,7 +42,7 @@
 %div#grid
   - @articles.each do |article|
     .gridItem#card
-      - if !article.picture.nill?
+      - if !article.picture.nil?
         = image_tag article.picture
       %h5 #{article.title}
       %p Date: #{article.date}

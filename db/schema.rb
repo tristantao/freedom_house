@@ -13,22 +13,12 @@
 
 ActiveRecord::Schema.define(:version => 20121129053608) do
 
-  create_table "NGA", :force => true do |t|
-    t.string "name",    :limit => 77
-    t.string "f_class", :limit => 9
-    t.string "f_desig", :limit => 9
-    t.string "lat",     :limit => 9
-    t.string "long",    :limit => 9
-    t.string "adm1",    :limit => 25
-    t.string "adm2",    :limit => 25
-  end
-
   create_table "articles", :force => true do |t|
     t.string   "title"
     t.datetime "date"
     t.string   "link"
     t.string   "author"
-    t.string   "text"
+    t.text     "text"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "gmaps"
@@ -77,18 +67,6 @@ ActiveRecord::Schema.define(:version => 20121129053608) do
     t.datetime "updated_at"
     t.string   "country"
     t.boolean  "gmap"
-  end
-
-  create_table "nigeria", :force => true do |t|
-    t.string   "name"
-    t.string   "f_class"
-    t.string   "f_desig"
-    t.float    "lat"
-    t.float    "long"
-    t.string   "state"
-    t.string   "local_government"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "sources", :force => true do |t|
