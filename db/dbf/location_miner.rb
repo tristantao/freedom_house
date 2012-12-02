@@ -1,6 +1,6 @@
 require 'dbf'
 require 'csv'
-require 'descriptive_statistics'
+require 'descriptive-statistics'
 
 def look_in_region(master_table, master_cache_table, individual_cache_table, region_hash, key)
   if not master_cache_table.has_key?(key) #simply populate the table if it isn't in there.
