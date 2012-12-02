@@ -21,7 +21,7 @@ gem 'feedzirra'
 gem 'mini_magick'
 gem 'delayed_job_active_record'
 gem 'hirefire'
-gem 'descriptive_statistics'
+gem 'descriptive-statistics'
 
 
 group :production do
