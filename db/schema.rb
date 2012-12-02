@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(:version => 20121129053608) do
     t.string   "location"
     t.string   "link"
     t.string   "author"
-    t.string   "text"
+    t.text     "text"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "gmaps"
