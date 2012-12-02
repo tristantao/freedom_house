@@ -20,7 +20,7 @@ class Source < ActiveRecord::Base
     articles = []
     feed = Feedzirra::Feed.fetch_and_parse(self.url)
     items = feed.entries
-       
+
     items.each do |item|
       if item.published <= Time.now
         article = Article.new
@@ -32,14 +32,15 @@ class Source < ActiveRecord::Base
         articles << article
       end
     end
-  
-       
-#mine_location('../../db/dbf/NGA_CSV.TXT', '../../db/dbf/NGA.dbf', articles, 1)
-       
-    mine_location('NGA_CSV.TXT', 'NGA.dbf', articles, 1)
+
+
+    #You can call the function with different Databases and a array/sub-array of article models, to mine for different locations.
+mine_location('db/dbf/NGA_CSV.TXT', 'db/dbf/NGA.dbf', articles, "Nigeria", 1)
+
+    #mine_location('NGA_CSV.TXT', 'NGA.dbf', articles, 1)
 
     self.last_scraped = DateTime.now
     self.save
   end
-  
+
 end

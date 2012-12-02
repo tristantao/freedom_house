@@ -23,9 +23,10 @@ class Article < ActiveRecord::Base
     self.hate_speech.each { |speech| hate_array.push(speech.body) }
     return hate_array
   end
-  
+
   def scrapeContent!
-    doc =  Readability::Document.new(self.link, :ignore_image_format =>["gif"], :min_image_height => 250, :min_image_width => 250 )
+    source = open(self.link).read
+    doc =  Readability::Document.new(source, :ignore_image_format =>["gif"], :min_image_height => 250, :min_image_width => 250 )
     self.text = doc.content
     self.picture = doc.images[0]
     self.save
