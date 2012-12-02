@@ -24,7 +24,7 @@ class Article < ActiveRecord::Base
     return hate_array
   end
   
-  def scrapeContent
+  def scrapeContent!
     doc =  Readability::Document.new(self.link, :ignore_image_format =>["gif"], :min_image_height => 250, :min_image_width => 250 )
     self.text = doc.content
     self.picture = doc.images[0]

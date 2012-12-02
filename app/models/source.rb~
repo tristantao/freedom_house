@@ -1,9 +1,8 @@
 require 'open-uri'
 require 'date'
-require 'uri'
 require 'readability'
 require 'feedzirra'
-
+require_relative '../../db/dbf/location_miner.rb'
 
 class Source < ActiveRecord::Base
 
@@ -18,34 +17,27 @@ class Source < ActiveRecord::Base
 #scrape_rss, scrape_htmlpage, scrape_twitter
 
   def scrape
-     min_interval = 5 * 60
-     if its_not_empty = !self.last_scraped.nil? then
-       its_too_early = Time.now - self.last_scraped.to_time >= min_interval
-     end
-     if its_not_empty && its_too_early then
-       return "Source #{self.name} was scraped less than #{min_interval/60} minutes ago. Time is #{Time.now}."
-     else 
-       feed = Feedzirra::Feed.fetch_and_parse(self.url)
-       items = feed.entries
+    articles = []
+    feed = Feedzirra::Feed.fetch_and_parse(self.url)
+    items = feed.entries
        
-       items.each do |item|
-         if item.published <= Time.now
-           article = Article.new
-           article.title = item.title
-           article.link = item.url
-           article.date = item.published
-           article.source = self
-           source = open(item.url).read
-           doc =  Readability::Document.new(source, :ignore_image_format =>["gif"], :min_image_height => 250, :min_image_width => 250 )
-           article.text = doc.content
-           article.picture = doc.images[0]
-           article.save
-         end
-       end
+    items.each do |item|
+      if item.published <= Time.now
+        article = Article.new
+        article.title = item.title
+        article.link = item.url
+        article.date = item.published
+        article.source = self
+        article.scrapeContent!
+        articles << article
+      end
+    end
+  
        
-       self.last_scraped = DateTime.now
-       self.save
-       return nil
-     end
+    mine_location('../../db/dbf/NGA_CSV.TXT', '../../db/dbf/NGA.dbf', articles)
+       
+    self.last_scraped = DateTime.now
+    self.save
   end
+  
 end

@@ -19,6 +19,8 @@ gem 'client_side_validations'
 gem 'ruby-readability', :require => 'readability'
 gem 'feedzirra'
 gem 'mini_magick'
+gem 'delayed_job_active_record'
+gem 'hirefire'
 
 group :production do
   gem 'pg'
