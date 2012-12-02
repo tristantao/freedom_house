@@ -26,7 +26,6 @@ ActiveRecord::Schema.define(:version => 20121129053608) do
   create_table "articles", :force => true do |t|
     t.string   "title"
     t.datetime "date"
-    t.string   "location"
     t.string   "link"
     t.string   "author"
     t.string   "text"
@@ -34,6 +33,11 @@ ActiveRecord::Schema.define(:version => 20121129053608) do
     t.datetime "updated_at"
     t.boolean  "gmaps"
     t.string   "picture"
+  end
+
+  create_table "articles_locations", :id => false, :force => true do |t|
+    t.integer "location_id"
+    t.integer "article_id"
   end
 
   create_table "events", :force => true do |t|
@@ -50,16 +54,20 @@ ActiveRecord::Schema.define(:version => 20121129053608) do
     t.boolean  "gmaps"
   end
 
-  create_table "hate_speeches", :force => true do |t|
-    t.string   "speaker"
-    t.text     "body"
-    t.integer  "article_id"
-  end
-
   create_table "events_locations", :id => false, :force => true do |t|
     t.integer "location_id"
     t.integer "event_id"
   end
+
+  create_table "hate_speeches", :force => true do |t|
+    t.string   "speaker"
+    t.text     "body"
+    t.integer  "article_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "hate_speeches", ["article_id"], :name => "index_hate_speeches_on_article_id"
 
   create_table "locations", :force => true do |t|
     t.string   "name"
@@ -71,9 +79,7 @@ ActiveRecord::Schema.define(:version => 20121129053608) do
     t.boolean  "gmap"
   end
 
-  add_index "hate_speeches", ["article_id"], :name => "index_hate_speeches_on_article_id"
-
-  create_table "nigeriaRegions", :force => true do |t|
+  create_table "nigeria", :force => true do |t|
     t.string   "name"
     t.string   "f_class"
     t.string   "f_desig"
