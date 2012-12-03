@@ -1,0 +1,18 @@
+%div.row-fluid
+  %div.span2
+    = render 'admin/shared/sidebar'
+    
+  %div.span5.offset2
+    %h2.pagination-centered Edit Feedback Form
+    %div#card
+      = simple_form_for(@feedback, :url => admin_feedbacks_action_path(:update, @feedback.id), :html => { :method => :put, :class => 'form-horizontal'}) do |f|
+        = f.error_notification
+        .form-inputs
+          = f.input :title, :input_html => { :class => "span"}
+          = f.input :description, :as => :text, :input_html => { :class => "span" }
+          = f.input :rating, :collection => [0, 1, 2, 3, 4, 5], :input_html => { :class => "span" }
+          = f.input :active, :input_html => { :class => "span" }
+        .form-actions
+          %div.btn-group
+            = f.button :submit, "Update Feedback Form", :class => "btn-success"
+            = link_to 'Cancel', admin_feedbacks_path, :class => "btn btn-danger"

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121129053608) do
+ActiveRecord::Schema.define(:version => 20121203052201) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(:version => 20121129053608) do
     t.string   "location"
     t.string   "link"
     t.string   "author"
-    t.string   "text"
+    t.text     "text"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "gmaps"
@@ -50,6 +50,17 @@ ActiveRecord::Schema.define(:version => 20121129053608) do
     t.integer "event_id"
   end
 
+  create_table "feedbacks", :force => true do |t|
+    t.text     "description"
+    t.boolean  "active"
+    t.integer  "rating"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "title"
+    t.integer  "user_id"
+    t.string   "last_updated_user"
+  end
+
   create_table "hate_speeches", :force => true do |t|
     t.string   "speaker"
     t.text     "body"
@@ -68,6 +79,14 @@ ActiveRecord::Schema.define(:version => 20121129053608) do
     t.datetime "updated_at"
     t.string   "country"
     t.boolean  "gmap"
+  end
+
+  create_table "responses", :force => true do |t|
+    t.string   "commenter"
+    t.text     "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "feedback_id"
   end
 
   create_table "sources", :force => true do |t|
@@ -100,6 +119,7 @@ ActiveRecord::Schema.define(:version => 20121129053608) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "admin",                  :default => false
+    t.boolean  "adminresponse",          :default => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
