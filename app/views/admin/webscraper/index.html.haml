@@ -1,24 +1,27 @@
 :javascript
   $(document).ready(function(){
-      setInterval(function() {
-        $.ajax({
-          type: 'POST',
-          url: "#{admin_sources_action_path(:progress)}",
-          success: function(data){
-            for(key in data) {
-              document.getElementById('scrape'+ String(key)).style.width = data[key]['scrape'];
-              document.getElementById('content'+ String(key)).style.width = data[key]['content'];
-              document.getElementById('classify'+ String(key)).style.width = data[key]['classify'];
-              document.getElementById('location'+ String(key)).style.width = data[key]['location'];
+    setInterval(function() {
+      $.ajax({
+        type: 'POST',
+        url: "#{admin_sources_action_path(:progress)}",
+        success: function(data){
+          for(key in data) {
+            document.getElementById('scrape'+ String(key)).style.width = data[key]['scrape'];
+            document.getElementById('content'+ String(key)).style.width = data[key]['content'];
+            document.getElementById('classify'+ String(key)).style.width = data[key]['classify'];
+            document.getElementById('location'+ String(key)).style.width = data[key]['location'];
+            if (data[key]['queued']) {
+              document.getElementById('scrape_source_'+ String(key)).className = "btn btn-mini disabled";
+            } else {
+              document.getElementById('scrape_source_'+ String(key)).className = "btn btn-mini";
             }
-
-          },
-          error: function(data){
-            alert(data.responseText);
           }
-        });   
-      
-      }, 5000); //5 seconds
+        },
+        error: function(data){
+          alert(data.responseText);
+        }
+      });
+    }, 5000); //5 seconds
   });
   
 
@@ -49,4 +52,8 @@
                   .bar.bar-success{:style => "width: " + source.progress_content, :id => "content" + source.id.to_s}
                   .bar.bar-warning{:style => "width: " + source.progress_location, :id => "location" + source.id.to_s}
                   .bar.bar-danger{:style => "width: " + source.progress_classify, :id => "classify" + source.id.to_s}
-              %td= link_to 'scrape', admin_webscraper_action_path(:scrape, source.id), :id => "scrape_source_#{source.id}", :class => "btn btn-mini"
+              %td 
+                - if !source.queued
+                  = link_to 'scrape', admin_webscraper_action_path(:scrape, source.id), :id => "scrape_source_#{source.id}", :class => "btn btn-mini"
+                - else
+                  = link_to 'scrape', admin_webscraper_action_path(:scrape, source.id), :id => "scrape_source_#{source.id}", :class => "btn btn-mini disabled"

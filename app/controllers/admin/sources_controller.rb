@@ -63,7 +63,8 @@ class Admin::SourcesController < ApplicationController
       json[source.id.to_s] = {"content" => source.progress_content, 
                               "scrape" => source.progress_scrape, 
                               "classify" => source.progress_classify, 
-                              "location" => source.progress_location}
+                              "location" => source.progress_location,
+                              "queued" => source.queued}
     end
     render :json => json
   end

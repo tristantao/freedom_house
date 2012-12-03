@@ -1,0 +1,5 @@
+class AddQueuedToSources < ActiveRecord::Migration
+  def change
+    add_column :sources, :queued, :boolean
+  end
+end

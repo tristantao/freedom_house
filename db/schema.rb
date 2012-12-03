@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121202235430) do
+ActiveRecord::Schema.define(:version => 20121203063739) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -98,6 +98,7 @@ ActiveRecord::Schema.define(:version => 20121202235430) do
     t.string   "progress_content",  :default => "0%"
     t.string   "progress_classify", :default => "0%"
     t.string   "progress_location", :default => "0%"
+    t.boolean  "queued",            :default => false
   end
 
   create_table "users", :force => true do |t|

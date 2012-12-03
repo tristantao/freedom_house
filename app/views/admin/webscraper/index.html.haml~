@@ -1,23 +1,29 @@
 :javascript
   $(document).ready(function(){
-      setInterval(function() {
-        $.ajax({
-          type: 'POST',
-          url: "#{admin_sources_action_path(:progress)}",
-          success: function(data){
-            for(key in data) {
-              document.getElementById('scrape'+ String(key)).style.width = data[key]['scrape'];
-              document.getElementById('content'+ String(key)).style.width = data[key]['content'];
-              document.getElementById('classify'+ String(key)).style.width = data[key]['classify'];
-              document.getElementById('location'+ String(key)).style.width = data[key]['location'];
-
-          },
-          error: function(data){
-            alert(data.responseText);
+    setInterval(function() {
+      $.ajax({
+        type: 'POST',
+        url: "#{admin_sources_action_path(:progress)}",
+        success: function(data){
+          for(key in data) {
+            document.getElementById('scrape'+ String(key)).style.width = data[key]['scrape'];
+            document.getElementById('content'+ String(key)).style.width = data[key]['content'];
+            document.getElementById('classify'+ String(key)).style.width = data[key]['classify'];
+            document.getElementById('location'+ String(key)).style.width = data[key]['location'];
+            if (data[key]['queued']) {
+              document.getElementById('scrape_source_'+ String(key)).className = "btn btn-mini disabled";
+              document.getElementById('scrape_source_'+ String(key)).onClick = function() { return false; };
+            } else {
+              document.getElementById('scrape_source_'+ String(key)).className = "btn btn-mini";
+              document.getElementById('scrape_source_'+ String(key)).onClick = function() { return true; };
+            }
           }
-        });   
-      
-      }, 5000); //5 seconds
+        },
+        error: function(data){
+          alert(data.responseText);
+        }
+      });
+    }, 5000); //5 seconds
   });
   
 
@@ -44,8 +50,12 @@
               %td= source.last_scraped
               %td
                 .progress.progress-striped.active
-                  .bar.bar#scrape{:style => "width: " + source.progress_scrape}
-                  .bar.bar-success#content{:style => "width: " + source.progress_content}
-                  .bar.bar-warning#location{:style => "width: " + source.progress_location}
-                  .bar.bar-danger#classify{:style => "width: " + source.progress_classify}
-              %td= link_to 'scrape', admin_webscraper_action_path(:scrape, source.id), :id => "scrape_source_#{source.id}", :class => "btn btn-mini"
+                  .bar.bar{:style => "width: " + source.progress_scrape, :id => "scrape" + source.id.to_s}
+                  .bar.bar-success{:style => "width: " + source.progress_content, :id => "content" + source.id.to_s}
+                  .bar.bar-warning{:style => "width: " + source.progress_location, :id => "location" + source.id.to_s}
+                  .bar.bar-danger{:style => "width: " + source.progress_classify, :id => "classify" + source.id.to_s}
+              %td 
+                - if !source.queued
+                  = link_to 'scrape', admin_webscraper_action_path(:scrape, source.id), :id => "scrape_source_#{source.id}", :class => "btn btn-mini"
+                - else
+                  = link_to 'scrape', admin_webscraper_action_path(:scrape, source.id), :id => "scrape_source_#{source.id}", :class => "btn btn-mini disabled"

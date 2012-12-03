@@ -15,9 +15,11 @@ class Admin::WebscraperController < ApplicationController
       its_too_early = (Time.now - source.last_scraped.to_time) <= min_interval
     end
     
-    if !source.last_scraped.nil? && its_too_early then
+    if ((!source.last_scraped.nil? && its_too_early) || source.queued) && false then
       flash[:warning] = "Source #{source.name} was scraped less than #{min_interval/60} minutes ago. Time is #{Time.now}."
     else 
+      source.queued = true
+      source.save
       source.delay.scrape
       flash[:notice] = "Source #{source.name} is being scrapped. You should see new articles, if any, in a few minutes."
     end
