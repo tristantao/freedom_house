@@ -7,7 +7,7 @@ sources = [{:name => "Daily Trust", :home_page => "www.dailytrust.com.ng", :feed
            #{:name => "Nigerian Tribune", :home_page => "http://tribune.com.ng/", :feed_type => 'RSS', :url => "http://tribune.com.ng/news2013/index.php/en/community-news?format=feed", :quality_rating => 10},
            #{:name => "Vanguard News", :home_page => "http://www.vanguardngr.com/", :feed_type => 'Twitter', :url => "vanguardngrnews", :quality_rating => 10},
            #{:name => "The Punch", :home_page => "http://www.punchng.com/", :feed_type => 'RSS', :url => "http://www.punchng.com/feed/", :quality_rating => 10},
-           #{:name => "Leadership Newspaper", :home_page => "http://www.leadership.ng/nga/", :feed_type => 'RSS', :url => "http://feeds.feedburner.com/LeadershipNGA", :quality_rating => 10},
+           #{:name => "Leadership Newspaper", :home_page => "http://www.leadership.ng/nga/", :feed_type => 'RSS', :url => "http://feeds.feedburner.com/LeadershipNGA?format=xml", :quality_rating => 10},
            #{:name => "Nigerian Compass", :home_page => "http://www.compassnewspaper.org/", :feed_type => 'RSS', :url => "http://www.compassnewspaper.org/index.php/news/nigeria-today?format=feed", :quality_rating => 10}
 ]
 

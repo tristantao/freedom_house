@@ -11,11 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(:version => 20121203013131) do
-=======
 ActiveRecord::Schema.define(:version => 20121203063805) do
->>>>>>> master
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -29,11 +25,6 @@ ActiveRecord::Schema.define(:version => 20121203063805) do
     t.boolean  "gmaps"
     t.string   "picture"
     t.boolean  "contains_hatespeech"
-  end
-
-  create_table "articles_locations", :id => false, :force => true do |t|
-    t.integer "location_id"
-    t.integer "article_id"
   end
 
   create_table "articles_locations", :id => false, :force => true do |t|
@@ -110,14 +101,11 @@ ActiveRecord::Schema.define(:version => 20121203063805) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "last_scraped"
-<<<<<<< HEAD
-    t.string   "feed_type",      :default => "RSS"
-=======
     t.string   "progress_scrape",   :default => "0%"
     t.string   "progress_content",  :default => "0%"
     t.string   "progress_classify", :default => "0%"
     t.string   "progress_location", :default => "0%"
->>>>>>> master
+    t.string   "feed_type",         :default => "RSS"
   end
 
   create_table "users", :force => true do |t|
