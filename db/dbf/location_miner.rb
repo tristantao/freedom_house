@@ -97,7 +97,11 @@ def determine_relevant_loc_and_save(article, individual_cache_table, region_hash
 end
 
 
-def mine_location(csv_loc = 'NGA_CSV.TXT', dbf_loc = 'NGA.dbf', articles_array, country, tolerence_sd)
+def mine_location(csv_loc = 'NGA_CSV.TXT', dbf_loc = 'NGA.dbf', articles_array, country, tolerence_sd, source)
+  total_article = articles_array.size
+  increment = 25.0 / total_article
+  completed = 0.0
+
   puts "Working on " + articles_array.size.to_s + "Articles."
   region_hash = {}
 
@@ -137,6 +141,9 @@ def mine_location(csv_loc = 'NGA_CSV.TXT', dbf_loc = 'NGA.dbf', articles_array, 
     if (individual_cache_table.size != 0)
       determine_relevant_loc_and_save(single_article, individual_cache_table, region_hash, country, tolerence_sd)
     end
+    completed += increment
+    source.process_location = compelted.to_s + "%"
+    source.save
   end
 
   #return nothing, just end it
