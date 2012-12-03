@@ -105,6 +105,5 @@ class Source < ActiveRecord::Base
       self.queued = false
       self.save!
     end
-  end
 
 end
