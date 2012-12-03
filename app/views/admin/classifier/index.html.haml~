@@ -1,0 +1,15 @@
+%div.row-fluid
+  %div.span2
+    = render 'admin/shared/sidebar'
+    
+  %div.span10
+    %h2 Classifier Controls
+    %div "Global dictionary: #{@dictionary.inspect}"
+    %div
+    %div "#{@first_training_vector}"
+    %div "#{@first_test_vector}"
+
+    %div "#{@kernel_errors_training}"
+    %div "#{@kernel_errors_testing}"
+    %div "#{@kernel_predictions_training}"
+    %div "#{@kernel_predictions_testing}"

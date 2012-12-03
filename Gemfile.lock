@@ -110,6 +110,7 @@ GEM
     less-rails (2.2.6)
       actionpack (>= 3.1)
       less (~> 2.2.0)
+    libsvm-ruby-swig (0.4.0)
     libv8 (3.3.10.4)
     libwebsocket (0.1.6.1)
       websocket
@@ -253,6 +254,7 @@ DEPENDENCIES
   jquery-rails
   launchy
   less-rails
+  libsvm-ruby-swig
   mini_magick
   newrelic_rpm
   nokogiri

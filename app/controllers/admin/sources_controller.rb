@@ -8,7 +8,13 @@ class Admin::SourcesController < ApplicationController
  def new
     sourcesinput = params[:source]
     if sourcesinput
-      s = Source.create(:name => sourcesinput[:name], :home_page => sourcesinput['home_page'], :quality_rating => sourcesinput[:quality_rating], :url => sourcesinput['url'])
+      case sourcesinput[:feed_type]
+      when 'RSS'
+        url = sourcesinput['url']
+      when 'Twitter'
+        url = "http://api.twitter.com/1/statuses/user_timeline.rss?screen_name=#{sourcesinput['url']}"
+      end
+      s = Source.create(:name => sourcesinput[:name], :home_page => sourcesinput['home_page'], :quality_rating => sourcesinput[:quality_rating], :url => url)
       if s.save
         flash[:notice] = "Source #{sourcesinput[:name]} has been created!"
         redirect_to admin_sources_path

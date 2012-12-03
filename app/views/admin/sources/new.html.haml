@@ -10,6 +10,7 @@
         .form-inputs
           = f.input :name, required: true, input_html: { class: "span9" }
           = f.input :home_page, required: true, input_html: { class: "span9" }
+          = f.input :feed_type, required: true, collection: ['Twitter', 'RSS'], input_html: {class: "span9"}
           = f.input :url, required: true, input_html: {class: "span9"}
           = f.input :quality_rating, required: false, input_html: {class: "span9" }
         .form-actions
