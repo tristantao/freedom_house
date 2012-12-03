@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121202235430) do
+ActiveRecord::Schema.define(:version => 20121203063805) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -29,6 +29,12 @@ ActiveRecord::Schema.define(:version => 20121202235430) do
   create_table "articles_locations", :id => false, :force => true do |t|
     t.integer "location_id"
     t.integer "article_id"
+  end
+
+  create_table "blacklists", :force => true do |t|
+    t.string   "word"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "delayed_jobs", :force => true do |t|

@@ -55,7 +55,7 @@ def determine_relevant_loc_and_save(article, individual_cache_table, region_hash
 
   chosen_location = []
   locations.sort! {|loc1, loc2| loc2 <=> loc1} #gives descending order
-  puts "sorted location!"
+  puts "Sorted location!\n"
 
   descriptive_counts_array = DescriptiveStatistics.new(counts_array)
   max_count = descriptive_counts_array.max #nil if nothing in array
@@ -79,8 +79,8 @@ def determine_relevant_loc_and_save(article, individual_cache_table, region_hash
     end
     chosen_location << temp
   end
+    puts "Chosen:"
   chosen_location.each do |loc|
-    puts "\nChosen"
     puts loc.name + ", " +loc.count.to_s
     db_loc = Location.find_by_name(region_hash[loc.name])
     if db_loc.nil?
@@ -97,25 +97,23 @@ def determine_relevant_loc_and_save(article, individual_cache_table, region_hash
 end
 
 
-def mine_location(csv_loc = 'NGA_CSV.TXT', dbf_loc = 'NGA.dbf', black_list_loc, articles_array, country, tolerence_sd, source)
+def mine_location(csv_loc = 'NGA_CSV.TXT', dbf_loc = 'NGA.dbf', articles_array, country, tolerence_sd, source)
   total_article = articles_array.size
   increment = 25.0 / total_article
   completed = 0.0
-  black_list = File.open( black_list_loc ){ |f|  f.read.split}
-  black_list.each do |word|
-    word.downcase!
-  end 
-  puts "Black listed words: "
-  puts black_list
-
-  puts "\nWorking on " + articles_array.size.to_s + "Articles."
+  black_list = []
+  Blacklist.all.each do |target|
+    black_list << target.word.downcase!
+  end
+  puts "Black listing " + black_list.size.to_s + "location keys"
+  puts "\nWorking on " + articles_array.size.to_s + " articles."
   region_hash = {}
 
   CSV.foreach(csv_loc, {:headers => true}) do |row|
     region_hash[row[0].downcase] = row[0]
   end
 
-  puts "article input size: " + region_hash.size.to_s
+  puts "Region db key size: " + region_hash.size.to_s
 
   master_table = DBF::Table.new(dbf_loc)
   puts "Loaded DBF Table"
@@ -126,7 +124,7 @@ def mine_location(csv_loc = 'NGA_CSV.TXT', dbf_loc = 'NGA.dbf', black_list_loc, 
   #  IO.foreach(body_loc) do |line|
   articles_array.each do |single_article|
     #Hash: {lower_name => [long, lat, count]}
-    puts "\n\nWorking on article name:" + single_article.title
+    puts "\n\nWorking on article name: " + single_article.title
     individual_cache_table = {}
     n_gram = ""
     single_article.text.split.each do |current_word|
@@ -137,7 +135,7 @@ def mine_location(csv_loc = 'NGA_CSV.TXT', dbf_loc = 'NGA.dbf', black_list_loc, 
         if region_hash.has_key?(key) and not black_list.include?(key) #In Memory Hash of the db and not in the black list
           puts "Found a possible match: " + key
           look_in_region(master_table, master_cache_table, individual_cache_table, region_hash, key) #query and update both caches
-          puts "now the ind_cache_table looks like: "
+          puts "Now the ind_cache_table looks like: "
           puts individual_cache_table
         end
       else

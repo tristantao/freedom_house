@@ -91,7 +91,7 @@ class Source < ActiveRecord::Base
     puts "location"
     #You can call the function with different Databases and a array/sub-array of article models, to mine for different locations.
     if articles.length != 0
-    mine_location('db/dbf/NGA_CSV.TXT', 'db/dbf/NGA.dbf', 'db/dbf/black_listed_NGA.csv', articles, "Nigeria", 1, self)
+    mine_location('db/dbf/NGA_CSV.TXT', 'db/dbf/NGA.dbf', articles, "Nigeria", 1, self)
     end
 
     self.last_scraped = DateTime.now

@@ -5,7 +5,14 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-
+  loc_blacklisted_months = ["January", "Jan", "February", "Feb", "March", "Mar", "April", "Apr", "May", "June", "Jun", "July", "Jul", "August", "Aug", "September", "Sept", "October", "November", "Nov", "December", "Dec"]
+  loc_blacklisted_persons = ["Obama"]
+  loc_blacklisted_general = []
+  blacklist = loc_blacklisted_months + loc_blacklisted_persons + loc_blacklisted_general
+  blacklist.each do |loc| 
+    Blacklist.create(:word => loc)
+  end
+  
   users = [{:first_name => "Jose", :last_name => "Carrillo", :email => "jcarrillo7@berkeley.edu", :password => "cheeta19"},
            {:first_name => "Chris", :last_name => "Balcells", :email => "balcells@berkeley.edu", :password => "balcells"},
            {:first_name => "Felix", :last_name => "Li", :email => "felix.li@berkeley.edu", :password => "felixli"},
