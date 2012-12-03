@@ -1,0 +1,26 @@
+%div.row-fluid
+  %div.span2
+    = render 'admin/shared/sidebar'
+  
+  %div.span7.offset1
+    %h2.pagination-centered Admin Response Feedback Form
+    %div#card
+      = show_for @feedback do |f|
+        = f.attribute :title, :input_html => { :class => "span"}
+        = f.association :user, :using => :name, :input_html => { :class => "span"}
+        = f.attribute :description, :as => :text, :input_html => { :class => "span" }
+        = f.attribute :rating, :as => :integer, :input_html => { :class => "span" }
+        = f.attribute :active, :input_html => {:class => "span"}
+  
+  %div.span7.offset1
+    %h2.pagination-centered 
+    %div#card
+      = simple_form_for(@feedback, :url => admin_feedbacks_action_path(:update_admin_response, @feedback.id), :html => { :method => :put, :class => 'form-horizontal'}) do |f|
+        = f.error_notification
+        .form-inputs
+          = f.input :adminresponse, :as => :text, :input_html => { :class => "span"}
+          = f.input :active, :input_html => { :class => "span" }
+        .form-actions
+          %div.btn-group
+            = f.button :submit, "Submit Admin Response", :class => "btn-success"
+            = link_to 'Cancel', admin_feedbacks_path, :class => "btn btn-danger"

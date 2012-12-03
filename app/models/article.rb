@@ -9,6 +9,7 @@ class Article < ActiveRecord::Base
   attr_accessible :title, :date, :text, :author, :link, :picture
 
   validates :title, :date, :link, :presence => true
+  validates :link, :link => true
 
 
   has_many :hate_speech
