@@ -20,7 +20,9 @@ gem 'ruby-readability', :require => 'readability'
 gem 'feedzirra'
 gem 'mini_magick'
 gem 'libsvm-ruby-swig'
-gem 'fast_random'
+gem 'delayed_job_active_record'
+gem 'hirefire'
+gem 'descriptive-statistics'
 
 group :production do
   gem 'pg'

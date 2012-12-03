@@ -1,15 +1,14 @@
 require 'open-uri'
 require 'date'
-require 'uri'
 require 'readability'
 require 'feedzirra'
-
+require_relative '../../db/dbf/location_miner.rb'
 
 class Source < ActiveRecord::Base
 
   has_many :articles
   belongs_to :user
-  attr_accessible :name, :home_page, :url, :quality_rating
+  attr_accessible :name, :home_page, :url, :quality_rating, :progress_content, :progress_classify, :progress_scrape, :progress_location
   validates :name, :home_page, :quality_rating, presence: true
   validates :quality_rating, :numericality => {only_integer: true}
   validates :url, rss: true
@@ -18,34 +17,91 @@ class Source < ActiveRecord::Base
 #scrape_rss, scrape_htmlpage, scrape_twitter
 
   def scrape
-     min_interval = 5 * 60
-     if its_not_empty = !self.last_scraped.nil? then
-       its_too_early = Time.now - self.last_scraped.to_time >= min_interval
-     end
-     if its_not_empty && its_too_early then
-       return "Source #{self.name} was scraped less than #{min_interval/60} minutes ago. Time is #{Time.now}."
-     else 
-       feed = Feedzirra::Feed.fetch_and_parse(self.url)
-       items = feed.entries
-       
-       items.each do |item|
-         if item.published <= Time.now
-           article = Article.new
-           article.title = item.title
-           article.link = item.url
-           article.date = item.published
-           article.source = self
-           source = open(item.url).read
-           doc =  Readability::Document.new(source, :ignore_image_format =>["gif"], :min_image_height => 250, :min_image_width => 250 )
-           article.text = doc.content
-           article.picture = doc.images[0]
-           article.save
-         end
-       end
-       
-       self.last_scraped = DateTime.now
-       self.save
-       return nil
-     end
+    articles = []
+    feed = Feedzirra::Feed.fetch_and_parse(self.url)
+    items = feed.entries
+
+    if items.length != 0
+      scrape_update_percentage = 25.0 / items.length
+    else
+      scrape_update_percentage = 25
+    end
+
+    scrape_percentage = 0
+    content_percentage = 0
+    classify_percentage = 0
+    location_percentage = 0
+
+    self.progress_scrape = "0%"
+    self.progress_content = "0%"
+    self.progress_location = "0%"
+    self.progress_classify = "0%"
+    self.save
+
+    puts "scrapping"
+    items.each do |item|
+      puts scrape_percentage.to_s + "%"
+      if item.published <= Time.now
+        article = Article.new
+        article.title = item.title
+        article.link = item.url
+        article.date = item.published
+        article.source = self
+        if article.save
+          puts "new article found"
+          articles << article
+        end
+      end
+      scrape_percentage += scrape_update_percentage
+      self.progress_scrape = scrape_percentage.to_s + "%"
+      self.save
+    end
+
+    if items.length != 0
+      update_percentage = 25.0 / articles.length
+    else
+      update_percentage = 25
+    end
+
+    puts "content"
+    articles.each do |article|
+      puts content_percentage.to_s + "%"
+      trial = 1
+      begin
+        article.scrapeContent!
+      rescue OpenURI::HTTPError => e
+        if trial < 3
+          puts "retrying.. waiting 10 sec"
+          trial+=1
+          sleep(10.seconds)
+          retry
+        else
+          puts "scrape content failed...deleting article"
+          puts article.link
+          article.delete
+          articles.delete(article)
+        end
+      end
+      
+      content_percentage += update_percentage
+      self.progress_content = content_percentage.to_s + "%"
+      self.save
+    end
+
+    puts "location"
+    #You can call the function with different Databases and a array/sub-array of article models, to mine for different locations.
+    if articles.length != 0
+      mine_location('db/dbf/NGA_CSV.TXT', 'db/dbf/NGA.dbf', articles, "Nigeria", 1, self)
+    end
+
+    #mine_location('NGA_CSV.TXT', 'NGA.dbf', articles, 1)
+
+    self.last_scraped = DateTime.now
+    self.progress_scrape = "0%"
+    self.progress_content = "0%"
+    self.progress_location = "0%"
+    self.progress_classify = "0%"
+    self.save!
   end
+
 end

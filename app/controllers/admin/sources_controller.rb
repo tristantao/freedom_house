@@ -1,6 +1,7 @@
 class Admin::SourcesController < ApplicationController
   before_filter :admin_user?
   before_filter :authenticate_user!
+  
   def index
     @sources = Source.find(:all, :order => "created_at DESC")
   end
@@ -16,7 +17,10 @@ class Admin::SourcesController < ApplicationController
         url = "http://api.twitter.com/1/statuses/user_timeline.rss?screen_name=#{sourcesinput['url']}"
       end
 =end
-      s = Source.create(:name => sourcesinput[:name], :home_page => sourcesinput['home_page'], :quality_rating => sourcesinput[:quality_rating], :url => sourcesinput['url'])
+      s = Source.create(:name => sourcesinput[:name], 
+                        :home_page => sourcesinput['home_page'], 
+                        :quality_rating => sourcesinput[:quality_rating], 
+                        :url => sourcesinput['url'])
       if s.save
         flash[:notice] = "Source #{sourcesinput[:name]} has been created!"
         redirect_to admin_sources_path
@@ -27,7 +31,7 @@ class Admin::SourcesController < ApplicationController
   end
 
   def edit
-      @source = Source.find(params[:id])
+    @source = Source.find(params[:id])
   end
 
   def update
@@ -36,6 +40,7 @@ class Admin::SourcesController < ApplicationController
     @source.home_page = params[:source][:home_page]
     @source.quality_rating = params[:source][:quality_rating]
     @source.url = params[:source][:url]
+    
     if @source.save
       flash[:notice] = 'Successfully updated source!'
     else
@@ -50,6 +55,25 @@ class Admin::SourcesController < ApplicationController
     @source.delete
     flash[:notice] = "Source #{name} has been deleted."
     redirect_to admin_sources_path
+  end
+  
+  def progress
+  
+    if params["id"] == nil
+      sources = Source.all
+    else
+      sources = [Source.find(params["id"])]
+    end
+    
+    json = {}
+    
+    sources.each do |source|
+      json[source.id.to_s] = {"content" => source.progress_content, 
+                              "scrape" => source.progress_scrape, 
+                              "classify" => source.progress_classify, 
+                              "location" => source.progress_location}
+    end
+    render :json => json
   end
   
   protected

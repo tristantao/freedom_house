@@ -9,6 +9,14 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+  loc_blacklisted_months = ["January", "Jan", "February", "Feb", "March", "Mar", "April", "Apr", "May", "June", "Jun", "July", "Jul", "August", "Aug", "September", "Sept", "October", "November", "Nov", "December", "Dec"]
+  loc_blacklisted_persons = ["Obama"]
+  loc_blacklisted_general = []
+  blacklist = loc_blacklisted_months + loc_blacklisted_persons + loc_blacklisted_general
+  blacklist.each do |loc| 
+    Blacklist.create(:word => loc)
+  end
+
 #this code was posted at: http://dev.mensfeld.pl/2011/10/handling-large-seed-files-in-ruby-on-rails/
 
 %w{users sources articles}.each do |filename|
