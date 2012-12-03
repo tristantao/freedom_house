@@ -15,17 +15,12 @@ Freedom::Application.routes.draw do
   match 'home' => 'tracker#index', :as => :home
 
   # Admin/XController
-<<<<<<< HEAD
-  %w{users articles sources events}.each do |i|
-=======
+
   %w{users sources articles events webscraper}.each do |i|
->>>>>>> CBscraper11/14
     match "/admin/#{i}", :to => "admin/#{i}#index", :as => "admin_#{i}"
     match "/admin/#{i}(/:action(/:id))", :to => "admin/#{i}", :action => nil, :id => nil, :format => false, :as => "admin_#{i}_action"
   end
 
-<<<<<<< HEAD
-=======
-  
->>>>>>> CBscraper11/14
+match 'viewArticle', :to => "tracker#viewArticle", :as => "view_article"
+
 end

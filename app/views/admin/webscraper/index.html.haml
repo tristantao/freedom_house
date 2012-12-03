@@ -1,3 +1,27 @@
+:javascript
+  $(document).ready(function(){
+      setInterval(function() {
+        $.ajax({
+          type: 'POST',
+          url: "#{admin_sources_action_path(:progress, 1)}",
+          data: "id=" + 1,
+          success: function(data){
+            
+            document.getElementById('scrape').style.width = data['scrape'];
+            document.getElementById('content').style.width = data['content'];
+            document.getElementById('classify').style.width = data['classify'];
+            document.getElementById('location').style.width = data['location'];
+
+          },
+          error: function(data){
+            alert(data.responseText);
+          }
+        });   
+      
+      }, 5000); //5 seconds
+  });
+  
+
 %div.row-fluid
   %div.span2
     = render 'admin/shared/sidebar'
@@ -11,6 +35,7 @@
           %th #
           %th Name
           %th Last Scraped
+          %th Progress
           %th 
         %tbody
           - @sources.each do |source|
@@ -18,4 +43,10 @@
               %td= source.id
               %td= link_to source.name, source.home_page
               %td= source.last_scraped
+              %td
+                .progress.progress-striped.active
+                  .bar.bar#scrape{:style => "width: " + source.progress_scrape}
+                  .bar.bar-success#content{:style => "width: " + source.progress_content}
+                  .bar.bar-warning#location{:style => "width: " + source.progress_location}
+                  .bar.bar-danger#classify{:style => "width: " + source.progress_classify}
               %td= link_to 'scrape', admin_webscraper_action_path(:scrape, source.id), :id => "scrape_source_#{source.id}", :class => "btn btn-mini"

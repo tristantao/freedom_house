@@ -12,14 +12,14 @@ class Admin::WebscraperController < ApplicationController
     min_interval = 5 * 60
     
     if !source.last_scraped.nil? then
-      its_too_early = (Time.now - self.last_scraped.to_time) <= min_interval
+      its_too_early = (Time.now - source.last_scraped.to_time) <= min_interval
     end
     
     if !source.last_scraped.nil? && its_too_early then
-      flash[:notice] = "Source #{self.name} was scraped less than #{min_interval/60} minutes ago. Time is #{Time.now}."
+      flash[:warning] = "Source #{source.name} was scraped less than #{min_interval/60} minutes ago. Time is #{Time.now}."
     else 
       source.delay.scrape
-      flash[:warning] = "Source #{source.name} is being scrapped. You should see new articles, if any, in a few minutes."
+      flash[:notice] = "Source #{source.name} is being scrapped. You should see new articles, if any, in a few minutes."
     end
     
     redirect_to admin_webscraper_path

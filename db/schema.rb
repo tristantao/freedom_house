@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121202033322) do
+ActiveRecord::Schema.define(:version => 20121202235430) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -94,6 +94,10 @@ ActiveRecord::Schema.define(:version => 20121202033322) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "last_scraped"
+    t.string   "progress_scrape",   :default => "0%"
+    t.string   "progress_content",  :default => "0%"
+    t.string   "progress_classify", :default => "0%"
+    t.string   "progress_location", :default => "0%"
   end
 
   create_table "users", :force => true do |t|
