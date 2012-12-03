@@ -1,5 +1,4 @@
 require 'readability'
-require 'open-uri'
 
 class Article < ActiveRecord::Base
 

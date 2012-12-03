@@ -66,7 +66,23 @@ class Source < ActiveRecord::Base
     puts "content"
     articles.each do |article|
       puts content_percentage.to_s + "%"
-      article.scrapeContent!
+      trial = 1
+      begin
+        article.scrapeContent!
+      rescue OpenURI::HTTPError => e
+        if trial < 3
+          puts "retrying.. waiting 10 sec"
+          trial+=1
+          sleep(10.seconds)
+          retry
+        else
+          puts "scrape content failed...deleting article"
+          puts article.link
+          article.delete
+          articles.delete(article)
+        end
+      end
+      
       content_percentage += update_percentage
       self.progress_content = content_percentage.to_s + "%"
       self.save
@@ -74,9 +90,10 @@ class Source < ActiveRecord::Base
 
     puts "location"
     #You can call the function with different Databases and a array/sub-array of article models, to mine for different locations.
-    mine_location('db/dbf/NGA_CSV.TXT', 'db/dbf/NGA.dbf', articles, "Nigeria", 1, self)
+    if articles.length != 0
+      mine_location('db/dbf/NGA_CSV.TXT', 'db/dbf/NGA.dbf', articles, "Nigeria", 1, self)
+    end
 
-    #mine_location('NGA_CSV.TXT', 'NGA.dbf', articles, 1)
 
     self.last_scraped = DateTime.now
     self.progress_scrape = "0%"
