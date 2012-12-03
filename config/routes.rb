@@ -21,6 +21,6 @@ Freedom::Application.routes.draw do
     match "/admin/#{i}(/:action(/:id))", :to => "admin/#{i}", :action => nil, :id => nil, :format => false, :as => "admin_#{i}_action"
   end
 
-match 'viewArticle', :to => "tracker#viewArticle", :as => "view_article"
+  match 'viewArticle', :to => "tracker#viewArticle", :as => "view_article"
 
 end

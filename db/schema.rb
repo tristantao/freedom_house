@@ -11,17 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121129053608) do
-
-  create_table "NGA", :force => true do |t|
-    t.string "name",    :limit => 77
-    t.string "f_class", :limit => 9
-    t.string "f_desig", :limit => 9
-    t.string "lat",     :limit => 9
-    t.string "long",    :limit => 9
-    t.string "adm1",    :limit => 25
-    t.string "adm2",    :limit => 25
-  end
+ActiveRecord::Schema.define(:version => 20121203063805) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -29,12 +19,39 @@ ActiveRecord::Schema.define(:version => 20121129053608) do
     t.string   "location"
     t.string   "link"
     t.string   "author"
-    t.string   "text"
+    t.text     "text"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "gmaps"
     t.string   "picture"
   end
+
+  create_table "articles_locations", :id => false, :force => true do |t|
+    t.integer "location_id"
+    t.integer "article_id"
+  end
+
+  create_table "blacklists", :force => true do |t|
+    t.string   "word"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "delayed_jobs", :force => true do |t|
+    t.integer  "priority",   :default => 0
+    t.integer  "attempts",   :default => 0
+    t.text     "handler"
+    t.text     "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by"
+    t.string   "queue"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
 
   create_table "events", :force => true do |t|
     t.string   "name"
@@ -50,16 +67,20 @@ ActiveRecord::Schema.define(:version => 20121129053608) do
     t.boolean  "gmaps"
   end
 
-  create_table "hate_speeches", :force => true do |t|
-    t.string   "speaker"
-    t.text     "body"
-    t.integer  "article_id"
-  end
-
   create_table "events_locations", :id => false, :force => true do |t|
     t.integer "location_id"
     t.integer "event_id"
   end
+
+  create_table "hate_speeches", :force => true do |t|
+    t.string   "speaker"
+    t.text     "body"
+    t.integer  "article_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "hate_speeches", ["article_id"], :name => "index_hate_speeches_on_article_id"
 
   create_table "locations", :force => true do |t|
     t.string   "name"
@@ -71,20 +92,6 @@ ActiveRecord::Schema.define(:version => 20121129053608) do
     t.boolean  "gmap"
   end
 
-  add_index "hate_speeches", ["article_id"], :name => "index_hate_speeches_on_article_id"
-
-  create_table "nigeriaRegions", :force => true do |t|
-    t.string   "name"
-    t.string   "f_class"
-    t.string   "f_desig"
-    t.float    "lat"
-    t.float    "long"
-    t.string   "state"
-    t.string   "local_government"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "sources", :force => true do |t|
     t.string   "name"
     t.string   "home_page"
@@ -93,6 +100,10 @@ ActiveRecord::Schema.define(:version => 20121129053608) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "last_scraped"
+    t.string   "progress_scrape",   :default => "0%"
+    t.string   "progress_content",  :default => "0%"
+    t.string   "progress_classify", :default => "0%"
+    t.string   "progress_location", :default => "0%"
   end
 
   create_table "users", :force => true do |t|
