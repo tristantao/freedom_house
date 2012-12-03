@@ -28,7 +28,6 @@
   });
 
 %body
-  = render 'overview'
   %div.row-fluid
     %div.span12.pagination-centered
       %h1 Event Map
