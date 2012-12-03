@@ -3,14 +3,13 @@
       setInterval(function() {
         $.ajax({
           type: 'POST',
-          url: "#{admin_sources_action_path(:progress, 2)}",
-          data: "id=" + 2,
+          url: "#{admin_sources_action_path(:progress)}",
           success: function(data){
-            
-            document.getElementById('scrape').style.width = data['scrape'];
-            document.getElementById('content').style.width = data['content'];
-            document.getElementById('classify').style.width = data['classify'];
-            document.getElementById('location').style.width = data['location'];
+            for(key in data) {
+              document.getElementById('scrape'+ String(key)).style.width = data[key]['scrape'];
+              document.getElementById('content'+ String(key)).style.width = data[key]['content'];
+              document.getElementById('classify'+ String(key)).style.width = data[key]['classify'];
+              document.getElementById('location'+ String(key)).style.width = data[key]['location'];
 
           },
           error: function(data){
