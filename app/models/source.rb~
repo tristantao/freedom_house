@@ -91,7 +91,6 @@ class Source < ActiveRecord::Base
 
       puts "location"
     #You can call the function with different Databases and a array/sub-array of article models, to mine for different locations.
-<<<<<<< HEAD
       if articles.length != 0
         mine_location('db/dbf/NGA_CSV.TXT', 'db/dbf/NGA.dbf', articles, "Nigeria", 1, self)
       end
@@ -106,18 +105,5 @@ class Source < ActiveRecord::Base
       self.queued = false
       self.save!
     end
-=======
-    if articles.length != 0
-    mine_location('db/dbf/NGA_CSV.TXT', 'db/dbf/NGA.dbf', articles, "Nigeria", 1, self)
-    end
-
-    self.last_scraped = DateTime.now
-    self.progress_scrape = "0%"
-    self.progress_content = "0%"
-    self.progress_location = "0%"
-    self.progress_classify = "0%"
-    self.save!
->>>>>>> 365e430d958f9a588549f9080788a5e4dd7144d8
-  end
 
 end

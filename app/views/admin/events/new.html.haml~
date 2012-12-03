@@ -1,20 +1,21 @@
 %div.row-fluid
   %div.span2
     = render 'admin/shared/sidebar'
+    
   %div.span7.offset1
-    %h2.pagination-centered Event Properties
+    %h2.pagination-centered Create New Event
     %div#card
-      = simple_form_for(@event, :url => admin_events_action_path(:update, @event.id), :html => { :method => :put, :class => 'form-horizontal', :validate => true}) do |f|
+      = simple_form_for(:event, :as => :event_name, :url => admin_events_action_path(:new), :html => { :method => :put, :class => 'form-horizontal'}) do |f|
         = f.error_notification
         .form-inputs
           = f.input :name, :input_html => { :class => "span" }
-          = f.input :date, :as => :date, :input_html => { :class => "span4" }
+          = f.input :date, :input_html => { :class => "span" }
           = f.input :longitude, :input_html => { :class => "span" }
           = f.input :latitude, :input_html => { :class => "span" }
           = f.input :country, :input_html => { :class => "span" }
           = f.input :city, :input_html => { :class => "span" }
           = f.input :description, :as => :text, :input_html => { :class => "span", :rows => "10" }
           %div.btn-group.pull-right
-            = f.button :submit, "Update Event", :class => "btn-success"
-            = link_to 'Delete', admin_events_action_path(:delete, @event.id), :class => "btn btn-danger"
+            = f.button :submit, "Create", :class => "btn-success"
+            = link_to 'Cancel', admin_events_path, :class => "btn btn-danger"
 

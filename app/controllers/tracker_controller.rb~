@@ -26,7 +26,7 @@ class TrackerController < ApplicationController
   def viewGraph
     count = {}
     if !params[:start].nil? && !params[:end].nil?
-      articles = Article.find(:all, :conditions => { :date => (Date.parse(params[:start])..Date.parse(params[:end])) })
+      articles = Article.find(:all, :conditions => { :date => Date.parse(params[:start]).to_s + ".." + Date.parse(params[:end]).to_s })
     else
       articles = Article.all(:order => "date asc")
     end

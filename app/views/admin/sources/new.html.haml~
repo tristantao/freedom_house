@@ -10,7 +10,7 @@
         .form-inputs
           = f.input :name, required: true, input_html: { class: "span" }
           = f.input :home_page, required: true, input_html: { class: "span" }
-          = f.input :url, required: true, input_html: {class: "span"}
+          = f.input :url, required: true, input_html: {class: "span9"}
           = f.input :quality_rating, required: false, input_html: {class: "span" }
           %div.btn-group.pull-right
             = f.button :submit, "Create", :class => "btn btn-success"

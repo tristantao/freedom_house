@@ -22,6 +22,7 @@ gem 'mini_magick'
 gem 'delayed_job_active_record'
 gem 'hirefire'
 gem 'descriptive-statistics'
+gem 'client_side_validations-simple_form'
 
 
 group :production do

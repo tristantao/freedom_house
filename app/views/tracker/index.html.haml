@@ -9,22 +9,17 @@
           success: function(article){
             return_title = article["title"];
             return_text = article["text"];
-            return_link = article["link"]
+            return_link = article["link"];
             $('#myModalLabel').text(return_title);
             $('#modalBody').html(return_text);
             $('#modalLink').attr("href", return_link)
             $('#Article_modal').modal('show');
-
           },
           error: function(data){
             alert(data.responseText);
-            //$("#bookmarklet_chapter").prepend('<div class="alert-message error"><p>'+data.responseText+'</p></div>');
           }
-          });
-          
-      
-     });
-     
+      });
+    });
   });
 
 %body
