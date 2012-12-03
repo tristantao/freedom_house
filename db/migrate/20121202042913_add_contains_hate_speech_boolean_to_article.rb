@@ -1,7 +1,7 @@
 class AddContainsHateSpeechBooleanToArticle < ActiveRecord::Migration
   def up
-    #defaults to 1. If somehow classifier does not specify, false positives are preferred.
-    add_column :articles, :contains_hatespeech, :boolean, :default => 1
+    #false positives are preferred. Perhaps default to true if necessary.
+    add_column :articles, :contains_hatespeech, :boolean
   end
 
   def down

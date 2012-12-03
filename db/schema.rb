@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(:version => 20121203013131) do
     t.datetime "updated_at"
     t.boolean  "gmaps"
     t.string   "picture"
-    t.boolean  "contains_hatespeech", :default => true
+    t.boolean  "contains_hatespeech"
   end
 
   create_table "articles_locations", :id => false, :force => true do |t|

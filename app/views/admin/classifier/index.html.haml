@@ -4,9 +4,12 @@
     
   %div.span10
     %h2 Classifier Controls
-    %div "Global dictionary: #{@dictionary.inspect}"
+    -# %div "Global dictionary: #{@dictionary.inspect}"
     %div "Total articles: #{@total}"
-    %div "Split point: #{@split_point}"
+    %div "Labels: #{@labels}"
+    %div "Documents: #{@documents}"
+    %div "Test Labels: #{@test_labels}"
+    %div "Test Documents: #{@test_documents}"
     %div "#{@first_training_vector}"
     %div "#{@first_test_vector}"
 
