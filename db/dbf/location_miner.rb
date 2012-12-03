@@ -64,9 +64,14 @@ def determine_relevant_loc_and_save(article, individual_cache_table, region_hash
   if max_count.nil? #nothing in the array
     max_count = 0
     sum_count = 0
+  end
+  if sd_count.nil? #is nil when array.size == 0. so setting it to 0.
     sd_count = 0
   end
 
+ # puts max_count
+ # puts sum_count
+ # puts sd_count
   count_threshhold = max_count - (tolerence * sd_count)
   locations.each do |temp|
     if temp.count < count_threshhold
