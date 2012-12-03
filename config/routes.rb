@@ -21,9 +21,13 @@ Freedom::Application.routes.draw do
     match "/admin/#{i}(/:action(/:id))", :to => "admin/#{i}", :action => nil, :id => nil, :format => false, :as => "admin_#{i}_action"
   end
 
+
   match 'feedbacks' => 'feedbacks#index', :as => "feedbacks_index"
   match 'feedbacks/(/:action(/:id))' => 'feedbacks', :action=> nil, :id=> nil, :format => false, :as => "feedbacks_action"
   match 'viewArticle', :to => "tracker#viewArticle", :as => "view_article"
   match 'feedbacks/view/:feedback_id/responses/(:action)' => 'responses', :action => nil, :id=> nil, :as => "responses_action"
   match 'admin/feedbacks/view/:feedback_id/responses/(:action)' => 'admin/responses', :action => nil, :id =>nil, :as=> "admin_responses_action"
+
+
+
 end

@@ -11,7 +11,8 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121203052201) do
+
+ActiveRecord::Schema.define(:version => 20121203063805) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -30,6 +31,28 @@ ActiveRecord::Schema.define(:version => 20121203052201) do
     t.integer "location_id"
     t.integer "article_id"
   end
+
+  create_table "blacklists", :force => true do |t|
+    t.string   "word"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "delayed_jobs", :force => true do |t|
+    t.integer  "priority",   :default => 0
+    t.integer  "attempts",   :default => 0
+    t.text     "handler"
+    t.text     "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by"
+    t.string   "queue"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
 
   create_table "events", :force => true do |t|
     t.string   "name"
@@ -97,6 +120,10 @@ ActiveRecord::Schema.define(:version => 20121203052201) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "last_scraped"
+    t.string   "progress_scrape",   :default => "0%"
+    t.string   "progress_content",  :default => "0%"
+    t.string   "progress_classify", :default => "0%"
+    t.string   "progress_location", :default => "0%"
   end
 
   create_table "users", :force => true do |t|
