@@ -97,12 +97,18 @@ def determine_relevant_loc_and_save(article, individual_cache_table, region_hash
 end
 
 
-def mine_location(csv_loc = 'NGA_CSV.TXT', dbf_loc = 'NGA.dbf', articles_array, country, tolerence_sd, source)
+def mine_location(csv_loc = 'NGA_CSV.TXT', dbf_loc = 'NGA.dbf', black_list_loc, articles_array, country, tolerence_sd, source)
   total_article = articles_array.size
   increment = 25.0 / total_article
   completed = 0.0
+  black_list = File.open( black_list_loc ){ |f|  f.read.split}
+  black_list.each do |word|
+    word.downcase!
+  end 
+  puts "Black listed words: "
+  puts black_list
 
-  puts "Working on " + articles_array.size.to_s + "Articles."
+  puts "\nWorking on " + articles_array.size.to_s + "Articles."
   region_hash = {}
 
   CSV.foreach(csv_loc, {:headers => true}) do |row|
@@ -128,7 +134,7 @@ def mine_location(csv_loc = 'NGA_CSV.TXT', dbf_loc = 'NGA.dbf', articles_array, 
         n_gram = n_gram + " " + current_word
         n_gram.strip!
         key = n_gram.downcase
-        if region_hash.has_key?(key) #In Memory Hash of the db.
+        if region_hash.has_key?(key) and not black_list.include?(key) #In Memory Hash of the db and not in the black list
           puts "Found a possible match: " + key
           look_in_region(master_table, master_cache_table, individual_cache_table, region_hash, key) #query and update both caches
           puts "now the ind_cache_table looks like: "
@@ -142,7 +148,7 @@ def mine_location(csv_loc = 'NGA_CSV.TXT', dbf_loc = 'NGA.dbf', articles_array, 
       determine_relevant_loc_and_save(single_article, individual_cache_table, region_hash, country, tolerence_sd)
     end
     completed += increment
-    source.process_location = compelted.to_s + "%"
+    source.progress_location = completed.to_s + "%"
     source.save
   end
 
