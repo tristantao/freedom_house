@@ -1,7 +1,8 @@
 Given /the following articles exist:$/ do |article_table|
   article_table.hashes.each do |article|
-    a = Article.new(:link=>article[:link], :title=>article[:title], :author=>article[:author], :date=>article[:date], :text=>article[:text])
+    a = Article.create(:link=>article[:link], :title=>article[:title], :author=>article[:author], :date=>article[:date], :text=>article[:text])
     loc = Location.create(:name => article[:location], :latitude => 0.000, :longitude => 0.000)
+    loc.save
     a.locations << loc
     a.save
   end
