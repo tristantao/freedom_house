@@ -32,14 +32,14 @@ class TrackerController < ApplicationController
       articles = Article.all(:order => "date asc")
     end
     
-    
-    articles.each do |article|
-      if !article.nil?
-        count << article.date.to_date
-      else
-        articles << DateTime.now.to_date
-        break
+    if articles.length != 0
+      articles.each do |article|
+        count << article.date.to_date 
       end
+    else
+      a = Article.new() 
+      a.date = DateTime.now.to_date
+      articles << a
     end
     
     if params[:start].nil?
