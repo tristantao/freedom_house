@@ -290,6 +290,7 @@ DEPENDENCIES
   jquery-rails
   launchy
   less-rails
+  libv8
   mini_magick
   newrelic_rpm
   nokogiri

@@ -7,6 +7,7 @@ gem 'rails', '3.1.0'
 
 #For User Authentication
 gem 'less-rails'
+gem 'libv8', '~> 3.11.8'
 gem 'devise'
 gem 'haml'
 gem 'twitter-bootstrap-rails'
@@ -24,7 +25,6 @@ gem 'delayed_job_active_record'
 gem 'hirefire'
 gem 'descriptive-statistics'
 gem 'client_side_validations-simple_form'
-gem 'sentiment_analysis'
 
 
 group :production do
