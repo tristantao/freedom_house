@@ -54,8 +54,9 @@
               %td= @article_city[article.id]
               %td= @article_country[article.id]
               %td
-                = link_to 'Edit', admin_articles_action_path(:edit, article.id), :id => "edit_article_#{article.id}", :class => "btn btn-mini"
-                = link_to 'Delete', admin_articles_action_path(:delete, article.id), :class => "btn btn-mini btn-danger"
+                %div.btn-group
+                  = link_to 'Edit', admin_articles_action_path(:edit, article.id), :id => "edit_article_#{article.id}", :class => "btn btn-mini"
+                  = link_to 'Delete', admin_articles_action_path(:delete, article.id), :class => "btn btn-mini btn-danger"
 
 #Article.modal.hide.fade.in{"aria-hidden" => "true", "aria-labelledby" => "myModalHeader", :role => "dialog", :tabindex => "-1", :id => 'modal'}
   .modal-header

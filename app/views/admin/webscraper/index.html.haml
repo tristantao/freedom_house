@@ -61,4 +61,4 @@
                 - if !source.queued
                   = link_to 'scrape', admin_webscraper_action_path(:scrape, source.id), :id => "scrape_source_#{source.id}", :class => "btn btn-mini"
                 - else
-                  = link_to 'scrape', admin_webscraper_action_path(:scrape, source.id), :id => "scrape_source_#{source.id}", :class => "btn btn-mini disabled"
+                  = link_to 'scrape', '#', :id => "scrape_source_#{source.id}", :class => "btn btn-mini disabled"
