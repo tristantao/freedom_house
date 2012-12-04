@@ -145,9 +145,11 @@ def mine_location(csv_loc = 'NGA_CSV.TXT', dbf_loc = 'NGA.dbf', articles_array, 
     if (individual_cache_table.size != 0)
       determine_relevant_loc_and_save(single_article, individual_cache_table, region_hash, country, tolerence_sd)
     end
-    completed += increment
-    source.progress_location = completed.to_s + "%"
-    source.save
+    if !source.nil?
+      completed += increment
+      source.progress_location = completed.to_s + "%"
+      source.save
+    end
   end
 
   #return nothing, just end it

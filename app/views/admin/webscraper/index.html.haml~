@@ -33,7 +33,7 @@
     %h2 Scraping Controls
     %div.pull-right= button_to 'Scrape All', admin_sources_action_path(:super_scrape), :class => "btn btn-success"
     %div
-      %span.label.label-info Stage 1: Web Crawling
+      %span.label.label-info Stage 1: Webcrawling
       %span.label.label-success Stage 2: Content Extraction
       %span.label.label-warning Stage 3: Location Mining
       %span.label.label-important Stage 4: Classification

@@ -6,7 +6,7 @@ class RssValidator < ActiveModel::EachValidator
       record.errors[attribute] << (options[:message] || "can't be blank.")
     else
       if URI::regexp(%w(http https)).match(value).nil?
-        record.errors[attribute] << (options[:message] || 'is incorrectly formatted')
+        record.errors[attribute] << (options[:message] || 'is an incorrectly formatted')
       else
         begin
         doc = Nokogiri::HTML(open(value))

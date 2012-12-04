@@ -32,7 +32,7 @@
   %li
     %a{:href => admin_webscraper_path} Main
   %li
-    %a{:href => admin_webscraper_action_path(:accept_reject)} Accept/Reject
+    %a{:href => admin_dashboard_path} Accept/Reject
   %li
     %a{:href => admin_dashboard_path} Log
 

@@ -18,6 +18,6 @@
   border: none;
 }
 
-.tabs-below > .nav-tabs > .active > a, .tabs-below > .nav-tabs#big > .active > a:hover {
+.tabs-below > .nav-tabs#big > .active > a, .tabs-below > .nav-tabs#big > .active > a:hover {
   border-color: transparent;
 }

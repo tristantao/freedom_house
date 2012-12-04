@@ -23,7 +23,7 @@ class Admin::WebscraperController < ApplicationController
   end
   
   def accept_reject
-    @articles = Article.find(:all, :conditions => {:admin_verified => nil})
+    @articles = Articles.find(:all, :conditions => {:admin_verified => nil})
   end
   
   def accept

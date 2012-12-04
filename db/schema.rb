@@ -11,8 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-
-ActiveRecord::Schema.define(:version => 20121203063805) do
+ActiveRecord::Schema.define(:version => 20121204093014) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -25,6 +24,8 @@ ActiveRecord::Schema.define(:version => 20121203063805) do
     t.datetime "updated_at"
     t.boolean  "gmaps"
     t.string   "picture"
+    t.integer  "source_id"
+    t.boolean  "admin_verified"
   end
 
   create_table "articles_locations", :id => false, :force => true do |t|
@@ -110,6 +111,11 @@ ActiveRecord::Schema.define(:version => 20121203063805) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "feedback_id"
+  end
+
+  create_table "settings", :force => true do |t|
+    t.string  "name"
+    t.integer "value"
   end
 
   create_table "sources", :force => true do |t|

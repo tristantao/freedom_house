@@ -22,5 +22,5 @@
               = r.attribute :commenter
             %div.span6
               = r.attribute :created_at
-          = r.attribute :body, :as => :text
+          = r.attribute :body, :as => :text, :wrapper_html => { :class => "h3" }
  

@@ -32,8 +32,7 @@
   %div.span2
     = render 'admin/shared/sidebar'
   %div.span10
-    %h2 All Articles
-    %div.pull-right= button_to 'Create New Article', admin_articles_action_path(:new), :class => "button btn"
+    %h2 Articles To Verify
 
     %table.table.table-striped.table-hover#article_table
       %thead
@@ -51,12 +50,16 @@
               %td
                 %a{"data-toggle" => "modal", :href => "#Article", :role => "button", "class" => "open-Article", "data-article" => article.id.to_s} #{article.title}
               %td= article.date.strftime('%m/%d/%y')
-              %td= @article_city[article.id]
-              %td= @article_country[article.id]
+              -if article.locations[0].nil?
+                %td
+                %td
+              -else
+                %td= article.locations[0].name
+                %td= article.locations[0].country
               %td
                 %div.btn-group
-                  = link_to 'Edit', admin_articles_action_path(:edit, article.id), :id => "edit_article_#{article.id}", :class => "btn btn-mini"
-                  = link_to 'Delete', admin_articles_action_path(:delete, article.id), :class => "btn btn-mini btn-danger"
+                  = link_to 'Accept', admin_webscraper_action_path(:accept, article.id), :id => "edit_article_#{article.id}", :class => "btn btn-mini"
+                  = link_to 'Reject', admin_webscraper_action_path(:reject, article.id), :class => "btn btn-mini btn-danger"
 
 #Article.modal.hide.fade.in{"aria-hidden" => "true", "aria-labelledby" => "myModalHeader", :role => "dialog", :tabindex => "-1", :id => 'modal'}
   .modal-header
