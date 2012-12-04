@@ -31,8 +31,15 @@ class TrackerController < ApplicationController
     else
       articles = Article.all(:order => "date asc")
     end
+    
+    
     articles.each do |article|
-      count << article.date.to_date
+      if !article.nil?
+        count << article.date.to_date
+      else
+        articles << Date.now
+        break
+      end
     end
     
     if params[:start].nil?
@@ -59,6 +66,7 @@ class TrackerController < ApplicationController
         currentdate+=1
       end
     end
+    
     count.sort!
     count.each do |date|
       if json[date.strftime("%d-%b-%Y")].nil?
