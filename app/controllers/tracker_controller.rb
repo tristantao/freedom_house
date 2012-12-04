@@ -37,7 +37,7 @@ class TrackerController < ApplicationController
       if !article.nil?
         count << article.date.to_date
       else
-        articles << Date.now
+        articles << DateTime.now.to_date
         break
       end
     end
