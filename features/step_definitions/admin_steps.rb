@@ -15,9 +15,25 @@ Given /^the blog is also set up with a non-admin user$/ do
   User.create!(:id=>2,:email=>'bbunny@gmail.com', :password=>'derp123', :first_name => 'Bugs', :last_name => 'Bunny')
 end
 
+Given /^the blog is now also set up with an admin user by the name of Michael Scott$/ do
+  User.create!(:id=>2,:email=>'mscott@gmail.com', :password=>'derp123', :first_name => 'Michael', :last_name => 'Scott')
+  user = User.find_by_id(2)
+  user.admin = true
+  user.save!
+end
+
+
+
 # Justin Chan end
 
+Given /^I am logged in as a regular user$/ do
 
+  step %{I am on the home page}
+  step %{I fill in "Email" with "hellojustinchan@gmail.com"}
+  step %{I fill in "Password" with "derp1234"}
+  step %{I press "Sign in"}
+  step %{I am on the home page}
+end
 
 Given /^I am logged in as the administrator$/ do
 
