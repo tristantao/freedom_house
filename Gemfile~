@@ -7,7 +7,7 @@ gem 'rails', '3.1.0'
 
 #For User Authentication
 gem 'less-rails'
-gem 'libv8', '~> 3.11.8'
+gem 'libv8'
 gem 'devise'
 gem 'haml'
 gem 'twitter-bootstrap-rails'
