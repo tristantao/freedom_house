@@ -53,6 +53,9 @@ class FeedbacksController < ApplicationController
 
  def delete
    @feedback = Feedback.find_by_id(params[:id])
+   @feedback.delete
+   flash[:notice] = "Feedback deleted."
+   redirect_to feedbacks_index_path
  end
 
  def view 
