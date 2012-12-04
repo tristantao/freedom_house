@@ -252,7 +252,7 @@ GEM
     treetop (1.4.12)
       polyglot
       polyglot (>= 0.3.1)
-    twitter-bootstrap-rails (2.1.6)
+    twitter-bootstrap-rails (2.1.7)
       actionpack (>= 3.1)
       execjs
       railties (>= 3.1)
@@ -290,7 +290,6 @@ DEPENDENCIES
   jquery-rails
   launchy
   less-rails
-  libv8
   mini_magick
   newrelic_rpm
   nokogiri
