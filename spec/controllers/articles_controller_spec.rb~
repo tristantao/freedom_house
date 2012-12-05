@@ -7,6 +7,7 @@ describe Admin::ArticlesController do
   end
   describe "adding new articles" do
     it "should be able to add articles" do
+<<<<<<< HEAD
       mockArticle = mock("Article", :id => '1', 'title' => "Harry Potter", 'date' => 'Jan 1, 2011', 'link' => 'harrypotter.com')
       Article.should_receive(:create).and_return(mockArticle)
       mockArticle.stub(:save)
@@ -15,15 +16,29 @@ describe Admin::ArticlesController do
       mockArticle.stub(:full_messages).and_return([])
 
       post :new, {"article" => {'title' => "Harry Potter", 'date' => 'Jan 1, 2011', 'link' => 'harrypotter.com'}}
+=======
+      @mockArticle = mock("Article", :id => '1', 'title' => "Harry Potter", 'date' => 'Jan 1, 2011', 'author' => 'J.K Rowing', 'link' => 'harrypotter.com', 'text' => 'harry, youre a wizard')
+      Article.stub(:create).and_return(@mockArticle)
+      @mockArticle.stub(:save)
+      @mockArticle.stub(:locations).and_return([])
+
+      post :new, :article => {:title => "Harry Potter", :date => 'Jan 1, 2011', :author => 'J.K Rowing', :link => 'harrypotter.com', :text => 'harry, youre a wizard'}
+>>>>>>> d8309c9891dffc4639c6a92f15405e6d7f630540
     end
   end
 
   describe "deleting an article" do
     it "should be able to delete an article" do
+<<<<<<< HEAD
       mockArticle = mock("Article", :id => '1', 'title' => "Harry Potter", 'date' => 'Jan 1, 2011', 'link' => 'harrypotter.com')
       Article.should_receive(:find_by_id).and_return(mockArticle)
       mockArticle.should_receive(:destroy)
 
+=======
+      @mockArticle = mock("Article", :id => '1', 'title' => "Harry Potter", 'date' => 'Jan 1, 2011', 'author' => 'J.K Rowing', 'link' => 'harrypotter.com', 'text' => 'harry, youre a wizard')
+      Article.stub(:find_by_id).and_return(@mockArticle)
+      @mockArticle.stub(:delete)
+>>>>>>> d8309c9891dffc4639c6a92f15405e6d7f630540
       post :delete, {:id => '1'}
     end
     it "should be able to edit an article" do
@@ -37,9 +52,9 @@ describe Admin::ArticlesController do
       mockArticle.should_receive(:title=).with("Title Dos")
       mockArticle.should_receive(:date=).with("Oct 29 2012")
       mockArticle.should_receive(:author=).with("justin")
-      mockArticle.should_receive(:location=).with("")
+      mockArticle.should_receive(:location=).with(nil)
       mockArticle.should_receive(:link=).with("google.com")
-      mockArticle.should_receive(:text=).with("")
+      mockArticle.should_receive(:text=).with(nil)
       mockArticle.should_receive(:save)
       mockArticle.stub(:errors).and_return(mockArticle)
       mockArticle.stub(:full_messages).and_return([])

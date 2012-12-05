@@ -111,7 +111,7 @@ class Source < ActiveRecord::Base
     #You can call the function with different Databases and a array/sub-array of article models, to mine for different locations.
       if articles.length != 0
         mine_location('db/dbf/NGA_CSV.TXT', 'db/dbf/NGA.dbf', articles, "Nigeria", 1, self)
-        if Classifier.all.legnth != 0 and Calssifier.all[0].on_off
+        if Classifier.all.length != 0 and Calssifier.all[0].on_off
           puts "classifying"
           Classifier.all[0].classify(articles, self)
         end

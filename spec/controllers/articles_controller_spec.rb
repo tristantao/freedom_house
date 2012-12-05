@@ -15,6 +15,7 @@ describe Admin::ArticlesController do
       mockArticle.stub(:full_messages).and_return([])
 
       post :new, {"article" => {'title' => "Harry Potter", 'date' => 'Jan 1, 2011', 'link' => 'harrypotter.com'}}
+
     end
   end
 

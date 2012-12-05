@@ -57,8 +57,8 @@
                 %td= article.locations[0].country
               %td
                 %div.btn-group
-                  = link_to 'Accept', admin_webscraper_action_path(:accept, article.id), :id => "edit_article_#{article.id}", :class => "btn btn-mini"
-                  = link_to 'Reject', admin_webscraper_action_path(:reject, article.id), :class => "btn btn-mini btn-danger"
+                  = link_to 'Accept', admin_webscraper_action_path(:accept, article.id), :id => "accept_article_#{article.id}", :class => "btn btn-mini"
+                  = link_to 'Reject', admin_webscraper_action_path(:reject, article.id), :id => "reject_article_#{article.id}", :class => "btn btn-mini btn-danger"
 
 #Article.modal.hide.fade.in{"aria-hidden" => "true", "aria-labelledby" => "myModalHeader", :role => "dialog", :tabindex => "-1", :id => 'modal'}
   .modal-header

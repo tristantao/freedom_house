@@ -45,9 +45,8 @@ Scenario: Resolve comments
   And I press "Create"
   And I cheat and magically assign this feedback to Bugs Bunny
   And I am on the admin feedback page
+  And I follow "Resolve1"
   And I resolve this feedback
-  Then there should be no active feedback
-
 
 
 
