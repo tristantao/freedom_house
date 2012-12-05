@@ -28,18 +28,32 @@ describe Classifier do
       #Article.should_receive(:create).and_return(mockArticle)
       mockArticle2 = mock("Article", :id => '2', 'title' => "Harry Potter two", 'date' => 'Jan 1, 2012', 'author' => 'J.K Rowing', 'link' => 'harrypotter2.com', 'text' => 'harry, youre a wizard, for the second time!')
       #Article.should_receive(:create).and_return(mockArticle2)
-      mockArticle.stub(:contains_hatespeech)
-      mockArticle.stub(:text)
-      mockArticle.stub(:save!)
-      mockArticle2.stub(:contains_hatespeech)
-      mockArticle2.stub(:text)
-      mockArticle2.stub(:save!)
+      s = mock("Source")
+      s.stub(:nil?).and_return(false)
+      s.stub(:progress_classify=).and_return("")
+      s.stub(:save).and_return(true)
+      mockArticle.stub(:save!).and_return(true)
+      mockArticle.stub(:contains_hatespeech).and_return(true)
+      mockArticle.stub(:contains_hatespeech=).and_return(true)
+      mockArticle2.stub(:save!).and_return(true)
+      mockArticle2.stub(:contains_hatespeech).and_return(true)
+      mockArticle2.stub(:contains_hatespeech=).and_return(true)
+      article_list = [mockArticle, mockArticle2, mockArticle, mockArticle2, mockArticle, mockArticle2]
+      classifier = Classifier.new(:problem => "wizard", :top_features => ["testing","sucks"], :on_off => false)
+      classifier.classify(article_list, s).should be_true
+    end
 
-      article_list = [mockArticle, mockArticle2]
-      classifier = mock("Classifier", :id => '1', :problem => "test", :top_feature => ["testing","sucks"], :on_off => false)
-      classifier.stub(:top_features)
-      classifier.should_receive(:classify).with(article_list, nil).and_return(true)
-      classifier.classify(article_list, nil)
+    it "should be able to retrain a feature vector" do
+      classifier = Classifier.new(:problem => "wizard", :top_features => ["Hagrid", "testing", "sucks", "harry", "wizard"], :on_off => false)
+      mockArticle = Article.new(:title => "Harry Potter", :date => 'Jan 1, 2011', :author => 'J.K Rowing', :link => 'harrypotter.com', :text => 'harry, youre a wizard. Said Hagrid', :contains_hatespeech => true)
+      mockArticle.stub(:save).and_return(true)
+      mockArticle.stub(:save!).and_return(true)
+
+
+      Article.stub(:all).and_return([mockArticle, mockArticle])
+
+      classifier.retrain.should be_true
+
     end
   end
 end
