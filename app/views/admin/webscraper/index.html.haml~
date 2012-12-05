@@ -12,10 +12,8 @@
             document.getElementById('location'+ String(key)).style.width = data[key]['location'];
             if (data[key]['queued']) {
               document.getElementById('scrape_source_'+ String(key)).className = "btn btn-mini disabled";
-              document.getElementById('scrape_source_'+ String(key)).setAttribute('href', '#');
             } else {
               document.getElementById('scrape_source_'+ String(key)).className = "btn btn-mini";
-              document.getElementById('scrape_source_'+ String(key)).setAttribute('href', '#{admin_webscraper_action_path(:scrape, key)}');
             }
           }
         },
