@@ -12,8 +12,7 @@ class Article < ActiveRecord::Base
   attr_accessible :title, :date, :text, :author, :link, :picture, :admin_verified, :contains_hatespeech
 
   validates :title, :date, :link, :presence => true
-  validates :link, :uniqueness => true
-  validates_link :link
+  validates :link, :uniqueness => true, :link => true
 
   acts_as_gmappable :process_geocoding => false
 

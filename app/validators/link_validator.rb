@@ -17,9 +17,3 @@ class LinkValidator < ActiveModel::EachValidator
   end
 end
 
-# This allows us to assign the validator in the model
-module ActiveModel::Validations::HelperMethods
-  def validates_link(*attr_names)
-    validates_with LinkValidator, _merge_attributes(attr_names)
-  end
-end
