@@ -32,7 +32,7 @@ describe Source do
         obj = Object.new
         obj.stub(:entries).and_return([])
         Feedzirra::Feed.stub(:fetch_and_parse).and_return(obj)
-        article = Article.new(:title => "Tristan's awesome", :url => "http://www.foo.com", :contains_hatespeech => "true", :text => "Tristan stayed up all night to try to get tests to work. He should definitely get a B, Richard", :date => DateTime.parse("Jan 12 2012"))
+        article = Article.new(:title => "Tristan's awesome", :url => "http://www.dailytrust.com.ng/index.php/rss/xml/RSS2.0/full", :contains_hatespeech => "true", :text => "Tristan stayed up all night to try to get tests to work. He should definitely get a B, Richard", :date => DateTime.parse("Jan 12 2012"))
 
         article.stub(:scrapeContent!).and_return(true)
         source.stub(:save).and_return(true)
@@ -46,14 +46,14 @@ describe Source do
         item = Object.new
         item.stub(:title).and_return("tile of the article goes here")
         item.stub(:author).and_return("author")
-        item.stub(:url).and_return("http://www.foo.com")
+        item.stub(:url).and_return("http://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml")
         item.stub(:published).and_return(DateTime.parse("Jan 12 2012"))
 
         obj = Object.new
         obj.stub(:entries).and_return([item])
 
         Feedzirra::Feed.stub(:fetch_and_parse).and_return(obj)
-        article = Article.new(:title => "Tristan's awesome", :url => "http://www.foo.com", :contains_hatespeech => "true", :text => "Tristan stayed up all night to try to get tests to work. He should definitely get a B, Richard", :date => DateTime.parse("Jan 12 2012"))
+        article = Article.new(:title => "Tristan's awesome", :url => "http://www.dailytrust.com.ng/index.php/rss/xml/RSS2.0/full", :contains_hatespeech => "true", :text => "Tristan stayed up all night to try to get tests to work. He should definitely get a B, Richard", :date => DateTime.parse("Jan 12 2012"))
 
         article.stub(:scrapeContent!).and_return(true)
         source.stub(:save).and_return(true)
@@ -70,14 +70,14 @@ describe Source do
         item = Object.new
         item.stub(:title).and_return("tile of the article goes here")
         item.stub(:author).and_return("author")
-        item.stub(:url).and_return("http://www.foo.com")
+        item.stub(:url).and_return("http://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml")
         item.stub(:published).and_return(DateTime.parse("Jan 12 2012"))
 
         obj = Object.new
         obj.stub(:entries).and_return([item])
 
         Feedzirra::Feed.stub(:fetch_and_parse).and_return(obj)
-        article = mock("Article", :title => "Tristan's awesome", :url => "http://www.foo.com", :contains_hatespeech => "true", :text => "Tristan stayed up all night to try to get tests to work. He should definitely get a B, Richard", :date => DateTime.parse("Jan 12 2012"))
+        article = mock("Article", :title => "Tristan's awesome", :url => "http://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml", :contains_hatespeech => "true", :text => "Tristan stayed up all night to try to get tests to work. He should definitely get a B, Richard", :date => DateTime.parse("Jan 12 2012"))
         article.stub(:title=)
         article.stub(:author=)
         article.stub(:link=)
