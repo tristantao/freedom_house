@@ -55,6 +55,7 @@ class Source < ActiveRecord::Base
         if item.published <= now
           article = Article.new
           article.title = item.title
+          article.author = item.author
           article.link = item.url
           article.date = item.published
           article.source = self
