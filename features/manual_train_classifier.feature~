@@ -11,6 +11,6 @@ Background:
 
 Scenario: Retrain the classifier (happy path)
   When I go to the classifier page
-  And I press "Retrain"
+  And I press "retrain"
   Then I should see "Classifier is being retrained."
   And I should be on the classifier page

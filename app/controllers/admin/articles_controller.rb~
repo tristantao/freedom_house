@@ -37,7 +37,7 @@ class Admin::ArticlesController < ApplicationController
 
   def edit
     @article = Article.find(params[:id])
-    @article.date = @article.date.strftime("%m/%d/%Y")
+    @article.date = @article.date.strftime("%m/%d/%y")
   end
 
   def update

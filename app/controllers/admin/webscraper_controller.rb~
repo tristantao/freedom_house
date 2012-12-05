@@ -67,7 +67,6 @@ class Admin::WebscraperController < ApplicationController
   end
   
   def retrain
-    Classifier.all[0].delay.retrain
     flash[:notice] = "Classifier is being retrained."
     redirect_to :back
   end

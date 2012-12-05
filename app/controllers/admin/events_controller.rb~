@@ -51,7 +51,7 @@ class Admin::EventsController < ApplicationController
 
   def edit
     @event = Event.find(params[:id])
-    @event.date = @event.date.strftime("%m/%d/%Y")
+    @event.date = @event.date.to_date
   end
 
   def update

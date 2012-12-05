@@ -52,7 +52,7 @@
           - @articles.each do |article|
             %tr
               %td= article.id
-              %td{:id => "Article" + article.id.to_s, "data-toggle" => "modal", :href => "#Article", "class" => "open-Article", "data-article" => article.id.to_s}= link_to article.title, "#"
+              %td{:id => "Article" + article.id.to_s, "data-toggle" => "modal", :href => "#Article", "class" => "open-Article", "data-article" => article.id.to_s}= link_to #{article.title}, "#"
               %td= article.date.strftime('%m/%d/%y')
               -if article.locations[0].nil?
                 %td

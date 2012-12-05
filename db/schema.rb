@@ -24,9 +24,9 @@ ActiveRecord::Schema.define(:version => 20121205115156) do
     t.datetime "updated_at"
     t.boolean  "gmaps"
     t.string   "picture"
+    t.boolean  "contains_hatespeech"
     t.integer  "source_id"
     t.boolean  "admin_verified"
-    t.boolean  "contains_hatespeech"
   end
 
   create_table "articles_locations", :id => false, :force => true do |t|
@@ -140,8 +140,8 @@ ActiveRecord::Schema.define(:version => 20121205115156) do
     t.string   "progress_content",  :default => "0%"
     t.string   "progress_classify", :default => "0%"
     t.string   "progress_location", :default => "0%"
-    t.boolean  "queued",            :default => false
     t.string   "feed_type",         :default => "RSS"
+    t.boolean  "queued",            :default => false
     t.integer  "classifier_id",     :default => 1
     t.integer  "user_id"
   end
