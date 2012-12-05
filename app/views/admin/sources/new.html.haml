@@ -5,14 +5,13 @@
   %div.span5.offset2
     %h2.pagination-centered Create New Source
     %div#card
-      = simple_form_for(:source, :as => :source_name, :url => admin_sources_action_path(:new), :html => { :method => :put, :class => 'form-horizontal'} ) do |f|
+      = simple_form_for(:source, :as => :source_name, :url => admin_sources_action_path(:new), :html => { :method => :put, :class => 'form-horizontal', :validate => true} ) do |f|
         = f.error_notification
         .form-inputs
-          = f.input :name, required: true, input_html: { class: "span9" }
-          = f.input :home_page, required: true, input_html: { class: "span9" }
-          = f.input :url, required: true, input_html: {class: "span9"}
-          = f.input :quality_rating, required: false, input_html: {class: "span9" }
-        .form-actions
-          %div.btn-group
+          = f.input :name, required: true, input_html: { class: "span" }
+          = f.input :home_page, required: true, input_html: { class: "span" }
+          = f.input :url, required: true, input_html: {class: "span"}
+          = f.input :quality_rating, required: false, input_html: {class: "span" }
+          %div.btn-group.pull-right
             = f.button :submit, "Create", :class => "btn btn-success"
             = link_to 'Cancel', admin_sources_path, :class => "btn btn-danger"

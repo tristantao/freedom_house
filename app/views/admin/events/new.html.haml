@@ -5,7 +5,7 @@
   %div.span7.offset1
     %h2.pagination-centered Create New Event
     %div#card
-      = simple_form_for(:event, :as => :event_name, :url => admin_events_action_path(:new), :html => { :method => :put, :class => 'form-horizontal'}) do |f|
+      = simple_form_for(:event, :as => :event_name, :url => admin_events_action_path(:new), :html => { :method => :put, :class => 'form-horizontal', :validate => true}) do |f|
         = f.error_notification
         .form-inputs
           = f.input :name, :input_html => { :class => "span" }

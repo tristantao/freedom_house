@@ -11,22 +11,22 @@
           %th #
           %th Name
           %th Date
-          %th Description
-          %th City/Location
+          %th Location
           %th Country
           %th Latitude
           %th Longitude
+          %th
         %tbody
           - @events.each do |event|
             %tr
               %td= event.id
               %td= event.name
-              %td= event.date
-              %td= event.description
+              %td= event.date.strftime("%m/%d/%Y")
               %td= @event_city[event.id]
               %td= @event_country[event.id]
               %td= @event_latitude[event.id]
               %td= @event_longitude[event.id]
               %td
-                = link_to 'Edit', admin_events_action_path(:edit, event.id), :id => "edit_event_#{event.id}", :class => "btn btn-mini"
-                = link_to 'Delete', admin_events_action_path(:delete, event.id), :class => "btn btn-mini btn-danger"
+                %div.btn-group
+                  = link_to 'Edit', admin_events_action_path(:edit, event.id), :id => "edit_event_#{event.id}", :class => "btn btn-mini"
+                  = link_to 'Delete', admin_events_action_path(:delete, event.id), :class => "btn btn-mini btn-danger"

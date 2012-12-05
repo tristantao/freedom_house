@@ -28,8 +28,8 @@
   end
 
 
-  sources = [{:name => "Daily Trust", :home_page => "www.dailytrust.com.ng", :url => "http://www.dailytrust.com.ng/index.php/rss/xml/RSS2.0/full", :quality_rating => "10"},
-             {:name => "Times", :home_page => "www.nytimes.com", :url => "http://rss.nytimes.com/services/xml/rss/nyt/World.xml", :quality_rating => "1"}]
+  sources = [{:name => "Daily Trust", :home_page => "http://www.dailytrust.com.ng", :url => "http://www.dailytrust.com.ng/index.php/rss/xml/RSS2.0/full", :quality_rating => "10"},
+             {:name => "Times", :home_page => "http://www.nytimes.com", :url => "http://rss.nytimes.com/services/xml/rss/nyt/World.xml", :quality_rating => "1"}]
 
   sources.each do |source|
     Source.create!(source)

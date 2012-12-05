@@ -16,7 +16,7 @@
 
   %li.nav-header Articles
   %li
-    %a{:href => admin_articles_path} All Articles
+    %a{:href => admin_articles_path} Classified Articles
   %li
     %a{:href => admin_articles_action_path(:new)} Add Article
 
@@ -32,10 +32,13 @@
   %li
     %a{:href => admin_webscraper_path} Main
   %li
-    %a{:href => admin_dashboard_path} Accept/Reject
+    %a{:href => admin_webscraper_action_path(:accept_reject)} Accept/Reject
   %li
     %a{:href => admin_dashboard_path} Log
 
   %li.nav-header Feedback
   %li
-    %a{:href => admin_dashboard_path} Messages
+    %a{:href => admin_feedbacks_path} 
+      Main
+      - if Feedback.where(:active => true).length > 0
+        %span.badge.badge-important #{Feedback.where(:active => true).length}

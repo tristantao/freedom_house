@@ -1,29 +1,11 @@
 .map_container {
-  width: 100%;
-  height: 50%;
-  padding: 6px;
-  margin-left: auto ;
-  margin-right: auto ;
+  width: 99%;
+  height: 60%;
+  margin: auto;
   border-width: 1px;
   border-style: solid;
   border-color: #ccc #ccc #999 #ccc;
-  -webkit-box-shadow: rgba(64, 64, 64, 0.5) 0 2px 5px;
-  -moz-box-shadow: rgba(64, 64, 64, 0.5) 0 2px 5px;
-  box-shadow: rgba(64, 64, 64, 0.1) 0 2px 5px;
-  -webkit-border-top-right-radius: 4px;
-  -webkit-border-bottom-right-radius: 4px;
-  -webkit-border-bottom-left-radius: 4px;
-  -webkit-border-top-left-radius: 4px;
-  -moz-border-radius-topright: 4px;
-  -moz-border-radius-bottomright: 4px;
-  -moz-border-radius-bottomleft: 4px;
-  -moz-border-radius-topleft: 4px;
-  border-top-right-radius: 4px;
-  border-bottom-right-radius: 4px;
-  border-bottom-left-radius: 4px;
-  border-top-left-radius: 4px;
-  background: white;
-  width: 800px;
+  
 }
 
 .gmaps4rails_map {
@@ -42,31 +24,15 @@
 .map_container_full {
   width: 100%;
   height: 80%;
-  padding: 6px;
   margin-left: auto ;
   margin-right: auto ;
   margin-top: auto ;
-  margin-bottom: auto ;
+  margin-bottom: auto;
+  
   border-width: 1px;
   border-style: solid;
   border-color: #ccc #ccc #999 #ccc;
-  -webkit-box-shadow: rgba(64, 64, 64, 0.5) 0 2px 5px;
-  -moz-box-shadow: rgba(64, 64, 64, 0.5) 0 2px 5px;
-  box-shadow: rgba(64, 64, 64, 0.1) 0 2px 5px;
-  -webkit-border-top-right-radius: 4px;
-  -webkit-border-bottom-right-radius: 4px;
-  -webkit-border-bottom-left-radius: 4px;
-  -webkit-border-top-left-radius: 4px;
-  -moz-border-radius-topright: 4px;
-  -moz-border-radius-bottomright: 4px;
-  -moz-border-radius-bottomleft: 4px;
-  -moz-border-radius-topleft: 4px;
-  border-top-right-radius: 4px;
-  border-bottom-right-radius: 4px;
-  border-bottom-left-radius: 4px;
-  border-top-left-radius: 4px;
-  background: white;
-  width: 800px;
+ 
 }
 
 
@@ -74,3 +40,10 @@
 .map_container_full img {
   max-width:none;
 }
+
+.tab-content#shadow {
+  -webkit-box-shadow: 0 0 10px 5px rgba(0, 0, 0, .2);
+  -moz-box-shadow: 0 0 10px 5px rgba(0,0,0, .2);
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, .2);
+}
+

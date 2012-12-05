@@ -1,5 +1,5 @@
 %div.container.navbar-wrapper
-  %div.navbar
+  %div.navbar.navbar-inverse
     %div.navbar-inner
       %div.container
         %a.btn.btn-navbar{"data-toggle" => "collapse", "data-target" => ".nav-collapse"}
@@ -14,6 +14,16 @@
           %ul.nav.pull-right
             - if current_user && current_user.admin
               %li= link_to 'Admin Dashboard', admin_dashboard_path
+          %ul.nav.pull-right
+            - if current_user && !current_user.admin && current_user.adminresponse
+              %span.badge 1
+          %ul.nav.pull-right
+            - if current_user && current_user.admin
+              %li
+                %a{:href => feedbacks_index_path} 
+                  Feedback
+                  - if Feedback.where(:active => true, :user_id => current_user.id).length > 0
+                    %span.badge.badge-important #{Feedback.where(:active => true).length}
           %ul.nav.pull-right
             - if current_user
               %li= link_to 'Home', home_path

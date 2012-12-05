@@ -1,0 +1,15 @@
+%div.row-fluid
+  %div.span1
+  %div.span7.offset1
+    %h2.pagination-centered Create New Feedback Form
+    %div#card
+      = simple_form_for(:feedback, :as => :feedback_name, :url => feedbacks_action_path(:new), :html => { :method => :put, :class => 'form-horizontal'}) do |f|
+        = f.error_notification
+        .form-inputs
+          = f.input :title, :input_html => { :class => "span"}
+          = f.input :description, :as => :text, :input_html => { :class => "span" }
+          = f.input :rating, :collection => [0, 1, 2, 3, 4, 5], :input_html => { :class => "span" }
+          %div.btn-group.pull-right
+            = f.button :submit, "Create", :class => "btn-success"
+            = link_to 'Cancel', feedbacks_index_path, :class => "btn btn-danger"
+

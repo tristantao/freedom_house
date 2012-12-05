@@ -1,0 +1,18 @@
+%div.row-fluid
+  %div.span2
+    = render 'admin/shared/sidebar'
+    
+  %div.span5.offset2
+    %h2.pagination-centered Source Properties
+    %div#card
+      = simple_form_for(@source, :url => admin_sources_action_path(:update, @source.id), :html => { :method => :put, :class => 'form-horizontal'}) do |f|
+        = f.error_notification
+        .form-inputs
+          = f.input :name, :input_html => { :class => "span8" }
+          = f.input :home_page, :input_html => { :class => "span8" }
+          = f.input :url, :input_html => { :class => "span8" }
+          = f.input :quality_rating, :input_html => { :class => "span8" }
+        .form-actions
+          %div.btn-group
+            = f.button :submit, "Update Source", :class => "btn-success"
+            = link_to 'Cancel', admin_sources_path, :class => "btn btn-danger"

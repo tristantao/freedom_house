@@ -46,6 +46,9 @@ GEM
     childprocess (0.3.6)
       ffi (~> 1.0, >= 1.0.6)
     client_side_validations (3.2.1)
+    client_side_validations-simple_form (2.0.1)
+      client_side_validations (~> 3.2.0)
+      simple_form (~> 2.0.3)
     coffee-rails (3.1.1)
       coffee-script (>= 2.2.0)
       railties (~> 3.1.0)
@@ -146,7 +149,7 @@ GEM
       subexec (~> 0.2.1)
     multi_json (1.4.0)
     netrc (0.7.7)
-    newrelic_rpm (3.5.2.17)
+    newrelic_rpm (3.5.3.24)
     nokogiri (1.5.5)
     nokogiri (1.5.5-x86-mingw32)
     orm_adapter (0.4.0)
@@ -225,6 +228,9 @@ GEM
       rubyzip
     session (3.1.0)
       fattr
+    show_for (0.2.5)
+      actionpack (~> 3.0)
+      activemodel (~> 3.0)
     simple_form (2.0.4)
       actionpack (~> 3.0)
       activemodel (~> 3.0)
@@ -246,7 +252,7 @@ GEM
     treetop (1.4.12)
       polyglot
       polyglot (>= 0.3.1)
-    twitter-bootstrap-rails (2.1.6)
+    twitter-bootstrap-rails (2.1.7)
       actionpack (>= 3.1)
       execjs
       railties (>= 3.1)
@@ -267,6 +273,7 @@ PLATFORMS
 DEPENDENCIES
   capybara
   client_side_validations
+  client_side_validations-simple_form
   coffee-rails (~> 3.1.0)
   country-select
   cucumber-rails
@@ -293,9 +300,10 @@ DEPENDENCIES
   ruby-debug19
   ruby-readability
   sass-rails (~> 3.1.0)
+  show_for
   simple_form
   simplecov
   sqlite3
-  therubyracer
+  therubyracer (~> 0.10.2)
   twitter-bootstrap-rails
   uglifier

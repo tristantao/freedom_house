@@ -9,20 +9,35 @@ class Admin::WebscraperController < ApplicationController
   def scrape
     id = params[:id]
     source = Source.find_by_id(id)
-    min_interval = 5 * 60
     
-    if !source.last_scraped.nil? then
-      its_too_early = (Time.now - source.last_scraped.to_time) <= min_interval
-    end
-    
-    if !source.last_scraped.nil? && its_too_early && false then
-      flash[:warning] = "Source #{source.name} was scraped less than #{min_interval/60} minutes ago. Time is #{Time.now}."
+    if ((!source.last_scraped.nil? && source.scrapable?) || source.queued) then
+      flash[:warning] = "Source #{source.name} was scraped less than 5 minutes ago. Time is #{Time.now}."
     else 
+      source.queued = true
+      source.save
       source.delay.scrape
       flash[:notice] = "Source #{source.name} is being scrapped. You should see new articles, if any, in a few minutes."
     end
     
     redirect_to admin_webscraper_path
+  end
+  
+  def accept_reject
+    @articles = Article.find(:all, :conditions => {:admin_verified => nil})
+  end
+  
+  def accept
+    article = Article.find(params[:id])
+    article.admin_verified = true
+    article.save
+    redirect_to admin_webscraper_action_path(:accept_reject)
+  end
+  
+  def reject
+    article = Article.find(params[:id])
+    article.admin_verified = false
+    article.save
+    redirect_to admin_webscraper_action_path(:accept_reject)
   end
 
   protected

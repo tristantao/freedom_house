@@ -1,0 +1,26 @@
+%div.row-fluid
+  %div.span2
+    = render 'admin/shared/sidebar'
+    
+  %div.span7.offset1
+    %h2.pagination-centered Feedback
+    %div#card
+      = show_for @feedback do |f|
+        = f.attribute :title
+        = f.association :user, :using => :name
+        = f.attribute :description, :as => :text
+        = f.attribute :rating, :as => :integer
+        = f.attribute :active
+    %h2 
+      Comments
+      %div.pull-right= button_to 'New Comment', admin_responses_action_path(@feedback.id, :new), :class => "button btn"
+    -@feedback.responses.each do |response| 
+      %div#card
+        = show_for response do |r|
+          %div.row-fluid
+            %div.span6
+              = r.attribute :commenter
+            %div.span6
+              = r.attribute :created_at
+          = r.attribute :body, :as => :text, :wrapper_html => { :class => "h3" }
+ 
