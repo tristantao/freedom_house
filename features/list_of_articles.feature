@@ -11,6 +11,7 @@ Background: articles have been put in the database
   | Officials: Deadly attack hits north Nigeria mosque | 14-Oct-2012 | John Smith | Lagos, NG  | http://www.foo.com  |     1     |
   | Gunmen kill 20 at mosque in Zaria                  | 15-Oct-2012 | Jim Smith  | Kaduna, NG | http://www.foo2.com |     2     |
 
+
   And the blog is set up with an admin user
   And I am logged in as the administrator
   And I am on the admin dashboard

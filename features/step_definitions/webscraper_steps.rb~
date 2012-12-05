@@ -1,0 +1,4 @@
+Given /the classifier is instantiated$/ do
+  c = Classifier.create(:problem => "Nigeria" , feature_vector => ["attack", "kill"], on_off => 1)
+  
+end

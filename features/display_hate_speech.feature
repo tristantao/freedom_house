@@ -13,7 +13,8 @@ Feature: display the hate speech in an article
 #Using Selenium to test AJAX
 Scenario:  hate speech of an article should be displayed
   When I go to the home page
-  And I follow "Article1"
+  Then I should see "blah"
+  And I press "Article1"
   Then I should see "highlight"
   
   
