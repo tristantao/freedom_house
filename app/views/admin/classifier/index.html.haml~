@@ -4,12 +4,17 @@
     
   %div.span10
     %h2 Classifier Controls
-    %div "Global dictionary: #{@dictionary.inspect}"
-    %div
+    -# %div "Global dictionary: #{@dictionary.inspect}"
+    %div "Total articles: #{@total}"
+    %div "Labels: #{@labels}"
+    %div "Documents: #{@documents}"
+    %div "Test Labels: #{@test_labels}"
+    %div "Test Documents: #{@test_documents}"
     %div "#{@first_training_vector}"
     %div "#{@first_test_vector}"
-
-    %div "#{@kernel_errors_training}"
-    %div "#{@kernel_errors_testing}"
-    %div "#{@kernel_predictions_training}"
-    %div "#{@kernel_predictions_testing}"
+    %div "#{@doc_count}"
+    
+    -#%div "#{@kernel_errors_training}"
+    -#%div "#{@kernel_errors_testing}"
+    -#%div "#{@kernel_predictions_training}"
+    -#%div "#{@kernel_predictions_testing}"

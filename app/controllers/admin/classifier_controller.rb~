@@ -97,7 +97,7 @@ include ::ChiSquared
         new_accuracy = correct.to_f/@test_labels.length.to_f
         if @accuracy[kernel].nil?
           @accuracy[kernel] = new_accuracy
-        else
+        elsee
           @accuracy[kernel] = (@accuracy[kernel]*(c_vd) + new_accuracy)/(c_vd+1)
         end
       @labels[c_vd] = @test_labels
