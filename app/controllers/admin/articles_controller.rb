@@ -4,7 +4,7 @@ class Admin::ArticlesController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    @articles = Article.where("admin_verified = ? OR admin_verified = ?", true, false)
+    @articles = Article.where("(contains_hatespeech = ? OR contains_hatespeech = ?) AND (admin_verified = ? OR admin_verified = ?)", true, false, true, false)
     @article_city = {}
     @article_country = {}
     @articles.each do |a|

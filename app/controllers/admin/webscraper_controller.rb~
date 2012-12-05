@@ -4,7 +4,7 @@ class Admin::WebscraperController < ApplicationController
   
   def index
     @sources = Source.all
-    @classifier = false
+    @classifier = Classifier.all[0].on_off
   end
 
   def scrape

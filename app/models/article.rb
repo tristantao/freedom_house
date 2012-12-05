@@ -54,6 +54,9 @@ class Article < ActiveRecord::Base
   def scrapeAll!
     self.scrapeContent!
     mine_location('db/dbf/NGA_CSV.TXT', 'db/dbf/NGA.dbf', [self], "Nigeria", 1, nil)
+    if Classifier.all.legnth != 0 and Calssifier.all[0].on_off
+      Classifier.all[0].classify([self], nil)
+    end
   end
 
 end
