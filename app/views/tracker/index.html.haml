@@ -6,7 +6,8 @@
           type: 'POST',
           url: "#{view_article_path()}",
           data: "articleID=" + articleID,
-          success: function(article){
+          success: function(data){
+            var article = data[0];
             return_title = article["title"];
             return_text = article["text"];
             return_link = article["link"];

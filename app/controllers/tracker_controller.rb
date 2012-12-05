@@ -4,11 +4,16 @@ class TrackerController < ApplicationController
   def index
     @articles = Article.where("contains_hatespeech = ? AND admin_verified = ?", true, true)
     @json = ""
+    locations = []
     Event.all.each do |event|
-      @json << event.locations.to_gmaps4rails do |event, marker|
-        marker.title event.name
-        marker.infowindow render_to_string(:partial => "/shared/event_marker", :locals => {:object => event})
+      event.locations.each do |loc|
+        locations << loc
       end
+    end
+
+    @json << locations.to_gmaps4rails do |event, marker|
+      marker.title event.name
+      marker.infowindow render_to_string(:partial => "/shared/event_marker", :locals => {:object => event})
     end
   end
 
