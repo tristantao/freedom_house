@@ -1,0 +1,8 @@
+require 'spec_helper'
+
+describe Admin::TrackerController do
+  describe "adding new articles" do
+    it "should be able to add articles" do
+    end
+  end
+end

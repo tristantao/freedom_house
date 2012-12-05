@@ -1,7 +1,7 @@
 class Admin::FeedbacksController < ApplicationController
   before_filter :admin_user?
   before_filter :authenticate_user!
- 
+
   def index
   @feedbacks_active = Feedback.find_all_by_active(true)
   @feedbacks_resolved = Feedback.find_all_by_active(false)
@@ -33,7 +33,7 @@ class Admin::FeedbacksController < ApplicationController
    @feedback.description = params[:feedback][:description]
    @feedback.rating = params[:feedback][:rating]
    @feedback.active = params[:feedback][:active]
-   @feedback.adminresponse = params[:feedback][:adminresponse]
+
    if @feedback.save
      flash[:notice] = "Successfully updated feedback form!"
    else
@@ -59,7 +59,7 @@ class Admin::FeedbacksController < ApplicationController
    redirect_to admin_feedbacks_path
  end
 
- def view 
+ def view
   @feedback = Feedback.find_by_id(params[:id])
  end
 

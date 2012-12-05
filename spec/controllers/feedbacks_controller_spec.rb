@@ -1,19 +1,12 @@
 require 'spec_helper'
 
-describe Admin::FeedbacksController do
+describe FeedbacksController do
   before (:each) do
-    @user = User.create!({:first_name => 'Justin', :last_name => 'Chan', :email => 'hellojustinchan@gmail.com', :password => 'derp123', :password_confirmation => 'derp123', :admin => true})
+    @user = User.create!({:first_name => 'Justin', :last_name => 'Chan', :email => 'hellojustinchan@gmail.com', :password => 'derp123', :password_confirmation => 'derp123', :admin => false})
     sign_in @user
   end
   describe "manipulating shit" do
-    it "should be able to resolve feedback" do
-      mockFeedback = mock("Feedback", :id => '1', :title => "Title Uno", :description => 'I am a derp.', :active => 'true')
-      Feedback.should_receive(:find_by_id).with('1').and_return(mockFeedback)
-      mockFeedback.should_receive(:active=).with(false)
-      mockFeedback.stub(:save)
 
-      post :resolve, {:id => 1}
-    end
     it "should be able to delete feedback" do
       mockFeedback = mock("Feedback", :id => '1', :title => "Title Uno", :description => 'I am a derp.', :active => 'true')
       Feedback.should_receive(:find_by_id).with('1').and_return(mockFeedback)
@@ -38,16 +31,11 @@ describe Admin::FeedbacksController do
       mockFeedback.should_receive(:title=).with("Title Dos")
       mockFeedback.should_receive(:description=).with("I am not a derp.")
       mockFeedback.should_receive(:rating=).with("4")
-      mockFeedback.should_receive(:active=).with(true)
+      mockFeedback.should_receive(:last_updated_user=).with(@user.name)
       mockFeedback.should_receive(:save)
       mockFeedback.stub(:errors).and_return(mockFeedback)
       mockFeedback.stub(:full_messages).and_return([])
       post :update, {:id => '1', :feedback => {:title => "Title Dos", :description => "I am not a derp.", :rating => "4", :active => true}}
-    end
-    it "should view things" do
-      mockFeedback = mock("Feedback", :id => '1', :title => "Title Uno", :description => 'I am a derp.', :active => 'true')
-      Feedback.should_receive(:find_by_id).with('1').and_return(mockFeedback)
-      post :view, {:id => '1'}
     end
     it "should edit things" do
       mockFeedback = mock("Feedback", :id => '1', :title => "Title Uno", :description => 'I am a derp.', :active => 'true')
@@ -55,7 +43,4 @@ describe Admin::FeedbacksController do
       post :edit, {:id => '1'}
     end
   end
-
-
-
 end
