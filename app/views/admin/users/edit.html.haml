@@ -6,7 +6,7 @@
   %div.span6.offset3
     %div#card
       %legend.pagination-centered User Properties
-      = simple_form_for(@user, :url => admin_users_action_path(:update, @user.id), :html => { :method => :put, :class => 'form-horizontal'}) do |f|
+      = simple_form_for(@user, :url => admin_users_action_path(:update, @user.id), :html => { :method => :put, :class => 'form-horizontal', :validate => true}) do |f|
         = f.error_notification
         .form-inputs
           = f.input :first_name, :presence => true, :input_html => { :class=> "span" }

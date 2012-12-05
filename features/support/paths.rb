@@ -22,6 +22,8 @@ module NavigationHelpers
     when /^the add event page$/ then '/admin/events/new'
     when /^the scraper page$/ then '/admin/webscraper'
     when /^the articles page$/ then '/admin/articles'
+    when /^the admin feedback page$/ then '/admin/feedbacks'
+    when /^the non-admin feedback page$/ then '/feedbacks'
 
 
     when /^the edit user page for "(.*)"/

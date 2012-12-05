@@ -13,7 +13,7 @@
   loc_blacklisted_persons = ["Obama"]
   loc_blacklisted_general = []
   blacklist = loc_blacklisted_months + loc_blacklisted_persons + loc_blacklisted_general
-  blacklist.each do |loc| 
+  blacklist.each do |loc|
     Blacklist.create(:word => loc)
   end
 

@@ -1,0 +1,22 @@
+%div.row-fluid
+  %div.span1 
+  %div.pull-right= button_to 'New Comment', responses_action_path(@feedback.id, :new), :class => "button btn"
+  %div.span7.offset1
+    %h2 View Feedback Form
+    %div#card
+      = show_for @feedback do |f|
+        = f.attribute :title, :input_html => { :class => "span"}
+        = f.association :user, :using => :name, :input_html => { :class => "span"}
+        = f.attribute :description, :as => :text, :input_html => { :class => "span" }
+        = f.attribute :rating, :as => :integer, :input_html => { :class => "span" }
+        = f.attribute :active, :input_html => {:class => "span"}
+    %h2 Comments
+    -@feedback.responses.each do |response| 
+      %div#card
+        = show_for response do |r|
+          = r.attribute :commenter, :input_html => { :class => "span"}
+          = r.attribute :created_at, :input_html => { :class => "span"}
+          = r.attribute :body, :as => :text, :input_html => { :class => "span"}
+    
+
+ 

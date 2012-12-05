@@ -9,44 +9,167 @@
           success: function(article){
             return_title = article["title"];
             return_text = article["text"];
-            return_link = article["link"]
+            return_link = article["link"];
             $('#myModalLabel').text(return_title);
             $('#modalBody').html(return_text);
             $('#modalLink').attr("href", return_link)
             $('#Article_modal').modal('show');
-
           },
           error: function(data){
             alert(data.responseText);
-            //$("#bookmarklet_chapter").prepend('<div class="alert-message error"><p>'+data.responseText+'</p></div>');
           }
-          });
-          
-      
-     });
-     
-  });
+      });
+    });
+    $.ajax({
+          type: 'POST',
+          url: "#{view_graph_path}",
+          success: function(data){
+            var dataset = [];
+            var parse = d3.time.format("%d-%b-%Y").parse;
+            for(key in data) {
+              dataset.push([parse(key), data[key]]);
+            }
+            //Width and height
+            var margin = {top: 10, right: 10, bottom: 100, left: 40},
+                margin2 = {top: 430, right: 10, bottom: 20, left: 40},
+                width = 960 - margin.left - margin.right,
+                height = 500 - margin.top - margin.bottom,
+                height2 = 500 - margin2.top - margin2.bottom;
 
-%body
-  %div.row-fluid
-    %div.span12.pagination-centered
-      %h1 Event Map
-      = gmaps4rails(@json)
- 
+            var parseDate = d3.time.format("%b %Y").parse;
+
+            var x = d3.time.scale().range([0, width]),
+                x2 = d3.time.scale().range([0, width]),
+                y = d3.scale.linear().range([height, 0]),
+                y2 = d3.scale.linear().range([height2, 0]);
+
+            var xAxis = d3.svg.axis().scale(x).orient("bottom"),
+                xAxis2 = d3.svg.axis().scale(x2).orient("bottom"),
+                yAxis = d3.svg.axis().scale(y).orient("left");
+
+            var brush = d3.svg.brush()
+                .x(x2)
+                .on("brush", brush);
+
+            var area = d3.svg.area()
+                .interpolate("monotone")
+                .x(function(d) { return x(d.date); })
+                .y0(height)
+                .y1(function(d) { return y(d.count); });
+
+            var area2 = d3.svg.area()
+                .interpolate("monotone")
+                .x(function(d) { return x2(d.date); })
+                .y0(height2)
+                .y1(function(d) { return y2(d.count); });
+
+            var svg = d3.select("graph").append("svg")
+                .attr("width", width + margin.left + margin.right)
+                .attr("height", height + margin.top + margin.bottom);
+
+            svg.append("defs").append("clipPath")
+                .attr("id", "clip")
+                .append("rect")
+                .attr("width", width)
+                .attr("height", height);
+
+            var focus = svg.append("g")
+                .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+            var context = svg.append("g")
+                .attr("transform", "translate(" + margin2.left + "," + margin2.top + ")");
+
+              
+            dataset.forEach(function(d) {
+              d.date = d[0];
+              d.count = d[1];
+              
+            });
+            
+            x.domain(d3.extent(dataset.map(function(d) { return d.date; })));
+            y.domain([0, d3.max(dataset.map(function(d) { return d.count; }))]);
+            x2.domain(x.domain());
+            y2.domain(y.domain());
+
+            focus.append("path")
+                .datum(dataset)
+                .attr("clip-path", "url(#clip)")
+                .attr("d", area);
+
+            focus.append("g")
+                .attr("class", "x axis")
+                .attr("transform", "translate(0," + height + ")")
+                .call(xAxis);
+
+            focus.append("g")
+                .attr("class", "y axis")
+                .call(yAxis);
+
+            context.append("path")
+                .datum(dataset)
+                .attr("d", area2);
+
+            context.append("g")
+                .attr("class", "x axis")
+                .attr("transform", "translate(0," + height2 + ")")
+                .call(xAxis2);
+
+            context.append("g")
+                .attr("class", "x brush")
+                .call(brush)
+                .selectAll("rect")
+                .attr("y", -6)
+                .attr("height", height2 + 7);
+            
+
+            function brush() {
+              x.domain(brush.empty() ? x2.domain() : brush.extent());
+              focus.select("path").attr("d", area);
+              focus.select(".x.axis").call(xAxis);
+            }
+          },
+          error: function(data){
+            alert(data.responseText);
+          }
+      });
+  });
+  
+
+
+%div.tabbable.tabs-below.pagination-centered
+  %div.tab-content
+    %div.tab-pane.active#tab1
+      %div.row-fluid
+        %div.span12.pagination-centered
+          = gmaps4rails(@json)
+    %div.tab-pane#tab2
+      %div.row-fluid
+        %graph.span12.pagination-centered
+  %ul.nav.nav-tabs#big
+    %li.active
+      %a{:href => "#tab1", "data-toggle" =>"tab"} Event Map
+    %li
+      %a{:href => "#tab2", "data-toggle" =>"tab"} Time Graph
+      
+        
                 
 
 
-%h1.pagination-centered Articles
+
 %hr      
 %div#grid
   - @articles.each do |article|
-    .gridItem#card
+    %div.gridItem{:id => "Article" + article.id.to_s, "data-toggle" => "modal", :href => "#Article", "class" => "open-Article", "data-article" => article.id.to_s} 
       - if !article.picture.nil?
         = image_tag article.picture
-      %h5 #{article.title}
-      %p Date: #{article.date}
-      %p Source: #{article.source}
-      %a.btn{:id => "Article" + article.id.to_s, "data-toggle" => "modal", :href => "#Article", :role => "button", "class" => "open-Article btn btn-primary", "data-article" => article.id.to_s} View Article
+      %div.cardTitle #{article.title}
+      %div#card
+        
+        %p Date: #{article.date}
+        - if article.source.nil?
+          %p Source: None
+        - else
+          %p Source: #{article.source.name}
       
 
 #Article.modal.hide.fade.in{"aria-hidden" => "true", "aria-labelledby" => "myModalHeader", :role => "dialog", :tabindex => "-1", :id => 'modal'}
@@ -59,7 +182,6 @@
   .modal-footer
     %button.btn{"aria-hidden" => "true", "data-dismiss" => "modal"} Close
     = link_to 'View Original', "#", :class => "btn btn-primary", :id => "modalLink"
-
 
 
   

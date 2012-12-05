@@ -7,4 +7,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
+//= require rails.validations
+//= require rails.validations.simple_form
 //= require_tree
+

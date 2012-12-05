@@ -6,7 +6,7 @@
         %div.carousel-caption
           %h1 About The Project
           %p.lead Freedom Tracker is a joint project between Freedom House and UC Berkeley students in the CS169 class that attempts to create a correlation between speech and violent hate events. 
-          %a.btn.btn-large.btn-primary{:href => "#"} Learn More
+          %a.btn.btn-large.btn-primary{:href => "#learn"} Learn More
     %div.item
       = image_tag "campanile.jpg"
     %div.item
@@ -15,7 +15,7 @@
   %a.carousel-control.left{"data-slide" => "prev", :href => "#carousel"} &lsaquo;
   %a.carousel-control.right{"data-slide" => "next", :href => "#carousel"} &rsaquo;
 
-%div.container.marketing
+%div.container.marketing#learn
   %div.row
     %div.span4.center
       = image_tag "BE.jpg", :class => "img-height"
@@ -29,7 +29,9 @@
       = image_tag "saas.png", :class => "img-height"
       %h2 CS 169
       %p   CS 169 is the Berkeley software engineering course where students learn ideas and techniques for designing, developing, and modifying large software systems. They also learn about modular design techniques, designing for reuse and maintainability, and project team organization and management.
-      
+  %hr
+  %div.row
+    %div.span
       
       
       

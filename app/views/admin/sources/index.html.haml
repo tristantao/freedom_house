@@ -14,7 +14,7 @@
           %th Name
           %th Ratings/Quality
           %th Last Scraped
-          %th Actions
+          %th 
         %tbody
           - @sources.each do |source|
             %tr
@@ -23,5 +23,6 @@
               %td= source.quality_rating
               %td= source.last_scraped
               %td
-                = link_to 'Edit', admin_sources_action_path(:edit, source.id), :id => "edit_source_#{source.id}", :class => "btn btn-mini"
-                = link_to 'Delete', admin_sources_action_path(:delete, source.id), :class => "btn btn-mini btn-danger"
+                %div.btn-group
+                  = link_to 'Edit', admin_sources_action_path(:edit, source.id), :id => "edit_source_#{source.id}", :class => "btn btn-mini"
+                  = link_to 'Delete', admin_sources_action_path(:delete, source.id), :class => "btn btn-mini btn-danger"

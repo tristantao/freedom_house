@@ -11,6 +11,7 @@ gem 'devise'
 gem 'haml'
 gem 'twitter-bootstrap-rails'
 gem 'simple_form'
+gem 'show_for'
 gem 'newrelic_rpm'
 gem 'country-select'
 gem 'gmaps4rails'
@@ -23,6 +24,7 @@ gem 'libsvm-ruby-swig'
 gem 'delayed_job_active_record'
 gem 'hirefire'
 gem 'descriptive-statistics'
+gem 'client_side_validations-simple_form'
 
 group :production do
   gem 'pg'
@@ -34,7 +36,7 @@ group :assets do
   gem 'sass-rails', "  ~> 3.1.0"
   gem 'coffee-rails', "~> 3.1.0"
   gem 'uglifier'
-  gem 'therubyracer'
+  gem 'therubyracer', "~> 0.10.2"
 end
 
 gem 'jquery-rails'

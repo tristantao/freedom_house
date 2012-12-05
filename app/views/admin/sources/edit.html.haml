@@ -5,7 +5,7 @@
   %div.span5.offset2
     %h2.pagination-centered Source Properties
     %div#card
-      = simple_form_for(@source, :url => admin_sources_action_path(:update, @source.id), :html => { :method => :put, :class => 'form-horizontal'}) do |f|
+      = simple_form_for(@source, :url => admin_sources_action_path(:update, @source.id), :html => { :method => :put, :class => 'form-horizontal', :validate => true}) do |f|
         = f.error_notification
         .form-inputs
           = f.input :name, :input_html => { :class => "span8" }

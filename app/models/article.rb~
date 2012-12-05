@@ -1,16 +1,19 @@
 require 'readability'
+require 'open-uri'
+require_relative '../../db/dbf/location_miner.rb'
 
 class Article < ActiveRecord::Base
 
   belongs_to :source
   has_and_belongs_to_many :locations
 
-  attr_accessible :title, :date, :text, :author, :link, :picture
+  attr_accessible :title, :date, :text, :author, :link, :picture, :admin_verified
 
   validates :title, :date, :link, :presence => true
-
+  validates :link, :uniqueness => true
+  validates_format_of :link, :with => URI::regexp(%w(http https))
+  
   has_many :hate_speech
-  validates :title, :uniqueness => {:scope => :date, :case_sensitive => false}
   acts_as_gmappable :process_geocoding => false
 
   def gmaps4rails_address
@@ -26,10 +29,30 @@ class Article < ActiveRecord::Base
 
   def scrapeContent!
     source = open(self.link).read
-    doc =  Readability::Document.new(source, :ignore_image_format =>["gif"], :min_image_height => 250, :min_image_width => 250 )
+    doc =  Readability::Document.new(source, :ignore_image_format =>["gif"])
     self.text = doc.content
-    self.picture = doc.images[0]
+    if self.source.nil?
+      name = self.link.match(/^http[s]?:\/\/[\w\d-]*[.]([\w\d-]+)/)
+    else
+      name = self.source.home_page.match(/^http[s]?:\/\/[\w\d-]*[.]([\w\d-]+)/)
+    end
+    if !name.nil?
+      doc.images.each do |image|
+        ad_match = image.downcase.match(/^http[s]?:\/\/[\w\d-]*[.]([\w\d-]+).[\w\d-]+\/(.*)/)
+        if !ad_match.nil? && !ad_match[2].include?("ad")
+          if image.include?(name[1])
+            self.picture = image
+            break
+          end
+        end
+      end
+    end
     self.save
+  end
+  
+  def scrapeAll!
+    self.scrapeContent!
+    mine_location('db/dbf/NGA_CSV.TXT', 'db/dbf/NGA.dbf', [self], "Nigeria", 1, nil)
   end
 
 end
