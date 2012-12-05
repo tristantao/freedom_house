@@ -65,6 +65,7 @@
     %div
       %div.pull-left#toggle-button
         %input{:checked => "", :type => "checkbox"}
+      %div.pull-left= button_to 'Retrain', admin_webscraper_action_path(:retrain), :class => "btn btn-danger"
       %div.pull-right= button_to 'Scrape All', admin_webscraper_action_path(:scrapeAll), :class => "btn btn-success"
     
     %table.table.table-striped.table-hover#source_table

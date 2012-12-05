@@ -9,5 +9,9 @@
 //= require twitter/bootstrap
 //= require rails.validations
 //= require rails.validations.simple_form
-//= require_tree
+//= require bootstrap-datepicker
+//= require_tree .
 
+$(document).ready(function(){
+    $('.datepicker').datepicker();
+  });

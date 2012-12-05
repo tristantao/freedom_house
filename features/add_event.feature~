@@ -21,7 +21,6 @@ Scenario: add new event to the website (happy path)
 Scenario: add new event to the website (sad path)
   When I go to the add event page
   And I fill in "event_name" with "invalid_name"
-  And I fill in "event_date" with "12/12/2012"
   And I press "Create"
   Then I should not see "invalid_name"
   Then I should be on the add event page

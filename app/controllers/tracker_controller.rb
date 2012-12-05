@@ -2,7 +2,7 @@ class TrackerController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    @articles = Article.where("admin_verified = ? OR admin_verified = ?", true, false)
+    @articles = Article.where("contains_hatespeech = ? AND admin_verified = ?", true, true)
     @json = ""
     Event.all.each do |event|
       @json << event.locations.to_gmaps4rails do |event, marker|
@@ -14,12 +14,13 @@ class TrackerController < ApplicationController
 
   def viewArticle
     @article = Article.find_by_id(params[:articleID])
+    @links = {"hate" => admin_webscraper_action_path(:accept, @article.id), "nohate" => admin_webscraper_action_path(:reject, @article.id), "delete" => admin_articles_action_path(:delete, @article.id)}
     if @article.nil?
       render :text => t("server_error"), :status => 403
     else
       @article.text = view_context.highlight_whole_word(@article.text, @article.hateArray, :highlighter => '<strong class="highlight">\1</strong>')
       puts @article.to_json
-      render :json => @article
+      render :json => [@article, @links]
     end
   end
   

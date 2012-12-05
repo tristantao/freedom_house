@@ -14,5 +14,7 @@ Feature: display the hate speech in an article
 Scenario:  hate speech of an article should be displayed
   When I go to the home page
   Then I should see "Filler"
+  And I click within "Article1"
+  Then I should see "highlight"
   
   

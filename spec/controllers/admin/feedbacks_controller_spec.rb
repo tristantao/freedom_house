@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe Admin::FeedbacksController do
+
   before (:each) do
     @user = User.create!({:first_name => 'Justin', :last_name => 'Chan', :email => 'hellojustinchan@gmail.com', :password => 'derp123', :password_confirmation => 'derp123', :admin => true})
     sign_in @user
@@ -55,7 +56,5 @@ describe Admin::FeedbacksController do
       post :edit, {:id => '1'}
     end
   end
-
-
 
 end

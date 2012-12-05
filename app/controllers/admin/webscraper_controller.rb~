@@ -37,19 +37,24 @@ class Admin::WebscraperController < ApplicationController
   
   def accept_reject
     @articles = Article.find(:all, :conditions => {:admin_verified => nil})
+    
   end
   
   def accept
     article = Article.find(params[:id])
     article.admin_verified = true
+    article.contains_hatespeech = true
     article.save
+    flash[:notice] = "Article #{article.id} has been accepted."
     redirect_to admin_webscraper_action_path(:accept_reject)
   end
   
   def reject
     article = Article.find(params[:id])
     article.admin_verified = false
+    article.contains_hatespeech = false
     article.save
+    flash[:warning] = "Article #{article.id} has been rejected."
     redirect_to admin_webscraper_action_path(:accept_reject)
   end
   
@@ -59,6 +64,11 @@ class Admin::WebscraperController < ApplicationController
     classifier = Classifier.find(classifier_id)
     classifier.on_off = status == "true"
     classifier.save
+  end
+  
+  def retrain
+    flash[:notice] = "Classifier is being retrained."
+    redirect_to :back
   end
 
   protected

@@ -2,7 +2,7 @@ class UserController < ApplicationController
 
 
   def profile
-    
+    @sources = current_user.sources
   end
 
   def update

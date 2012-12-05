@@ -14,6 +14,7 @@ class Source < ActiveRecord::Base
   validates :name, :home_page, :quality_rating, presence: true
   validates :quality_rating, :numericality => {only_integer: true}
   validates :url, rss: true
+  validates :url, :uniqueness => true
 
 #In the future, should define a scrape method that sends to methods
 #scrape_rss, scrape_htmlpage, scrape_twitter

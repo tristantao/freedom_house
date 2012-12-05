@@ -16,7 +16,7 @@
             $('#Article_modal').modal('show');
           },
           error: function(data){
-            alert(data.responseText);
+            //alert(data.responseText);
           }
       });
     });

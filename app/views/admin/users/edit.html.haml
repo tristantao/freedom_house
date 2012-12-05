@@ -28,7 +28,8 @@
           %th Source Name
           %th URL
       %tbody
-        %tr
-          %td
-          %td
-          %td
+        -@sources.each do |source|
+          %tr
+            %td= source.id
+            %td= source.name
+            %td= source.home_page

@@ -65,6 +65,12 @@ class Admin::WebscraperController < ApplicationController
     classifier.on_off = status == "true"
     classifier.save
   end
+  
+  def retrain
+    Classifier.all[0].delay.retrain
+    flash[:notice] = "Classifier is being retrained."
+    redirect_to :back
+  end
 
   protected
   def admin_user?

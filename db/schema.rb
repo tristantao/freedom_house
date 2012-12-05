@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121205011948) do
+ActiveRecord::Schema.define(:version => 20121205115156) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -143,6 +143,7 @@ ActiveRecord::Schema.define(:version => 20121205011948) do
     t.string   "feed_type",         :default => "RSS"
     t.boolean  "queued",            :default => false
     t.integer  "classifier_id",     :default => 1
+    t.integer  "user_id"
   end
 
   create_table "users", :force => true do |t|

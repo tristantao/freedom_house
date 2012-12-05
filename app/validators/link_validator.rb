@@ -11,7 +11,6 @@ class LinkValidator < ActiveModel::EachValidator
       record.errors[attribute] << (options[:message] || 'is incorrectly formatted')
     rescue => e
       record.errors[attribute] << (options[:message] || e.message)
-    rescue => e
     end
   end
 end
