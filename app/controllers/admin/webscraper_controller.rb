@@ -42,6 +42,7 @@ class Admin::WebscraperController < ApplicationController
   def accept
     article = Article.find(params[:id])
     article.admin_verified = true
+    article.contains_hatespeech = true
     article.save
     redirect_to admin_webscraper_action_path(:accept_reject)
   end
@@ -49,6 +50,7 @@ class Admin::WebscraperController < ApplicationController
   def reject
     article = Article.find(params[:id])
     article.admin_verified = false
+    article.contains_hatespeech = false
     article.save
     redirect_to admin_webscraper_action_path(:accept_reject)
   end
