@@ -1,0 +1,5 @@
+class Classifier < ActiveRecord::Base
+
+  has_many :sources
+  attr_accessible :problem, :accuracy, :top_features, :on_off
+end

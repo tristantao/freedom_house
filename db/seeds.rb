@@ -19,7 +19,7 @@
 
 #this code was posted at: http://dev.mensfeld.pl/2011/10/handling-large-seed-files-in-ruby-on-rails/
 
-%w{users sources articles}.each do |filename|
+%w{users sources articles classifiers}.each do |filename|
   require File.expand_path(File.dirname(__FILE__))+"/seeds/#{filename}.rb"
 end
 
