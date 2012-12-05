@@ -14,6 +14,6 @@ Feature: Scrape website via RSS Feed
 Scenario: Scraper adds at least one new article from source
   When I go to the scraper page
   And I follow "scrape_source_1"
-  And Jobs are being dispatched
+  #And Jobs are being dispatched
   Then there should be at least "1" articles in the database
 
