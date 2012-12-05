@@ -11,7 +11,7 @@
           = f.input :title, :input_html => { :class => "span" }
           = f.input :date, :placeholder => "mm/dd/yyyy", :as => "string", :input_html => { :class => "datepicker span" }
           = f.input :author, :input_html => { :class => "span" }
-          = f.input :location, :placeholder => "#{@article.locations[0].try(:name)}", :input_html => { :class => "span" }
+          = f.input :location, :placeholder => "#{@article.locations[0].name}", :input_html => { :class => "span" }
           = f.input :link, :placeholder => "ex: http://www.google.com", :input_html => { :class => "span" }
           = f.input :text, :as => :text, :input_html => { :class => "span", :rows => "10" }
           %div.btn-group.pull-right

@@ -12,7 +12,7 @@
           = f.input :longitude, :input_html => { :class => "span" }
           = f.input :latitude, :input_html => { :class => "span" }
           = f.input :country, :input_html => { :class => "span" }
-          = f.input :city, :placeholder => "#{@event.locations[0].try(:name)}", :input_html => { :class => "span" }
+          = f.input :city, :placeholder => "#{@event.locations[0].name}", :input_html => { :class => "span" }
           = f.input :description, :as => :text, :input_html => { :class => "span", :rows => "10" }
           %div.btn-group.pull-right
             = f.button :submit, "Update Event", :class => "btn-success"
