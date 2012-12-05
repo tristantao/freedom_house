@@ -4,13 +4,14 @@ class Admin::WebscraperController < ApplicationController
   
   def index
     @sources = Source.all
+    @classifier = false
   end
 
   def scrape
     id = params[:id]
     source = Source.find_by_id(id)
     
-    if ((!source.last_scraped.nil? && source.scrapable?) || source.queued) then
+    if not source.scrapable?
       flash[:warning] = "Source #{source.name} was scraped less than 5 minutes ago. Time is #{Time.now}."
     else 
       source.queued = true
@@ -19,6 +20,18 @@ class Admin::WebscraperController < ApplicationController
       flash[:notice] = "Source #{source.name} is being scrapped. You should see new articles, if any, in a few minutes."
     end
     
+    redirect_to admin_webscraper_path
+  end
+  
+  def scrapeAll
+    sources = Source.all
+    sources.each do |source|
+      if source.scrapable?
+        source.queued = true
+        source.save
+        source.delay.scrape
+      end
+    end
     redirect_to admin_webscraper_path
   end
   
