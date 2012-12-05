@@ -25,7 +25,7 @@ class Source < ActiveRecord::Base
     if !self.last_scraped.nil? then
       its_too_early = (Time.now - self.last_scraped.to_time) <= min_interval
     end
-    its_too_early || !self.queued
+    !its_too_early && !self.queued
   end
 
   def scrape
