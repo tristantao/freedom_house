@@ -16,7 +16,7 @@ module ChiSquared
       tn = 0.0
       fn = 0.0
       doc_array.each_with_index do |document, index|
-        if @labels[index]
+        if labels[index]
           if document.include?(word)
             tp+=1
           else
@@ -29,7 +29,7 @@ module ChiSquared
             tn+=1
           end
         end
-      end  
+      end
       chi_sq = g_function(tp, (tp+fp)*total_pos/total) + g_function(fn, (fn+tn)*total_pos/total) +  g_function(fp, (tp+fp)*total_neg/total) + g_function(tn, (fn+tn)*total_neg/total)
       feature_vector[word] = chi_sq
     end

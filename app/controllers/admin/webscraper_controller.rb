@@ -37,6 +37,7 @@ class Admin::WebscraperController < ApplicationController
   
   def accept_reject
     @articles = Article.find(:all, :conditions => {:admin_verified => nil})
+    
   end
   
   def accept
@@ -44,6 +45,7 @@ class Admin::WebscraperController < ApplicationController
     article.admin_verified = true
     article.contains_hatespeech = true
     article.save
+    flash[:notice] = "Article #{article.id} has been accepted."
     redirect_to admin_webscraper_action_path(:accept_reject)
   end
   
@@ -52,6 +54,7 @@ class Admin::WebscraperController < ApplicationController
     article.admin_verified = false
     article.contains_hatespeech = false
     article.save
+    flash[:warning] = "Article #{article.id} has been rejected."
     redirect_to admin_webscraper_action_path(:accept_reject)
   end
   

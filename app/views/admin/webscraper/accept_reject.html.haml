@@ -52,8 +52,7 @@
           - @articles.each do |article|
             %tr
               %td= article.id
-              %td
-                %a{"data-toggle" => "modal", :href => "#Article", :role => "button", "class" => "open-Article", "data-article" => article.id.to_s} #{article.title}
+              %td= link_to article.title, article.link
               %td= article.date.strftime('%m/%d/%y')
               -if article.locations[0].nil?
                 %td
@@ -66,6 +65,7 @@
                   = link_to 'Hate', admin_webscraper_action_path(:accept, article.id), :id => "edit_article_#{article.id}", :class => "btn btn-mini"
                   = link_to 'No Hate', admin_webscraper_action_path(:reject, article.id), :class => "btn btn-mini"
                   = link_to 'Delete', admin_articles_action_path(:delete, article.id), :class => "btn btn-mini btn-danger"
+
 
 #Article.modal.hide.fade.in{"aria-hidden" => "true", "aria-labelledby" => "myModalHeader", :role => "dialog", :tabindex => "-1", :id => 'modal'}
   .modal-header

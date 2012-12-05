@@ -5,12 +5,21 @@ Feature: Be able to accept and reject
   I want to see a list of articles sorted by probability of hatefulness
  
 Background:
-    Given the blog is set up with an admin user
-    And I am logged in as the administrator
+  Given the following articles exist:
+    | title                                              | date        | author     | location   | link                   | source_id |
+    | Officials: Deadly attack hits north Nigeria mosque | 14-Oct-2012 | John Smith | Lagos, NG  | http://www.foo.com     |     1     |
+    | Gunmen kill 20 at mosque in Zaria                  | 15-Oct-2012 | Jim Smith  | Kaduna, NG | http://www.google.com |     2     |
+  And the blog is set up with an admin user
+  And I am logged in as the administrator
 
 Scenario: Accept an article (happy path)
   When I go to the accept_reject page
-  And I press "accept_article_1"
+  And I follow "accept_article_1"
   Then I should see "Article 1 has been accepted."
   And I should be on the accept_reject page
 
+Scenario: Reject an article (happy path)
+  When I go to the accept_reject page
+  And I follow "reject_article_2"
+  Then I should see "Article 2 has been rejected."
+  And I should be on the accept_reject page

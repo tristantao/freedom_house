@@ -1,6 +1,7 @@
 require 'svm'
 require 'boolean_to_i'
 require 'chi_squared'
+require 'svm'
 
 class Classifier < ActiveRecord::Base
 include ::ChiSquared
@@ -49,7 +50,11 @@ include ::ChiSquared
     @doc_count = {}
     docs = @documents.flatten
     docs.each do |words|
-      words.gsub(/[^\w\s]/, '').downcase!.scan(/\w+/).each do |word|
+      subbed = words.gsub(/[^\w\s]/, '').downcase!
+      if subbed.nil?
+        subbed = ""
+      end
+      subbed.scan(/\w+/).each do |word|
         if @doc_count.include?(word)
           @doc_count[word] += 1
         else

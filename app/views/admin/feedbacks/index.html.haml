@@ -36,8 +36,8 @@
                   %td= feedback.last_updated_user
                   %td
                     %div.btn-group
-                      = link_to 'Resolve', admin_feedbacks_action_path(:resolve, feedback.id), :class => "btn btn-mini btn-success"
-                      = link_to 'Delete', admin_feedbacks_action_path(:delete, feedback.id), :class => "btn btn-mini btn-danger"
+                      = link_to 'Resolve' + feedback.id.to_s, admin_feedbacks_action_path(:resolve, feedback.id), :class => "btn btn-mini btn-success"
+                      = link_to 'Delete' + feedback.id.to_s, admin_feedbacks_action_path(:delete, feedback.id), :class => "btn btn-mini btn-danger"
         %div.tab-pane#tab2
           %table.table.table-striped.table-hover#article_table
             %thead

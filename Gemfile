@@ -25,6 +25,7 @@ gem 'delayed_job_active_record'
 gem 'hirefire'
 gem 'descriptive-statistics'
 gem 'client_side_validations-simple_form'
+gem 'selenium'
 
 group :production do
   gem 'pg'

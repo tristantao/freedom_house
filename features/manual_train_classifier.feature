@@ -7,6 +7,7 @@ Feature: Train Classifier Manually
 Background:
     Given the blog is set up with an admin user
     And I am logged in as the administrator
+    And the classifier is instantiated
 
 Scenario: Retrain the classifier (happy path)
   When I go to the classifier page

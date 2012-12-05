@@ -1,8 +1,0 @@
-$(window).bind("load", function() {
-   $('.gridItem').wookmark({
-     container: $('#grid'),
-     offset: 5,
-     itemWidth: 300,
-     autoResize: true
-   });
-});
