@@ -17,7 +17,7 @@
 
           },
           error: function(data){
-            alert(data.responseText);
+            //alert(data.responseText);
             //$("#bookmarklet_chapter").prepend('<div class="alert-message error"><p>'+data.responseText+'</p></div>');
           }
           });
@@ -41,8 +41,9 @@
           %th #
           %th Title
           %th Date
-          %th City
+          %th Location
           %th Country
+          %th Hateful?
           %th 
         %tbody
           - @articles.each do |article|
@@ -53,6 +54,7 @@
               %td= article.date.strftime('%m/%d/%y')
               %td= @article_city[article.id]
               %td= @article_country[article.id]
+              %td= article.contains_hatespeech
               %td
                 %div.btn-group
                   = link_to 'Edit', admin_articles_action_path(:edit, article.id), :id => "edit_article_#{article.id}", :class => "btn btn-mini"

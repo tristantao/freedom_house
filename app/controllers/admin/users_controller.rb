@@ -8,6 +8,7 @@ class Admin::UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    @sources = @user.sources
   end
 
   def update

@@ -2,19 +2,18 @@
   %div.span2
     = render 'admin/shared/sidebar'
     
-  %div.span5.offset2
+  %div.span7.offset1
     %h2.pagination-centered Article Properties
     %div#card
       = simple_form_for(@article, :url => admin_articles_action_path(:update, @article.id), :html => { :method => :put, :class => 'form-horizontal', :validate => true}) do |f|
         = f.error_notification
         .form-inputs
           = f.input :title, :input_html => { :class => "span" }
-          = f.input :date, :as => :string, :input_html => { :class => "span" }
+          = f.input :date, :placeholder => "mm/dd/yyyy", :as => "string", :input_html => { :class => "datepicker span" }
           = f.input :author, :input_html => { :class => "span" }
           = f.input :location, :input_html => { :class => "span" }
-          = f.input :link, :input_html => { :class => "span" }
+          = f.input :link, :placeholder => "ex: http://www.google.com", :input_html => { :class => "span" }
           = f.input :text, :as => :text, :input_html => { :class => "span", :rows => "10" }
-        .form-actions
-          %div.btn-group
+          %div.btn-group.pull-right
             = f.button :submit, "Update Article", :class => "btn-success"
             = link_to 'Cancel', admin_articles_path, :class => "btn btn-danger"

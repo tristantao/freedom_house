@@ -29,7 +29,7 @@ class Admin::EventsController < ApplicationController
     event = params[:event]
     found_loc = true
     if event
-      e = Event.create(:name => event[:name], :description => event[:description], :date => event[:date])
+      e = Event.create(:name => event[:name], :description => event[:description], :date => DateTime.strptime(event[:date], "%m/%d/%Y"))
       loc = Location.find_by_name(event[:city])
       if loc.nil?
         loc = Location.create(:name => event[:city], :latitude => event[:latitude].to_f, :longitude => event[:longitude].to_f, :country => event[:country])
@@ -56,7 +56,7 @@ class Admin::EventsController < ApplicationController
   def update
     @event = Event.find(params[:id])
     @event.name = params[:event][:name]
-    @event.date = params[:event]['date(3i)'] + "/" + params[:event]['date(2i)'] + "/" + params[:event]['date(1i)']
+    @event.date =  DateTime.strptime(params[:event][:date], "%m/%d/%Y")
     @event.description = params[:event][:description]
     @loc = Location.first(:conditions => {:longitude => params[:event][:longitude], :latitude => params[:event][:latitude]})
 
