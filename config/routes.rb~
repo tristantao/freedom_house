@@ -27,7 +27,7 @@ Freedom::Application.routes.draw do
 
   match 'feedbacks/view/:feedback_id/responses/(:action)' => 'responses', :action => nil, :id=> nil, :as => "responses_action"
   match 'admin/feedbacks/view/:feedback_id/responses/(:action)' => 'admin/responses', :action => nil, :id =>nil, :as=> "admin_responses_action"
-  match 'admin/webscraper/update_classifier/:classifier_id/:status', :to => 'admin/webscraper#update_classifier', :format => false
+  match 'admin/webscraper/update_classifier/:classifier_id/:status', :to => "admin/webscraper", :format => false
 
 
 end

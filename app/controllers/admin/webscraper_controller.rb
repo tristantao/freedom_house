@@ -4,7 +4,7 @@ class Admin::WebscraperController < ApplicationController
   
   def index
     @sources = Source.all
-    @classifier = false
+    @classifier = Classifier.all[0].on_off
   end
 
   def scrape
@@ -51,6 +51,14 @@ class Admin::WebscraperController < ApplicationController
     article.admin_verified = false
     article.save
     redirect_to admin_webscraper_action_path(:accept_reject)
+  end
+  
+  def update_classifier
+    status = params[:status]
+    classifier_id = params[:classifier_id]
+    classifier = Classifier.find(classifier_id)
+    classifier.on_off = status == "true"
+    classifier.save
   end
 
   protected

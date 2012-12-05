@@ -44,7 +44,7 @@
       }
     });
     if(!#{@classifier}) {
-      $('#toggle-button').toggleButtons('toggleState); // to toggle the disabled status
+      $('#toggle-button').toggleButtons('toggleState'); // to toggle the disabled status
     }
   });
   
