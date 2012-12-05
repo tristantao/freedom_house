@@ -1,7 +1,25 @@
+require 'open-uri'
+
 class LinkValidator < ActiveModel::EachValidator
-  def validate_each(record, attribute, value)
-    unless value =~ /https?:\/\/(''|www\.).*\..*/i
-      record.errors[attribute] << (options[:message] || "must begin with http(s)://(www.)")
+  def validate_each(record, attr_name, value)
+    if /^https?:\/\//.match(value).nil?
+      record.errors[attribute] << (options[:message] || "must begin with \'http(s)://\'.")
     end
+    begin
+    doc = Nokogiri::HTML(open(value))
+    rescue URI::InvalidURIError
+      record.errors[attribute] << (options[:message] || 'is incorrectly formatted.')
+      record.errors.add(attr_name, :email, options.merge(:value => value))
+    rescue => e
+      record.errors[attribute] << (options[:message] || e.message)
+      record.errors.add(attr_name, :email, options.merge(:value => value))
+    end
+  end
+end
+
+# This allows us to assign the validator in the model
+module ActiveModel::Validations::HelperMethods
+  def validates_link(*attr_names)
+    validates_with LinkValidator, _merge_attributes(attr_names)
   end
 end

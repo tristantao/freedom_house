@@ -3,8 +3,9 @@ require 'open-uri'
 require_relative '../../db/dbf/location_miner.rb'
 
 class Article < ActiveRecord::Base
-  #will need to add a classifier_id field, so that we can retrieve articles to retrain individually for a classifier.
+  #will need to add a classifier_id field, so that we can retrieve articles specific to each different classifier.
 
+  has_many :hate_speech
   belongs_to :source
   has_and_belongs_to_many :locations
 
@@ -12,9 +13,8 @@ class Article < ActiveRecord::Base
 
   validates :title, :date, :link, :presence => true
   validates :link, :uniqueness => true
-  validates_format_of :link, :with => URI::regexp(%w(http https))
+  validates_link :link
 
-  has_many :hate_speech
   acts_as_gmappable :process_geocoding => false
 
   def gmaps4rails_address

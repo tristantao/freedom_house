@@ -25,7 +25,7 @@ class Admin::SourcesController < ApplicationController
         flash[:notice] = "Source #{sourcesinput[:name]} has been created!"
         redirect_to admin_sources_path
       else
-        flash[:warning] = s.errors.full_messages.join(". ")
+        flash[:warning] = s.errors.full_messages.join('. ') + '.'
       end
     end
   end
