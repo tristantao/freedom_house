@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe Admin::FeedbacksController do
-<<<<<<< HEAD
   before (:each) do
     @user = User.create!({:first_name => 'Justin', :last_name => 'Chan', :email => 'hellojustinchan@gmail.com', :password => 'derp123', :password_confirmation => 'derp123', :admin => true})
     sign_in @user
@@ -9,11 +8,6 @@ describe Admin::FeedbacksController do
   describe "manipulating shit" do
     it "should be able to resolve feedback" do
       mockFeedback = mock("Feedback", :id => '1', :title => "Title Uno", :description => 'I am a derp.', :active => 'true')
-=======
-  describe "adding new feedback" do
-    it "should be able to add feedback" do
-      mockFeedback = Feedback.new(:id => 1, :title => "Title Uno", :description => 'I am a derp.', :active => 'true')
->>>>>>> d8309c9891dffc4639c6a92f15405e6d7f630540
       Feedback.should_receive(:find_by_id).with('1').and_return(mockFeedback)
       mockFeedback.should_receive(:active=).with(false)
       mockFeedback.stub(:save)
