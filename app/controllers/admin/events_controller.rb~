@@ -51,7 +51,7 @@ class Admin::EventsController < ApplicationController
 
   def edit
     @event = Event.find(params[:id])
-    @event.date = @event.date.to_date
+    @event.date = @event.date.strftime("%m/%d/%Y")
   end
 
   def update
@@ -90,9 +90,14 @@ class Admin::EventsController < ApplicationController
 
   def map
     @json = ""
+    locations = []
     Event.all.each do |event|
       event.locations.each do |loc|
-        @json << loc.to_gmaps4rails do |event, marker|
+        locations << loc
+      end
+    end
+    
+    @json << locations.to_gmaps4rails do |event, marker|
           marker.title event.name
           marker.infowindow render_to_string(:partial => "/shared/event_marker", :locals => {:object => event})
         end
