@@ -47,8 +47,7 @@
           - @articles.each do |article|
             %tr
               %td= article.id
-              %td
-                %a{"data-toggle" => "modal", :href => "#Article", :role => "button", "class" => "open-Article", "data-article" => article.id.to_s} #{article.title}
+              %td= link_to article.title, article.link
               %td= article.date.strftime('%m/%d/%y')
               -if article.locations[0].nil?
                 %td
