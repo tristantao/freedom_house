@@ -1,6 +1,7 @@
 require 'svm'
 require 'boolean_to_i'
 require 'chi_squared'
+require 'svm'
 
 class Classifier < ActiveRecord::Base
 include ::ChiSquared

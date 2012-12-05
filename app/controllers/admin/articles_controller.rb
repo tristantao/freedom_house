@@ -4,7 +4,7 @@ class Admin::ArticlesController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    @articles = Article.where("admin_verified = ? OR admin_verified = ?", true, false)
+    @articles = Article.where("(contains_hatespeech = ? OR contains_hatespeech = ?) AND (admin_verified = ? OR admin_verified = ?)", true, false, true, false)
     @article_city = {}
     @article_country = {}
     @articles.each do |a|
@@ -29,7 +29,7 @@ class Admin::ArticlesController < ApplicationController
         flash[:notice] = "Article #{article[:title]} has been created!"
         redirect_to admin_articles_path
       else
-        flash[:warning] = "Error in creating article. Please try again."
+        flash[:warning] = s.errors.full_messages.join(". ") + "."
       end
     end
   end
@@ -50,7 +50,7 @@ class Admin::ArticlesController < ApplicationController
     if @article.save
       flash[:notice] = "Successfully updated article!"
     else
-      flash[:warning] = @article.errors.full_messages.join(". ")
+      flash[:warning] = @article.errors.full_messages.join(". ") + '.'
     end
     redirect_to admin_articles_action_path(:edit, @article.id)
   end

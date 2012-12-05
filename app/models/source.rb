@@ -24,11 +24,12 @@ class Source < ActiveRecord::Base
     if !self.last_scraped.nil? then
       its_too_early = (Time.now - self.last_scraped.to_time) <= min_interval
     end
-    its_too_early
+    its_too_early || !self.queued
   end
 
   def scrape
     begin
+      puts "starting scraping"
       articles = []
       feed = Feedzirra::Feed.fetch_and_parse(self.url)
       items = feed.entries
@@ -111,6 +112,7 @@ class Source < ActiveRecord::Base
       if articles.length != 0
         mine_location('db/dbf/NGA_CSV.TXT', 'db/dbf/NGA.dbf', articles, "Nigeria", 1, self)
         if Classifier.all.legnth != 0 and Calssifier.all[0].on_off
+          puts "classifying"
           Classifier.all[0].classify(articles, self)
         end
       end

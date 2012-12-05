@@ -16,7 +16,7 @@ module ChiSquared
       tn = 0.0
       fn = 0.0
       doc_array.each_with_index do |document, index|
-        if @labels[index]
+        if labels[index]
           if document.include?(word)
             tp+=1
           else

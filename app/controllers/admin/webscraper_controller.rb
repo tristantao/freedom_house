@@ -4,13 +4,14 @@ class Admin::WebscraperController < ApplicationController
   
   def index
     @sources = Source.all
+    @classifier = Classifier.all[0].on_off
   end
 
   def scrape
     id = params[:id]
     source = Source.find_by_id(id)
     
-    if ((!source.last_scraped.nil? && source.scrapable?) || source.queued) then
+    if not source.scrapable?
       flash[:warning] = "Source #{source.name} was scraped less than 5 minutes ago. Time is #{Time.now}."
     else 
       source.queued = true
@@ -22,6 +23,18 @@ class Admin::WebscraperController < ApplicationController
     redirect_to admin_webscraper_path
   end
   
+  def scrapeAll
+    sources = Source.all
+    sources.each do |source|
+      if source.scrapable?
+        source.queued = true
+        source.save
+        source.delay.scrape
+      end
+    end
+    redirect_to admin_webscraper_path
+  end
+  
   def accept_reject
     @articles = Article.find(:all, :conditions => {:admin_verified => nil})
     
@@ -30,6 +43,7 @@ class Admin::WebscraperController < ApplicationController
   def accept
     article = Article.find(params[:id])
     article.admin_verified = true
+    article.contains_hatespeech = true
     article.save
     flash[:notice] = "Article #{article.id} has been accepted."
     redirect_to admin_webscraper_action_path(:accept_reject)
@@ -38,9 +52,18 @@ class Admin::WebscraperController < ApplicationController
   def reject
     article = Article.find(params[:id])
     article.admin_verified = false
+    article.contains_hatespeech = false
     article.save
     flash[:warning] = "Article #{article.id} has been rejected."
     redirect_to admin_webscraper_action_path(:accept_reject)
+  end
+  
+  def update_classifier
+    status = params[:status]
+    classifier_id = params[:classifier_id]
+    classifier = Classifier.find(classifier_id)
+    classifier.on_off = status == "true"
+    classifier.save
   end
 
   protected

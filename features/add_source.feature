@@ -25,7 +25,7 @@ Scenario: add new source to the website (sad path, blank url, homepage, and qual
   And I press "Create"
   Then I should not see "invalid_source"
   Then I should be on the add source page
-  And I should see "Home page can't be blank. Quality rating can't be blank. Quality rating is not a number. Url does not begin with http:// ."
+  And I should see "Home page can't be blank. Quality rating can't be blank. Quality rating is not a number. Url must begin with 'http(s)://'."
 
 Scenario: add new source to the website (sad path, url has spaces)
   When I go to the add source page
@@ -35,7 +35,7 @@ Scenario: add new source to the website (sad path, url has spaces)
   And I fill in "source_url" with "http://www.go ogle.com"
   And I press "Create"
   Then I should be on the add source page
-  And I should see "Url is not formatted correctly."
+  And I should see "Url is incorrectly formatted."
 
 Scenario: add new source to the website (sad path, url does not exist)
   When I go to the add source page
@@ -55,7 +55,7 @@ Scenario: add new source to the website (sad path, url doesn't begin with 'http:
   And I fill in "source_url" with "www.google.com"
   And I press "Create"
   Then I should be on the add source page
-  And I should see "Url does not begin with http:// ."
+  And I should see "Url must begin with 'http(s)://'."
 
 Scenario: add new source to the website (sad path, invalid RSS url, all fields filled)
   When I go to the add source page

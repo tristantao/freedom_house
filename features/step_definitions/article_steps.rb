@@ -4,6 +4,7 @@ Given /the following articles exist:$/ do |article_table|
     loc = Location.create(:name => article[:location], :latitude => 0.000, :longitude => 0.000)
     loc.save
     a.locations << loc
+    debugger
     a.save
   end
 end

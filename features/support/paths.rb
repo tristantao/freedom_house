@@ -25,7 +25,7 @@ module NavigationHelpers
     when /^the admin feedback page$/ then '/admin/feedbacks'
     when /^the non-admin feedback page$/ then '/feedbacks'
     when /^the accept_reject page$/ then '/admin/webscraper/accept_reject'
-
+    when /^the classifier page$/ then '/admin/webscraper'
 
     when /^the edit user page for "(.*)"/
       id = User.find_by_email($1).id
