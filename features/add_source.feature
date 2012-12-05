@@ -45,7 +45,7 @@ Scenario: add new source to the website (sad path, url does not exist)
   And I fill in "source_url" with "http://www.fjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfjfj.com/"
   And I press "Create"
   Then I should be on the add source page
-  And I should see "Url does not exist."
+  And I should see "Name or service not known."
 
 Scenario: add new source to the website (sad path, url doesn't begin with 'http://')
   When I go to the add source page
