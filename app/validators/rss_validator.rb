@@ -5,13 +5,13 @@ class RssValidator < ActiveModel::EachValidator
     if value.nil? || attribute.nil?
       record.errors[attribute] << (options[:message] || "can't be blank.")
     else
-      if URI::regexp(%w(http https)).match(value).nil?
-        record.errors[attribute] << (options[:message] || 'is incorrectly formatted')
+      if /https?:\/\//.match(value).nil?
+        record.errors[attribute] << (options[:message] || 'must begin with \'http(s)://\'.')
       else
         begin
         doc = Nokogiri::HTML(open(value))
         rescue URI::InvalidURIError
-          record.errors[attribute] << (options[:message] || 'is not formatted correctly.')
+          record.errors[attribute] << (options[:message] || 'is incorrectly formatted.')
         rescue SocketError
           record.errors[attribute] << (options[:message] || 'does not exist.')
         rescue => e
