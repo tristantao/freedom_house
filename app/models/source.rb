@@ -8,6 +8,8 @@ class Source < ActiveRecord::Base
 
   has_many :articles
   belongs_to :user
+  belongs_to :classifier
+
   attr_accessible :name, :home_page, :url, :quality_rating, :progress_content, :progress_classify, :progress_scrape, :progress_location, :queued
   validates :name, :home_page, :quality_rating, presence: true
   validates :quality_rating, :numericality => {only_integer: true}
@@ -51,7 +53,7 @@ class Source < ActiveRecord::Base
       puts "scrapping"
       items.each do |item|
         puts scrape_percentage.to_s + "%"
-        
+
         if item.published <= now
           article = Article.new
           article.title = item.title
@@ -96,22 +98,25 @@ class Source < ActiveRecord::Base
             articles.delete(article)
           end
         end
-      
+
         content_percentage += update_percentage
         self.progress_content = content_percentage.to_s + "%"
         self.save
       end
       self.progress_content = "25%"
       self.save
-      
+
       puts "location"
     #You can call the function with different Databases and a array/sub-array of article models, to mine for different locations.
       if articles.length != 0
         mine_location('db/dbf/NGA_CSV.TXT', 'db/dbf/NGA.dbf', articles, "Nigeria", 1, self)
+        if Classifier.all.legnth != 0 and Calssifier.all[0].on_off
+          Classifier.all[0].classify(articles, self)
+        end
       end
       self.progress_location = "25%"
       self.save
-    
+
     ensure
       self.last_scraped = DateTime.now
       self.progress_scrape = "0%"

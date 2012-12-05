@@ -10,6 +10,7 @@
         .form-inputs
           = f.input :name, :input_html => { :class => "span8" }
           = f.input :home_page, :input_html => { :class => "span8" }
+          -#= f.input :feed_type, required: true, collection: ['Twitter', 'RSS'], input_html: {class: "span9"}
           = f.input :url, :input_html => { :class => "span8" }
           = f.input :quality_rating, :input_html => { :class => "span8" }
         .form-actions

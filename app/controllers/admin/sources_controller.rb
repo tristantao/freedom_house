@@ -9,6 +9,14 @@ class Admin::SourcesController < ApplicationController
  def new
     sourcesinput = params[:source]
     if sourcesinput
+=begin
+      case sourcesinput[:feed_type]
+      when 'RSS'
+        url = sourcesinput['url']
+      when 'Twitter'
+        url = "http://api.twitter.com/1/statuses/user_timeline.rss?screen_name=#{sourcesinput['url']}"
+      end
+=end
       s = Source.create(:name => sourcesinput[:name], 
                         :home_page => sourcesinput['home_page'], 
                         :quality_rating => sourcesinput[:quality_rating], 

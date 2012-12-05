@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121204093014) do
+ActiveRecord::Schema.define(:version => 20121205011948) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(:version => 20121204093014) do
     t.datetime "updated_at"
     t.boolean  "gmaps"
     t.string   "picture"
+    t.boolean  "contains_hatespeech"
     t.integer  "source_id"
     t.boolean  "admin_verified"
   end
@@ -35,6 +36,15 @@ ActiveRecord::Schema.define(:version => 20121204093014) do
 
   create_table "blacklists", :force => true do |t|
     t.string   "word"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "classifiers", :force => true do |t|
+    t.string   "problem"
+    t.float    "accuracy"
+    t.text     "top_features"
+    t.boolean  "on_off"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -130,7 +140,9 @@ ActiveRecord::Schema.define(:version => 20121204093014) do
     t.string   "progress_content",  :default => "0%"
     t.string   "progress_classify", :default => "0%"
     t.string   "progress_location", :default => "0%"
+    t.string   "feed_type",         :default => "RSS"
     t.boolean  "queued",            :default => false
+    t.integer  "classifier_id",     :default => 1
   end
 
   create_table "users", :force => true do |t|
