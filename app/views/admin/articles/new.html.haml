@@ -11,7 +11,7 @@
           = f.input :title, :required => true, :input_html => { :class => "span" }
           = f.input :author, :required => true, :input_html => { :class => "span" }
           = f.input :date, :required => true, :input_html => { :class => "span" }
-          = f.input :link, :required => true, :input_html => { :class => "span" }
+          = f.input :link, :as => "url", :required => true, :input_html => { :class => "span" }
           %div.btn-group.pull-right
             = f.button :submit, "Create", :class => "btn btn-success"
             = link_to 'Cancel', admin_articles_path, :class => "btn btn-danger"
