@@ -32,13 +32,6 @@ And /^I cheat and magically assign this feedback to Michael Scott$/ do
   f.user = User.find_by_first_name("Michael")
   f.save
 end
-
-And /^I resolve this feedback$/ do
- f = Feedback.find_by_title("Title Uno")
- f.active = false
- f.save
-end
- 
  
 
 
