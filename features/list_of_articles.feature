@@ -8,7 +8,7 @@ Background: articles have been put in the database
   
   Given the following articles exist:
   | title                                              | date        | author     | location   | link               | source_id |
-  | Officials: Deadly attack hits north Nigeria mosque | 14-Oct-2012 | John Smith | Lagos, NG  | http://www.foo.com |     1     |
+  | Officials: Deadly attack hits north Nigeria mosque | 14-Oct-2012 | John Smith | Lagos,  NG | http://www.fo.com  |     1     |
   | Gunmen kill 20 at mosque in Zaria                  | 15-Oct-2012 | Jim Smith  | Kaduna, NG | http://www.foo.com |     2     |
 
   And the blog is set up with an admin user
@@ -16,16 +16,16 @@ Background: articles have been put in the database
   And I am on the admin dashboard
 
 Scenario: display list of articles with title
-  When I follow "All Articles"
+  When I follow "Accept/Reject"
   Then I should see "Officials: Deadly attack hits north Nigeria mosque"
   And I should see "Gunmen kill 20 at mosque in Zaria"
 
 Scenario: display list of articles with date
-  When I follow "All Articles"
+  When I follow "Accept/Reject"
   And I should see "10/15/12"
   And I should see "10/14/12"
 
 Scenario: display list of articles with location
-  When I follow "All Articles"
+  When I follow "Accept/Reject"
   And I should see "Lagos"
   And I should see "Kaduna"
