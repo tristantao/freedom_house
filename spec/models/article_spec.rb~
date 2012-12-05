@@ -8,7 +8,7 @@ describe Article do
     classify = mock("Classifier")
     Classifier.stub(:all).and_return([classify, classify, classify])
     classify.stub(:on_off).and_return(true)
-    classify.should_receive(:classify).with([article], nil).and_return(true)
+    classify.should_receive(:classify).with(article, nil).and_return(true)
     article.scrapeAll!
   end
 
