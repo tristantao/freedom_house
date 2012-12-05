@@ -3,12 +3,12 @@ require 'spec_helper'
 describe User do
   it 'should have admin_privileges if user is admin' do
     user = User.new
-    user.stub(:admin).and_return("true")
+    user.admin = true
     user.admin_privileges.should == "Yes"
   end
   it 'should not have admin_privileges if user is not admin' do
     user = User.new
-    user.stub(:admin).and_return("false")
+    user.admin = false
     user.admin_privileges.should == "No"
   end
   it 'has a full name with a first name and last name' do

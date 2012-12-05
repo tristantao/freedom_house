@@ -12,8 +12,6 @@ class RssValidator < ActiveModel::EachValidator
         doc = Nokogiri::HTML(open(value))
         rescue URI::InvalidURIError
           record.errors[attribute] << (options[:message] || 'is incorrectly formatted.')
-        rescue SocketError
-          record.errors[attribute] << (options[:message] || 'does not exist.')
         rescue => e
           record.errors[attribute] << (options[:message] || e.message)
         else
@@ -22,7 +20,7 @@ class RssValidator < ActiveModel::EachValidator
           end
         end
       end
-    end  
+    end
   end
 end
 
