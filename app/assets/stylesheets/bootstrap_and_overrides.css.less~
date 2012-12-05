@@ -30,19 +30,3 @@
 //
 // Example:
 // @linkColor: #ff0000;
-
-@bodyBackground: #f2f2f2;
-
-
-#map {
-    label {
-        width: auto;
-        display:inline;
-    }
-    img {
-        max-width: none;
-    }
-}
-
-
-strong.highlight{ background-color: #ff0;}
