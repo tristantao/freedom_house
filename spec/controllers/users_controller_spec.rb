@@ -9,7 +9,7 @@ describe Admin::UsersController do
     it "should be able to edit existing users" do
       @test_user = User.new(:id =>1, :email => "tristan@gmail.com", :admin => true, :first_name=> 'Tristan', :last_name =>'Tao')
 
-      User.stub(:find).with(1).and_return(@test_user)
+      User.stub(:find).with("1").and_return(@test_user)
       @test_user.stub(:email=).with("chris@gmail.com")
       @test_user.stub(:first_name=).with("Chris")
       @test_user.stub(:last_name=).with("Balcells")
@@ -30,7 +30,7 @@ describe Admin::UsersController do
       test_user.stub(:full_messages).and_return([])
       post :new, :user => {:first_name => 'Justin', :last_name => 'Chan', :email => 'hellojustinchan@gmail.com', :password => 'derp123', :password_confirmation => 'derp123', :admin => true}
     end
-    it "should delete users" do 
+    it "should delete users" do
       test_user = mock("User", :id =>'1', :email => "hellojustinchan@gmail.com", :admin => true, :first_name=> 'Justin', :last_name =>'Chan', :password => 'derp123', :password_confirmation => 'derp123')
       User.should_receive(:find_by_id).with('1').and_return(test_user)
       test_user.stub(:first_name).and_return('Justin')
@@ -38,9 +38,10 @@ describe Admin::UsersController do
       test_user.should_receive(:delete)
       post :delete, :id => '1'
     end
-    it "should edit users" do 
+    it "should edit users" do
       test_user = mock("User", :id =>'1', :email => "hellojustinchan@gmail.com", :admin => true, :first_name=> 'Justin', :last_name =>'Chan', :password => 'derp123', :password_confirmation => 'derp123')
       User.should_receive(:find).with('1').and_return(test_user)
+      test_user.stub(:sources)
       post :edit, :id => '1'
     end
   end

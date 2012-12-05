@@ -62,7 +62,8 @@ describe Admin::ArticlesController do
   describe "current user is not admin" do
     it "should redirect the user to the homepage" do
       @mockArticle = mock("Article", :id => '1', 'title' => "Harry Potter", 'date' => '1/17/2012', 'author' => 'J.K Rowing', 'link' => 'http://www.harrypotter.com', 'text' => 'harry, youre a wizard')
-
+      @user.admin = false
+      @user.save
       Article.stub(:find_by_id).and_return(@mockArticle)
       @mockArticle.stub(:destroy)
       post :delete, {:id => '1'}
@@ -71,6 +72,8 @@ describe Admin::ArticlesController do
 
   describe "updating an article" do
     it "should be able to update an article" do
+      @user.admin = true
+      @user.save
       @mockArticle = mock("Article", :id => '1', :title => "Harry Potter", :date => '8/7/2011', :author => 'J.K Rowing', :link => 'http://www.harrypotter.com', :text => 'harry, youre a wizard')
       Article.stub(:find).and_return(@mockArticle)
       @mockArticle.stub(:save).and_return(true)

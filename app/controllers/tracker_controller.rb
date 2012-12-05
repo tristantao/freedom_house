@@ -23,7 +23,7 @@ class TrackerController < ApplicationController
       render :json => [@article, @links]
     end
   end
-  
+
   def viewGraph
     count = []
     json = {}
@@ -32,42 +32,42 @@ class TrackerController < ApplicationController
     else
       articles = Article.all(:order => "date asc")
     end
-    
+
     if articles.length != 0
       articles.each do |article|
-        count << article.date.to_date 
+        count << article.date.to_date
       end
     else
-      a = Article.new() 
+      a = Article.new()
       a.date = DateTime.now.to_date
       articles << a
     end
-    
+
     if params[:start].nil?
       start = articles[0].date.strftime("%d-%b-%Y")
     else
       start = params[:start]
     end
-    
+
     if params[:end].nil?
       finish = articles[-1].date.strftime("%d-%b-%Y")
     else
       finish = params[:end]
     end
-    
+
     startdate = Date.parse(start)
     enddate = Date.parse(finish)
     currentdate = Date.parse(start)
-    
+
     if startdate <= enddate
-      while(currentdate <= enddate) 
-      
+      while(currentdate <= enddate)
+
         count << currentdate
-        
+
         currentdate+=1
       end
     end
-    
+
     count.sort!
     count.each do |date|
       if json[date.strftime("%d-%b-%Y")].nil?
