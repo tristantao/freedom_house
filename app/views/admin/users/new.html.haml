@@ -15,5 +15,6 @@
             = f.input :password, :required => true, :input_html => { :class => "span" }
             = f.input :password_confirmation, :required => true, :input_html => { :class => "span" }
             = f.input :admin, :as => :select, :input_html => { :class => "btn span" }
-        
-          = f.button :submit, "Create", :class => "btn btn-success pull-right"
+          %div.btn-group.pull-right
+            = f.button :submit, "Create", :class => "btn btn-success"
+            = link_to 'Cancel', admin_users_path, :class => "btn btn-danger"

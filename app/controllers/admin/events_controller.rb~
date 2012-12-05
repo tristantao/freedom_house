@@ -56,7 +56,7 @@ class Admin::EventsController < ApplicationController
   def update
     @event = Event.find(params[:id])
     @event.name = params[:event][:name]
-    @event.date =  DateTime.strptime(params[:event][:date], "%m/%d/%Y")
+    @event.date =  DateTime.strptime(event[:date], "%m/%d/%Y")
     @event.description = params[:event][:description]
     @loc = Location.first(:conditions => {:longitude => params[:event][:longitude], :latitude => params[:event][:latitude]})
 

@@ -20,11 +20,11 @@ gem 'client_side_validations'
 gem 'ruby-readability', :require => 'readability'
 gem 'feedzirra'
 gem 'mini_magick'
+gem 'libsvm-ruby-swig'
 gem 'delayed_job_active_record'
 gem 'hirefire'
 gem 'descriptive-statistics'
 gem 'client_side_validations-simple_form'
-
 
 group :production do
   gem 'pg'

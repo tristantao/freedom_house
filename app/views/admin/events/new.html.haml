@@ -9,7 +9,7 @@
         = f.error_notification
         .form-inputs
           = f.input :name, :input_html => { :class => "span" }
-          = f.input :date, :input_html => { :class => "span" }
+          = f.input :date, :placeholder => "mm/dd/yyyy", :input_html => { :class => "datepicker span" }
           = f.input :longitude, :input_html => { :class => "span" }
           = f.input :latitude, :input_html => { :class => "span" }
           = f.input :country, :input_html => { :class => "span" }

@@ -32,7 +32,7 @@
   %div.span2
     = render 'admin/shared/sidebar'
   %div.span10
-    %h2 All Articles
+    %h2 All Classified Articles
     %div.pull-right= button_to 'Create New Article', admin_articles_action_path(:new), :class => "button btn"
 
     %table.table.table-striped.table-hover#article_table
@@ -41,8 +41,9 @@
           %th #
           %th Title
           %th Date
-          %th City
+          %th Location
           %th Country
+          %th Hateful?
           %th 
         %tbody
           - @articles.each do |article|
@@ -53,6 +54,7 @@
               %td= article.date.strftime('%m/%d/%y')
               %td= @article_city[article.id]
               %td= @article_country[article.id]
+              %td= article.contains_hatespeech
               %td
                 %div.btn-group
                   = link_to 'Edit', admin_articles_action_path(:edit, article.id), :id => "edit_article_#{article.id}", :class => "btn btn-mini"

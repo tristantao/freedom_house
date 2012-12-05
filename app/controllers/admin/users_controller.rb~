@@ -8,7 +8,7 @@ class Admin::UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
-    @sources = @user.sources
+    @sources = Source.where("user_id = ?", @user.id)
   end
 
   def update

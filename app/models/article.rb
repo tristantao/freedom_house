@@ -13,6 +13,7 @@ class Article < ActiveRecord::Base
   validates :title, :date, :link, :presence => true
   validates :link, :uniqueness => true
   validates_format_of :link, :with => URI::regexp(%w(http https))
+  validates :date, :date => true
 
   has_many :hate_speech
   acts_as_gmappable :process_geocoding => false

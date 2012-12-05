@@ -23,7 +23,7 @@ class Admin::ArticlesController < ApplicationController
   def new
     article = params[:article]
     if article
-      s = Article.create(:title => article[:title], :date => article[:date], :link => article[:link])
+      s = Article.create(:title => article[:title], :date => DateTime.strptime(article[:date], "%m/%d/%Y"), :link => article[:link])
       if s.save
         s.delay.scrapeAll!
         flash[:notice] = "Article #{article[:title]} has been created!"
@@ -42,7 +42,7 @@ class Admin::ArticlesController < ApplicationController
   def update
     @article = Article.find(params[:id])
     @article.title = params[:article][:title]
-    @article.date = params[:article][:date]
+    @article.date = DateTime.strptime(params[:article][:date], "%m/%d/%Y")
     @article.author = params[:article][:author]
     @article.location = params[:article][:location]
     @article.link = params[:article][:link]
@@ -62,7 +62,7 @@ class Admin::ArticlesController < ApplicationController
     title = article.title
     article.destroy
     flash[:notice] = "Article #{title} has been deleted."
-    redirect_to admin_articles_path
+    redirect_to :back
   end
 
   protected

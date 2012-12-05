@@ -9,7 +9,7 @@ class Admin::SourcesController < ApplicationController
  def new
     sourcesinput = params[:source]
     if sourcesinput
-      
+      debugger
       s = Source.new(:name => sourcesinput[:name], :home_page => sourcesinput['home_page'], :quality_rating => sourcesinput[:quality_rating], :url => sourcesinput['url'])
       s.user = current_user
       if s.save

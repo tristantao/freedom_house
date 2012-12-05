@@ -12,10 +12,10 @@
       = simple_form_for(current_user, :url => user_update_path(current_user.id), :html => { :method => :put, :class => 'form-horizontal'}) do |f|
         = f.error_notification
         .form-inputs
-          = f.input :email, :required => true, :input_html => { :class => "span8" }
-          = f.input :password, :autocomplete => "off", :hint => "leave it blank if you don't want to change it", :required => false, :input_html => { :class => "span8" }
-          = f.input :password_confirmation, :required => false, :input_html => { :class => "span8" }
-          = f.input :current_password, :hint => "we need your current password to confirm your changes", :required => true, :input_html => { :class => "span8" }
+          = f.input :email, :required => true, :input_html => { :class => "span" }
+          = f.input :password, :autocomplete => "off", :hint => "leave it blank if you don't want to change it", :required => false, :input_html => { :class => "span" }
+          = f.input :password_confirmation, :required => false, :input_html => { :class => "span" }
+          = f.input :current_password, :hint => "we need your current password to confirm your changes", :required => true, :input_html => { :class => "span" }
           %div.btn-group.pull-right
             = f.button :submit, "Update User", :class => "btn-success"
             = f.button :submit, "Delete User", :class => "btn-danger", :value => "Delete User"
@@ -31,7 +31,8 @@
           %th Source Name
           %th URL
       %tbody
-        %tr
-          %td
-          %td
-          %td
+        -@sources.each do |source|
+          %tr
+            %td= source.id
+            %td= source.name
+            %td= source.url

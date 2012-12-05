@@ -2,7 +2,7 @@ class UserController < ApplicationController
 
 
   def profile
-    @sources = current_user.sources
+    @sources = Source.where("user_id = ?", current_user.id)
   end
 
   def update

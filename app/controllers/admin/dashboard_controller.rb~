@@ -15,7 +15,7 @@ class Admin::DashboardController < ApplicationController
     @new_articles = Article.where('date > ?', @current_user.last_sign_in_at.to_s).length
     @new_events = Event.where('date > ?', @current_user.last_sign_in_at.to_s).length
     @new_sources = Source.where('created_at > ?', @current_user.last_sign_in_at.to_s).length
-    @num_messages = Feedback.where(:active => true).length
+    @num_messages = 0
   end
 
   protected

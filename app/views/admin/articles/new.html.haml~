@@ -9,8 +9,9 @@
         = f.error_notification
         .form-inputs
           = f.input :title, :required => true, :input_html => { :class => "span" }
-          = f.input :date, :required => true, :input_html => { :class => "span" }
-          = f.input :link, :required => true, :input_html => { :class => "span" }
+          = f.input :author, :required => true, :input_html => { :class => "span" }
+          = f.input :date, :as => "string", :placeholder => "mm/dd/yyyy", :required => true, :input_html => { :class => "datepicker span" }
+          = f.input :link, :required => true, :placeholder => "ex: http://www.google.com", :input_html => { :class => "span" }
           %div.btn-group.pull-right
             = f.button :submit, "Create", :class => "btn btn-success"
             = link_to 'Cancel', admin_articles_path, :class => "btn btn-danger"

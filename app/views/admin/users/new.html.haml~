@@ -5,7 +5,7 @@
   %div.span5.offset2
     %div
       %h2.pagination-centered Create New User
-      = simple_form_for(:user, :as => :user_name, :url => admin_users_action_path(:new), :html => { :method => :put, :class => 'form-horizontal'}) do |f|
+      = simple_form_for(:user, :as => :user_name, :url => admin_users_action_path(:new), :html => { :method => :put, :class => 'form-horizontal', :validate => true}) do |f|
         #card
           = f.error_notification
           .form-inputs
@@ -15,5 +15,6 @@
             = f.input :password, :required => true, :input_html => { :class => "span" }
             = f.input :password_confirmation, :required => true, :input_html => { :class => "span" }
             = f.input :admin, :as => :select, :input_html => { :class => "btn span" }
-        
-          = f.button :submit, "Create", :class => "btn btn-success pull-right"
+          %div.btn-group.pull-right
+            = f.button :submit, "Create", :class => "btn btn-success"
+            = link_to 'Cancel', admin_sources_path, :class => "btn btn-danger"
