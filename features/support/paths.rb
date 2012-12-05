@@ -24,6 +24,7 @@ module NavigationHelpers
     when /^the articles page$/ then '/admin/articles'
     when /^the admin feedback page$/ then '/admin/feedbacks'
     when /^the non-admin feedback page$/ then '/feedbacks'
+    when /^the accept_reject page$/ then '/admin/webscraper/accept_reject'
 
 
     when /^the edit user page for "(.*)"/
