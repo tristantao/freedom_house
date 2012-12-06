@@ -83,7 +83,7 @@ class Admin::EventsController < ApplicationController
   def delete
     @event = Event.find(params[:id])
     name = @event.name
-    @event.delete
+    @event.destroy
     flash[:notice] = "Event #{name} has been deleted."
     redirect_to admin_events_path
   end
@@ -96,11 +96,7 @@ class Admin::EventsController < ApplicationController
         locations << loc
       end
     end
-<<<<<<< HEAD
     
-=======
-
->>>>>>> e19990d02701ce441f1a90da35d8804e90c8b66e
     @json << locations.to_gmaps4rails do |event, marker|
       marker.title event.name
       marker.infowindow render_to_string(:partial => "/shared/event_marker", :locals => {:object => event})

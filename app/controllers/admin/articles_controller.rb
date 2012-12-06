@@ -61,7 +61,7 @@ class Admin::ArticlesController < ApplicationController
   def delete
     article = Article.find_by_id(params[:id])
     title = article.title
-    article.destroy
+    article.delete
     flash[:notice] = "Article #{title} has been deleted."
     redirect_to :back
   end

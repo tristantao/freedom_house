@@ -91,7 +91,7 @@ def determine_relevant_loc_and_save(article, individual_cache_table, region_hash
       end
     end
     article.locations << db_loc
-    article.save!
+    #article.save!
     db_loc.save!
   end
 end

@@ -59,14 +59,16 @@ class Admin::WebscraperController < ApplicationController
   end
   
   def update_classifier
+    debugger
     status = params[:status]
-    classifier_id = params[:classifier_id]
+    classifier_id = params[:id]
     classifier = Classifier.find(classifier_id)
     classifier.on_off = status == "true"
     classifier.save
   end
   
   def retrain
+    Classifier.all[0].delay.retrain
     flash[:notice] = "Classifier is being retrained."
     redirect_to :back
   end

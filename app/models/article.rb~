@@ -29,7 +29,7 @@ class Article < ActiveRecord::Base
     return hate_array
   end
 
-  def scrapeContent
+  def scrapeContent!
     source = open(self.link).read
     doc =  Readability::Document.new(source, :ignore_image_format =>["gif"])
     self.text = doc.content
@@ -49,6 +49,7 @@ class Article < ActiveRecord::Base
         end
       end
     end
+    self.save
   end
 
   def scrapeAll!

@@ -1,4 +1,4 @@
-classifiers = [{:problem => "nigeria", :on_off => 1}]
+classifiers = [{:problem => "nigeria", :on_off => true}]
 
 classifiers.each do |classifier|
   c = Classifier.new(classifier)

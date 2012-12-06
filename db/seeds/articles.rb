@@ -72,7 +72,9 @@ and more importantly; Working out, from leadership to operational level, arrange
 
 articles.each do |article|
   begin
-  Article.create!(article)
+  a=Article.new(article)
+  a.admin_verified = true
+  a.save!
   rescue => e
     puts e.message
   end

@@ -28,7 +28,8 @@
         console.log($el, status, e);
         $.ajax({
           type: 'POST',
-          url: "#{admin_webscraper_action_path(:update_classifier)}" + "/"+String(status),
+          url: "#{admin_webscraper_action_path(:update_classifier, 1)}",
+          data: "status=" + String(status),
           success: function(data){
             
           },
@@ -61,6 +62,7 @@
       %span.label.label-warning Stage 3: Location Mining
       %span.label.label-important Stage 4: Classification
     %h4 Classifier
+    %p Current Accuracy: #{Classifier.all[0].accuracy}
     %p When off, the web scraper will pull in all articles and you will have to manually determine if article contains hate speech in order to build training data set. When on, the web scraper will attempt to pull in only articles that contain hate speech. You will still need to verify articles but the classifier will be filtering articles it does not think are hate speech.
     %div
       %div.pull-left#toggle-button

@@ -60,7 +60,7 @@ class Admin::WebscraperController < ApplicationController
   
   def update_classifier
     status = params[:status]
-    classifier_id = params[:classifier_id]
+    classifier_id = params[:id]
     classifier = Classifier.find(classifier_id)
     classifier.on_off = status == "true"
     classifier.save

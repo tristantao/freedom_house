@@ -33,9 +33,9 @@ class TrackerController < ApplicationController
     count = []
     json = {}
     if !params[:start].nil? && !params[:end].nil?
-      articles = Article.find(:all, :conditions => { :date => (Date.parse(params[:start])..(Date.parse(params[:end]))+1) }, :order => "date asc")
+      articles = Article.find(:all, :conditions => {:admin_verified => true, :contains_hatespeech => true, :date => (Date.parse(params[:start])..(Date.parse(params[:end]))+1) }, :order => "date asc")
     else
-      articles = Article.all(:order => "date asc")
+      articles = Article.all(:order => "date asc", :conditions => {:admin_verified => true, :contains_hatespeech => true})
     end
 
     if articles.length != 0

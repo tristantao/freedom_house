@@ -1,7 +1,7 @@
 #!/bin/env ruby
 # encoding: utf-8
 
-sources = [{:name => "Daily Trust", :home_page => "www.dailytrust.com.ng", :url => "http://www.dailytrust.com.ng/index.php/rss/xml/RSS2.0/full", :quality_rating => "10"},
+sources = [{:name => "Daily Trust", :home_page => "http://www.dailytrust.com.ng", :url => "http://www.dailytrust.com.ng/index.php/rss/xml/RSS2.0/full", :quality_rating => "10"},
 #{:name => "CLEEN Foundation", :home_page => "http://www.kabissa.org/directory/CLEEN", :url => "http://feeds.feedburner.com/CleenFoundation?format=xml", :quality_rating => 10},
            #{:name => "The Guardian", :home_page => "http://www.ngrguardiannews.com/", :feed_type => 'Twitter', :url => "NGRGUARDIANNEWS", :quality_rating => 10},
 #{:name => "Nigerian Tribune", :home_page => "http://tribune.com.ng/", :url => "http://tribune.com.ng/news2013/index.php/en/community-news?format=feed", :quality_rating => 10},
