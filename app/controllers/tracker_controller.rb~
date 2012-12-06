@@ -4,11 +4,20 @@ class TrackerController < ApplicationController
   def index
     @articles = Article.where("contains_hatespeech = ? AND admin_verified = ?", true, true)
     @json = ""
+    locations = []
     Event.all.each do |event|
-      @json << event.locations.to_gmaps4rails do |event, marker|
-        marker.title event.name
-        marker.infowindow render_to_string(:partial => "/shared/event_marker", :locals => {:object => event})
+      event.locations.each do |loc|
+        locations << loc
       end
+    end
+<<<<<<< HEAD
+    
+=======
+
+>>>>>>> e19990d02701ce441f1a90da35d8804e90c8b66e
+    @json << locations.to_gmaps4rails do |event, marker|
+      marker.title event.name
+      marker.infowindow render_to_string(:partial => "/shared/event_marker", :locals => {:object => event})
     end
   end
 
@@ -23,7 +32,7 @@ class TrackerController < ApplicationController
       render :json => [@article, @links]
     end
   end
-  
+
   def viewGraph
     count = []
     json = {}
@@ -32,42 +41,42 @@ class TrackerController < ApplicationController
     else
       articles = Article.all(:order => "date asc")
     end
-    
+
     if articles.length != 0
       articles.each do |article|
-        count << article.date.to_date 
+        count << article.date.to_date
       end
     else
-      a = Article.new() 
+      a = Article.new()
       a.date = DateTime.now.to_date
       articles << a
     end
-    
+
     if params[:start].nil?
       start = articles[0].date.strftime("%d-%b-%Y")
     else
       start = params[:start]
     end
-    
+
     if params[:end].nil?
       finish = articles[-1].date.strftime("%d-%b-%Y")
     else
       finish = params[:end]
     end
-    
+
     startdate = Date.parse(start)
     enddate = Date.parse(finish)
     currentdate = Date.parse(start)
-    
+
     if startdate <= enddate
-      while(currentdate <= enddate) 
-      
+      while(currentdate <= enddate)
+
         count << currentdate
-        
+
         currentdate+=1
       end
     end
-    
+
     count.sort!
     count.each do |date|
       if json[date.strftime("%d-%b-%Y")].nil?

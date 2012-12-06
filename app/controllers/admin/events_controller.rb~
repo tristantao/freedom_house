@@ -96,15 +96,17 @@ class Admin::EventsController < ApplicationController
         locations << loc
       end
     end
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> e19990d02701ce441f1a90da35d8804e90c8b66e
     @json << locations.to_gmaps4rails do |event, marker|
-          marker.title event.name
-          marker.infowindow render_to_string(:partial => "/shared/event_marker", :locals => {:object => event})
-        end
-      end
+      marker.title event.name
+      marker.infowindow render_to_string(:partial => "/shared/event_marker", :locals => {:object => event})
     end
   end
-  
+
   protected
   def admin_user?
     redirect_to root_path() unless user_signed_in? && current_user.admin?

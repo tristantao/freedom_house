@@ -10,7 +10,7 @@ class TrackerController < ApplicationController
         locations << loc
       end
     end
-    
+
     @json << locations.to_gmaps4rails do |event, marker|
       marker.title event.name
       marker.infowindow render_to_string(:partial => "/shared/event_marker", :locals => {:object => event})
