@@ -130,7 +130,7 @@ include ::ChiSquared
         else
           @accuracy[kernel] = (@accuracy[kernel]*(c_vd) + new_accuracy)/(c_vd+1)
         end
-      @labels[c_vd] = @test_labels
+        @labels[c_vd] = @test_labels
         @documents[c_vd] = @test_documents
       end
 
@@ -138,7 +138,9 @@ include ::ChiSquared
       sp = Problem.new(@labels.flatten, feature_vectors)
       m = Model.new(sp, pa)
       m.save(self.id.to_s+".model")
-      
+      if not @accuracy[0].nan?
+        self.accuracy = @accuracy[0]
+      end
       self.top_features = top_features
       self.save!
     end

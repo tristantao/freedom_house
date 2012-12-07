@@ -92,6 +92,7 @@ describe Source do
         article.should_receive(:scrapeContent).exactly(3).and_raise(OpenURI::HTTPError.new("testing invalid queries", Object.new))
         source.stub(:save!).and_return(true)
         source.stub(:save).and_return(true)
+        source.stub(:mine_location)
 
         source.scrape.should be_true
       end

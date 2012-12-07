@@ -24,7 +24,6 @@ class TrackerController < ApplicationController
       render :text => t("server_error"), :status => 403
     else
       @article.text = view_context.highlight_whole_word(@article.text, @article.hateArray, :highlighter => '<strong class="highlight">\1</strong>')
-      puts @article.to_json
       render :json => [@article, @links]
     end
   end

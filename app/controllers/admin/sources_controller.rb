@@ -49,11 +49,10 @@ class Admin::SourcesController < ApplicationController
   end
   
   def progress
-  
-    if params["id"] == nil
+    if params[:id] == nil
       sources = Source.all
     else
-      sources = [Source.find(params["id"])]
+      sources = [Source.find(params[:id])]
     end
     
     json = {}

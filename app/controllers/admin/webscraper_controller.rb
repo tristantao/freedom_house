@@ -32,6 +32,7 @@ class Admin::WebscraperController < ApplicationController
         source.delay.scrape
       end
     end
+    flash[:notice] = "All sources have been queued to be scraped."
     redirect_to admin_webscraper_path
   end
   

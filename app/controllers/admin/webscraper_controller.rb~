@@ -32,6 +32,7 @@ class Admin::WebscraperController < ApplicationController
         source.delay.scrape
       end
     end
+    flash[:notice] = "All sources have been queued to be scraped.
     redirect_to admin_webscraper_path
   end
   
@@ -59,7 +60,6 @@ class Admin::WebscraperController < ApplicationController
   end
   
   def update_classifier
-    debugger
     status = params[:status]
     classifier_id = params[:id]
     classifier = Classifier.find(classifier_id)

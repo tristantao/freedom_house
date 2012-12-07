@@ -34,8 +34,7 @@ describe Admin::ArticlesController do
       Admin::ArticlesController.any_instance.stub(:admin_user?).and_return(true)
       Admin::ArticlesController.any_instance.stub(:authenticate_user!).and_return(true)
       Article.stub(:find_by_id).and_return(@mockArticle)
-      @mockArticle.stub(:destroy)
-
+      @mockArticle.should_receive(:delete)
       post :delete, {:id => '1'}
     end
     it "should be able to edit an article" do
