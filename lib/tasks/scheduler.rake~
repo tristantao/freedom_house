@@ -4,11 +4,11 @@ task :scrape_all => :environment do
   sources = Source.all
     sources.each do |source|
       if source.scrapable?
+        puts "scrapping source " + source.name
         source.queued = true
         source.save
         source.scrape
       end
     end
-    redirect_to admin_webscraper_path
   puts "done scraping sources."
 end
