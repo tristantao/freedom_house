@@ -96,7 +96,6 @@ class Source < ActiveRecord::Base
           else
             puts "scrape content failed...deleting article"
             puts article.link
-            article.delete
             articles.delete(article)
           end
         end

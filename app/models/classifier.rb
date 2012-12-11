@@ -22,6 +22,10 @@ include ::ChiSquared
       pred, probs = m.predict_probability(feature_vectors)
       article.contains_hatespeech = pred.to_i
       
+      if not article.contains_hatespeech
+        articles.delete(article)
+      end
+      
       if !source.nil?
         completed += increment
         source.progress_classify = completed.to_s + "%"
