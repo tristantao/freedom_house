@@ -47,6 +47,7 @@
           %th Date
           %th Location
           %th Country
+          %th Classifier Prediction
           %th 
         %tbody
           - @articles.each do |article|
@@ -60,6 +61,7 @@
               -else
                 %td= article.locations[0].name
                 %td= article.locations[0].country
+              %td= article.contains_hatespeech
               %td
                 %div.btn-group
                   = link_to 'Hate', admin_webscraper_action_path(:accept, article.id), :id => "accept_article_#{article.id}", :class => "btn btn-mini"

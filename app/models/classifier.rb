@@ -21,7 +21,7 @@ include ::ChiSquared
       feature_vectors = self.top_features.map{|x| doc.include?(x) ? 1 : 0}
       pred, probs = m.predict_probability(feature_vectors)
       article.contains_hatespeech = pred.to_i
-      article.save!
+      
       if !source.nil?
         completed += increment
         source.progress_classify = completed.to_s + "%"

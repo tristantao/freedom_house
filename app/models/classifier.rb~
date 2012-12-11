@@ -21,7 +21,7 @@ include ::ChiSquared
       feature_vectors = self.top_features.map{|x| doc.include?(x) ? 1 : 0}
       pred, probs = m.predict_probability(feature_vectors)
       article.contains_hatespeech = pred.to_i
-      article.save!
+      
       if !source.nil?
         completed += increment
         source.progress_classify = completed.to_s + "%"
@@ -138,7 +138,7 @@ include ::ChiSquared
       sp = Problem.new(@labels.flatten, feature_vectors)
       m = Model.new(sp, pa)
       m.save(self.id.to_s+".model")
-      if not @accuracy[0] == (0.0/0.0)
+      if not @accuracy[0].nan?
         self.accuracy = @accuracy[0]
       end
       self.top_features = top_features
